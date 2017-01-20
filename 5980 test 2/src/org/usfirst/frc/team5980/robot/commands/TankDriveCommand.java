@@ -30,8 +30,8 @@ public class TankDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double leftPower = deadBand(-Robot.oi.driver.getY(Hand.kLeft)); //getY = y axis
-    	double rightPower = deadBand(-Robot.oi.driver.getY(Hand.kRight));
+    	double leftPower = deadBand(-Robot.oi.driver.getY(Hand.kRight)); //getY = y axis
+    	double rightPower = deadBand(Robot.oi.driver.getY(Hand.kLeft));
     	Robot.driveTrain.setPower(leftPower,  rightPower);
     	//SmartDashboard.putNumber("left:", leftPower);
     	//SmartDashboard.putNumber("right:", rightPower);
