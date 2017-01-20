@@ -12,7 +12,7 @@ public class OI {
 	public OI() {
 		//XboxButton arcadeButton = new XboxButton(driver, XboxButton.BUTTONA);
 		//XboxButton tankButton = new XboxButton(driver, XboxButton.BUTTONY);
-		//arcadeButton.whenPressed(new ArcadedriveCommand());
+		//arcadeButton.whenPressed(new ArcadeDriveCommand());
 		//tankButton.whenPressed(new TankDriveCommand());
 	}
 	
