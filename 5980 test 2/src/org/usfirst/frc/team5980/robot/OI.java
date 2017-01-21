@@ -1,14 +1,14 @@
 package org.usfirst.frc.team5980.robot;
 
-import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.Joystick;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	public XboxController driver = new XboxController(0);
-	public XboxController operator = new XboxController(1);
+	public Joystick driver = new Joystick(0);
+	public Joystick operator = new Joystick(1);
 	public OI() {
 		//XboxButton arcadeButton = new XboxButton(driver, XboxButton.BUTTONA);
 		//XboxButton tankButton = new XboxButton(driver, XboxButton.BUTTONY);

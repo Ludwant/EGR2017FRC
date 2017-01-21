@@ -33,8 +33,8 @@ public class ArcadeDriveCommand extends Command {
     
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double throttle = deadBand(Robot.oi.driver.getX(Hand.kRight));
-    	double wheel = deadBand(-Robot.oi.driver.getY(Hand.kLeft));
+    	double throttle = deadBand(-Robot.oi.driver.getRawAxis(1));
+    	double wheel = deadBand(Robot.oi.driver.getRawAxis(4));
     	double leftPower = clip (throttle + wheel);
     	double rightPower = clip (throttle - wheel);
     	Robot.driveTrain.setPower(leftPower, rightPower);
