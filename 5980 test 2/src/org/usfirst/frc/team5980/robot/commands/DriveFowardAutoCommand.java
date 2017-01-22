@@ -11,11 +11,13 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveFowardAutoCommand extends Command {
 
 	 EGRPID drivePID = new EGRPID(.03, 0, 0);
-	 int maxSpeed;
-	 double distance;
+	 double maxSpeed;
+	 int distance;
 	 double heading;
+	 double speed = 0;
+	 double encoderTarget;
 	 
-    public DriveFowardAutoCommand(int speed, double distance, double heading) {
+    public DriveFowardAutoCommand(double speed, int distance, double heading) {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.driveTrain);
         this.maxSpeed = speed;
@@ -26,19 +28,28 @@ public class DriveFowardAutoCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	encoderTarget = Robot.sensors.getRightEncoder() + distance;
+    	drivePID.setTarget(heading);
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double correction = drivePID.getCorrection(Robot.sensors.getYaw());
+    	if (speed < maxSpeed) {
+    		speed += 0.03;
+    	}
+    	Robot.driveTrain.setPower(speed - correction, speed + correction);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return Robot.sensors.getRightEncoder() > encoderTarget;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.driveTrain.setPower(0, 0);
     }
 
     // Called when another command which requires one or more of the same

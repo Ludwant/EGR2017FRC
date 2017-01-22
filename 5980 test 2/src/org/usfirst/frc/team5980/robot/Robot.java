@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5980.robot.commands.DriveForwardForTime;
+import org.usfirst.frc.team5980.robot.commands.DriveFowardAutoCommand;
 import org.usfirst.frc.team5980.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5980.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5980.robot.subsystems.ExampleSubsystem;
@@ -25,6 +26,7 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final DriveTrain driveTrain = new DriveTrain();
+	public static final SensorInput sensors = new SensorInput();
 	public static OI oi;
 	CameraServer server = CameraServer.getInstance();
 	
@@ -76,11 +78,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
-		
-		int testDriveTime = 1000;
-		double testDriveSpeed = 0.2;
-		
-		DriveForwardForTime driveTest = new DriveForwardForTime(testDriveTime, testDriveSpeed);
+		DriveFowardAutoCommand driveTest = new DriveFowardAutoCommand(.5, 4000, 0);
 		
 		driveTest.start();
 
