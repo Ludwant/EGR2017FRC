@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveFowardAutoCommand extends Command {
 
-	 EGRPID drivePID = new EGRPID(.03, 0, 0);
+	 EGRPID drivePID = new EGRPID(.04, 0, 0);
 	 double maxSpeed;
 	 int distance;
 	 double heading;
@@ -37,9 +37,9 @@ public class DriveFowardAutoCommand extends Command {
     protected void execute() {
     	double correction = drivePID.getCorrection(Robot.sensors.getYaw());
     	if (speed < maxSpeed) {
-    		speed += 0.03;
+    		speed += 0.04;
     	}
-    	Robot.driveTrain.setPower(speed - correction, speed + correction);
+    	Robot.driveTrain.setPower(speed + correction, speed - correction);
     }
 
     // Make this return true when this Command no longer needs to run execute()
