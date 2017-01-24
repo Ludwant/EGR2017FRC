@@ -10,6 +10,9 @@ public class SensorInput {
 	static Encoder leftEncoder = new Encoder(0, 1);
 	static Encoder rightEncoder = new Encoder(2, 3);
 	static AHRS navX;
+	int rightEncoderOffset = 0;
+	int leftEncoderOffset = 0;
+	float yawOffset = 0;
 	
 	public SensorInput() {
 		try {
@@ -22,7 +25,7 @@ public class SensorInput {
 	
 	public float getYaw() {
 		float yaw;
-		yaw = navX.getYaw();
+		yaw = navX.getYaw() - yawOffset;
 		return yaw;
 	}
 	
@@ -40,15 +43,21 @@ public class SensorInput {
 	
 	public int getLeftEncoder() {
 		int encoderValue;
-		encoderValue = leftEncoder.get();
+		encoderValue = leftEncoder.get() - leftEncoderOffset;
 		return -encoderValue;
 		
 	}
 	
 	public int getRightEncoder() {
 		int encoderValue;
-		encoderValue = rightEncoder.get();
+		encoderValue = rightEncoder.get() - rightEncoderOffset;
 		return encoderValue;	
+	}
+	
+	public void resetSensors() {
+		leftEncoderOffset = leftEncoder.get();
+		rightEncoderOffset = rightEncoder.get();
+		yawOffset = navX.getYaw();
 	}
 	
 	public void resetYaw() {

@@ -4,6 +4,7 @@ import org.usfirst.frc.team5980.robot.EGRPID;
 import org.usfirst.frc.team5980.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -31,6 +32,8 @@ public class DriveFowardAutoCommand extends Command {
     	encoderTarget = Robot.sensors.getRightEncoder() + distance;
     	drivePID.setTarget(heading);
     	
+    	
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -40,6 +43,7 @@ public class DriveFowardAutoCommand extends Command {
     		speed += 0.04;
     	}
     	Robot.driveTrain.setPower(speed + correction, speed - correction);
+    	SmartDashboard.putNumber("Right Encoder: ", Robot.sensors.getRightEncoder());
     }
 
     // Make this return true when this Command no longer needs to run execute()

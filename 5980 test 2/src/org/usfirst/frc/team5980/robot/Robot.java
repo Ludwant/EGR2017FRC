@@ -78,7 +78,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
-		DriveFowardAutoCommand driveTest = new DriveFowardAutoCommand(.5, 4000, 0);
+		DriveFowardAutoCommand driveTest = new DriveFowardAutoCommand(.5, 2000, 0);
+		sensors.resetSensors();
 		
 		driveTest.start();
 
