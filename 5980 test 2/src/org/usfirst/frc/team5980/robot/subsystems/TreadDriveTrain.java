@@ -20,8 +20,6 @@ public class TreadDriveTrain extends Subsystem {
 		right2.set(right);
 	}
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
     }
 }
 

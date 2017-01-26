@@ -6,9 +6,6 @@ import org.usfirst.frc.team5980.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
 public class DriveFowardAutoCommand extends Command {
 
 	 EGRPID drivePID = new EGRPID(.04, 0, 0);
