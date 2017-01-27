@@ -6,7 +6,7 @@ import org.usfirst.frc.team5980.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class DriveFowardAutoCommand extends Command {
+public class DriveForwardAutoCommand extends Command {
 
 	 EGRPID drivePID = new EGRPID(.04, 0, 0);
 	 EGRPID stopPID = new EGRPID(.002, 0, 0);
@@ -16,7 +16,7 @@ public class DriveFowardAutoCommand extends Command {
 	 double speed = 0;
 	 double encoderTarget;
 	 
-    public DriveFowardAutoCommand(double speed, int distance, double heading) {
+    public DriveForwardAutoCommand(double speed, int distance, double heading) {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.driveTrain);
         this.maxSpeed = speed;

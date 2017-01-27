@@ -15,8 +15,8 @@ import java.util.*;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team5980.robot.commands.DriveForwardForTime;
-import org.usfirst.frc.team5980.robot.commands.DriveFowardAutoCommand;
-import org.usfirst.frc.team5980.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5980.robot.commands.DriveForwardAutoCommand;
+import org.usfirst.frc.team5980.robot.commands.RotateToHeadingCommand;
 import org.usfirst.frc.team5980.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5980.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5980.robot.subsystems.GearMech;
@@ -49,7 +49,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		chooser.addDefault("Default Auto", new ExampleCommand());
+		//chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		//server.startAutomaticCapture();
@@ -126,7 +126,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
-		DriveFowardAutoCommand driveTest = new DriveFowardAutoCommand(.5, 2000, 0);
+		DriveForwardAutoCommand driveTest = new DriveForwardAutoCommand(.5, 2000, 0);
+		//RotateToHeadingCommand rotateTest = new RotateToHeadingCommand(-30, .3);
 		sensors.resetSensors();
 		
 		driveTest.start();
