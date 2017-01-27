@@ -19,6 +19,7 @@ import org.usfirst.frc.team5980.robot.commands.DriveFowardAutoCommand;
 import org.usfirst.frc.team5980.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5980.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5980.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5980.robot.subsystems.GearMech;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -32,6 +33,7 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final SensorInput sensors = new SensorInput();
+	public static final GearMech gear = new GearMech();
 	public static OI oi;
 	//CameraServer server = CameraServer.getInstance();
 	
