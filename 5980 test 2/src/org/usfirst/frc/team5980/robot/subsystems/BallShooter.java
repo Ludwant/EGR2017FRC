@@ -15,7 +15,7 @@ public class BallShooter extends Subsystem {
 	
 	
 	public void setPower(double speed) {
-		ballMotor.changeControlMode(TalonControlMode.Speed);
+		//ballMotor.changeControlMode(TalonControlMode.Speed);
 		ballMotor.set(speed);
 	}
 
