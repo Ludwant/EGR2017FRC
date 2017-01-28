@@ -17,6 +17,7 @@ import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team5980.robot.commands.DriveForwardForTime;
 import org.usfirst.frc.team5980.robot.commands.DriveForwardAutoCommand;
 import org.usfirst.frc.team5980.robot.commands.RotateToHeadingCommand;
+import org.usfirst.frc.team5980.robot.subsystems.BallShooter;
 import org.usfirst.frc.team5980.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5980.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5980.robot.subsystems.GearMech;
@@ -36,6 +37,7 @@ public class Robot extends IterativeRobot {
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final SensorInput sensors = new SensorInput();
 	public static final GearMech gear = new GearMech();
+	public static final BallShooter shooter = new BallShooter();
 	public static OI oi;
 	public static final Climb climb = new Climb();
 	//CameraServer server = CameraServer.getInstance();

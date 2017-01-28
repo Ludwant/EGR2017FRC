@@ -1,6 +1,8 @@
 package org.usfirst.frc.team5980.robot;
 
+
 import org.usfirst.frc.team5980.robot.commands.ClimbCommand;
+import org.usfirst.frc.team5980.robot.commands.BallShootCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -18,8 +20,16 @@ public class OI {
 		//XboxButton tankButton = new XboxButton(driver, XboxButton.BUTTONY);
 		//arcadeButton.whenPressed(new ArcadeDriveCommand());
 		//tankButton.whenPressed(new TankDriveCommand());
+
 		Button climbButton = new JoystickButton(operator, 2);
 		climbButton.whileHeld(new ClimbCommand());
+		
+		
+
+
+		Button shootButton = new JoystickButton(operator, 1);
+		shootButton.whileHeld(new BallShootCommand());
+
 	}
 	
 
