@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class GearMech extends Subsystem {
-	CANTalon gearMotor = new CANTalon(5);
+	CANTalon gearMotor = new CANTalon(6);
 	
 public void setPower(double power) {
 	gearMotor.set(power);
