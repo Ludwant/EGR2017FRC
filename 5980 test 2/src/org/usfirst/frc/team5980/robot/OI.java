@@ -24,9 +24,6 @@ public class OI {
 		Button climbButton = new JoystickButton(operator, 2);
 		climbButton.whileHeld(new ClimbCommand());
 		
-		
-
-
 		Button shootButton = new JoystickButton(operator, 1);
 		shootButton.whileHeld(new BallShootCommand());
 

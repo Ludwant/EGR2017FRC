@@ -22,7 +22,6 @@ import org.usfirst.frc.team5980.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5980.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5980.robot.subsystems.GearMech;
 import org.usfirst.frc.team5980.robot.subsystems.Climb;
-import org.usfirst.frc.team5980.robot.subsystems.ClimbCommand;
 
 /**
  * The VM is configured to automatically run this class, and to call the
