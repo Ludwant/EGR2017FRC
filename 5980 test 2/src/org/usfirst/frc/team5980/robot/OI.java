@@ -1,6 +1,10 @@
 package org.usfirst.frc.team5980.robot;
 
+import org.usfirst.frc.team5980.robot.commands.BallShootCommand;
+
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -14,6 +18,9 @@ public class OI {
 		//XboxButton tankButton = new XboxButton(driver, XboxButton.BUTTONY);
 		//arcadeButton.whenPressed(new ArcadeDriveCommand());
 		//tankButton.whenPressed(new TankDriveCommand());
+		
+		Button shootButton = new JoystickButton(operator, 1);
+		shootButton.whileHeld(new BallShootCommand());
 	}
 	
 	
