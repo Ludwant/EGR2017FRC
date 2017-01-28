@@ -1,6 +1,10 @@
 package org.usfirst.frc.team5980.robot;
 
+import org.usfirst.frc.team5980.robot.commands.ClimbCommand;
+
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -14,9 +18,11 @@ public class OI {
 		//XboxButton tankButton = new XboxButton(driver, XboxButton.BUTTONY);
 		//arcadeButton.whenPressed(new ArcadeDriveCommand());
 		//tankButton.whenPressed(new TankDriveCommand());
+		Button climbButton = new JoystickButton(operator, 2);
+		climbButton.whileHeld(new ClimbCommand());
 	}
 	
-	
+
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.

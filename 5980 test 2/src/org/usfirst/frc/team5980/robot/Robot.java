@@ -20,6 +20,8 @@ import org.usfirst.frc.team5980.robot.commands.RotateToHeadingCommand;
 import org.usfirst.frc.team5980.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5980.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5980.robot.subsystems.GearMech;
+import org.usfirst.frc.team5980.robot.subsystems.Climb;
+import org.usfirst.frc.team5980.robot.subsystems.ClimbCommand;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -35,6 +37,7 @@ public class Robot extends IterativeRobot {
 	public static final SensorInput sensors = new SensorInput();
 	public static final GearMech gear = new GearMech();
 	public static OI oi;
+	public static final Climb climb = new Climb();
 	//CameraServer server = CameraServer.getInstance();
 	
 
