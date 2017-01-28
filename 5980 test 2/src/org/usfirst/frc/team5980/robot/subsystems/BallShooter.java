@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class BallShooter extends Subsystem {
-	CANTalon ballMotor = new CANTalon(5);
+	CANTalon ballMotor = new CANTalon(6);
 	
 	
 	public void setPower(double speed) {
