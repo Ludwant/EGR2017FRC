@@ -69,12 +69,12 @@ public class Robot extends IterativeRobot {
 			Mat hsv = new Mat();
 			Mat mask = new Mat();
 			Mat hierarchy = new Mat();
-			Scalar lowerHSV = new Scalar(20,0,0);
-			Scalar upperHSV = new Scalar(100,255,255);
+			Scalar lowerHSV = new Scalar(37,131,147);
+			Scalar upperHSV = new Scalar(126,255,255);
 			
 			while(true) {
 				cvSink.grabFrame(source);
-				/*
+				
 				Imgproc.cvtColor(source, hsv, Imgproc.COLOR_BGR2HSV);
 				Core.inRange(hsv, lowerHSV, upperHSV, mask);
 				ArrayList<MatOfPoint> contours = new ArrayList<MatOfPoint>();
@@ -96,9 +96,9 @@ public class Robot extends IterativeRobot {
 					//Imgproc.contourArea(contours.get(i));
 				}
 				
-				*/
+				
 				outputStream.putFrame(source);
-				//SmartDashboard.putNumber("contours", bigContours.size());
+				SmartDashboard.putNumber("contours", bigContours.size());
 			}
 			});
 		thread.start();
