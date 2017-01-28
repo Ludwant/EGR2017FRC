@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 public class Climb extends Subsystem {
-	CANTalon climbMotor = new CANTalon(5);
+	CANTalon climbMotor = new CANTalon(7);
 
 	public void setPower(double power) {
 		climbMotor.set(power);
