@@ -128,11 +128,12 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
-		DriveForwardAutoCommand driveTest = new DriveForwardAutoCommand(.5, 2000, 0);
-		//RotateToHeadingCommand rotateTest = new RotateToHeadingCommand(-30, .3);
+		//DriveForwardAutoCommand driveTest = new DriveForwardAutoCommand(.5, 2000, 0);
 		sensors.resetSensors();
+		RotateToHeadingCommand rotateTest = new RotateToHeadingCommand(60, .3);
 		
-		driveTest.start();
+		
+		rotateTest.start();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
