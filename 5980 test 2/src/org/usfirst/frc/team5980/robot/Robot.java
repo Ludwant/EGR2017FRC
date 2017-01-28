@@ -74,6 +74,7 @@ public class Robot extends IterativeRobot {
 			
 			while(true) {
 				cvSink.grabFrame(source);
+				/*
 				Imgproc.cvtColor(source, hsv, Imgproc.COLOR_BGR2HSV);
 				Core.inRange(hsv, lowerHSV, upperHSV, mask);
 				ArrayList<MatOfPoint> contours = new ArrayList<MatOfPoint>();
@@ -94,8 +95,10 @@ public class Robot extends IterativeRobot {
 					Imgproc.drawContours(source, contours, i, new Scalar(255,0,0));
 					//Imgproc.contourArea(contours.get(i));
 				}
+				
+				*/
 				outputStream.putFrame(source);
-				SmartDashboard.putNumber("contours", bigContours.size());
+				//SmartDashboard.putNumber("contours", bigContours.size());
 			}
 			});
 		thread.start();
