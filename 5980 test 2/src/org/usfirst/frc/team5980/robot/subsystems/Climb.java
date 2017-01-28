@@ -1,18 +1,22 @@
 package org.usfirst.frc.team5980.robot.subsystems;
 
+import org.usfirst.frc.team5980.robot.commands.ClimbCommand;
+
+import com.ctre.CANTalon;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- *
- */
-public class Climb extends Subsystem {
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+public class Climb extends Subsystem {
+	CANTalon climbMotor = new CANTalon(5);
+
+	public void setPower(double power) {
+		climbMotor.set(power);
+		
+	}
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new ClimbCommand());
     }
 }
 
