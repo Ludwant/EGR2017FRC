@@ -25,12 +25,12 @@ public class SensorInput {
 	
 	public float getYaw() {
 		float yaw;
-		yaw = navX.getYaw() - yawOffset;
-		while(yaw > 360) {
-			yaw-=360;
+		yaw = -(navX.getYaw() - yawOffset);
+		while(yaw > 180) {
+			yaw-=180;
 		}
-		while (yaw < 360) {
-			yaw+=360;
+		while (yaw < 180) {
+			yaw+=180;
 		}
 		return yaw;
 	}
