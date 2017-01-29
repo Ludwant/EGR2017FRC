@@ -69,8 +69,8 @@ public class Robot extends IterativeRobot {
 			Mat hsv = new Mat();
 			Mat mask = new Mat();
 			Mat hierarchy = new Mat();
-			Scalar lowerHSV = new Scalar(37,131,147);
-			Scalar upperHSV = new Scalar(126,255,255);
+			Scalar lowerHSV = new Scalar(70,0,195);
+			Scalar upperHSV = new Scalar(180,255,255);
 			
 			while(true) {
 				cvSink.grabFrame(source);
@@ -84,7 +84,7 @@ public class Robot extends IterativeRobot {
 				Imgproc.CHAIN_APPROX_SIMPLE);
 				
 				for (int i = 0; i < contours.size(); i++) {
-					if (Imgproc.contourArea(contours.get(i)) >= 100) {
+					if (Imgproc.contourArea(contours.get(i)) >= 150) {
 						bigContours.add(contours.get(i));
 					}
 				}
