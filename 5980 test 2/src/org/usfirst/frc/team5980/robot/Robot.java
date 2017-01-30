@@ -57,7 +57,7 @@ public class Robot extends IterativeRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		//server.startAutomaticCapture();
-		 
+		 /*
 		Thread thread = new Thread(() -> {
 			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 			camera.setResolution(640, 480);
@@ -101,7 +101,7 @@ public class Robot extends IterativeRobot {
 				SmartDashboard.putNumber("contours", bigContours.size());
 			}
 			});
-		thread.start();
+		thread.start();*/
 		}
 
 	/**

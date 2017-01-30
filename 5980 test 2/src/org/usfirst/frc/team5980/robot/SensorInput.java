@@ -27,10 +27,10 @@ public class SensorInput {
 		float yaw;
 		yaw = -(navX.getYaw() - yawOffset);
 		while(yaw > 180) {
-			yaw-=180;
+			yaw-=360;
 		}
 		while (yaw < 180) {
-			yaw+=180;
+			yaw+=360;
 		}
 		return yaw;
 	}
