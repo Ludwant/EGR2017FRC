@@ -16,7 +16,6 @@ public void setPower(double power) {
 	gearMotor.set(power);
 }
 
-public int 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
