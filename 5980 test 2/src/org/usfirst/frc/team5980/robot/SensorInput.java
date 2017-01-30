@@ -2,6 +2,8 @@ package org.usfirst.frc.team5980.robot;
 
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
@@ -10,7 +12,7 @@ import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 public class SensorInput {
 	static Encoder leftEncoder = new Encoder(0, 1);
 	static Encoder rightEncoder = new Encoder(2, 3);
-	static Potentiometer pot = new AnalogPotentiometer(0, 360, 30);
+	static Potentiometer pot = new AnalogPotentiometer(0, 360, 10);
 	static AHRS navX;
 	int rightEncoderOffset = 0;
 	int leftEncoderOffset = 0;
@@ -81,7 +83,8 @@ public class SensorInput {
 		rightEncoder.reset();
 	}
 	
-	public int getPot() {
-		
+	public double getPot() {
+		return pot.get();
 	}
+	//double degrees = pot.get()
 }
