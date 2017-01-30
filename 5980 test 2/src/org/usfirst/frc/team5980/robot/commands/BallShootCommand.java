@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class BallShootCommand extends Command {
 
     public BallShootCommand() {
+    	//super("Ball Shoot Command");
         // Use requires() here to declare subsystem dependencies
         requires(Robot.shooter);
     }

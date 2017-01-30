@@ -16,8 +16,8 @@ public class OI {
 	public Joystick driver = new Joystick(0);
 	public Joystick operator = new Joystick(1);
 	public OI() {
-		//XboxButton arcadeButton = new XboxButton(driver, XboxButton.BUTTONA);
-		//XboxButton tankButton = new XboxButton(driver, XboxButton.BUTTONY);
+		//Button arcadeButton = new XboxButton(driver, #);
+		//Button tankButton = new XboxButton(driver, #);
 		//arcadeButton.whenPressed(new ArcadeDriveCommand());
 		//tankButton.whenPressed(new TankDriveCommand());
 
@@ -26,6 +26,13 @@ public class OI {
 		
 		Button shootButton = new JoystickButton(operator, 1);
 		shootButton.whileHeld(new BallShootCommand());
+		
+		//Button button3 = new JoystickButton(operator, 3);
+		//Button button4 = new JoystickButton(operator, 4);
+		//Button button5 = new JoystickButton(operator, 5);
+	    //Button button6 = new JoystickButton(operator, 6);
+		//Button button7 = new JoystickButton(operator, 7);
+	    //Button button8 = new JoystickButton(operator, 8);
 
 	}
 	
