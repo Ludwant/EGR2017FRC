@@ -57,13 +57,13 @@ public class Robot extends IterativeRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		//server.startAutomaticCapture();
-		 /*
+		 
 		Thread thread = new Thread(() -> {
 			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 			camera.setResolution(640, 480);
 			
 			CvSink cvSink = CameraServer.getInstance().getVideo();
-			CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 640, 480);
+			CvSource outputStream = CameraServer.getInstance().putVideo("Vision", 640, 480);
 			
 			Mat source = new Mat();
 			Mat hsv = new Mat();
@@ -76,7 +76,9 @@ public class Robot extends IterativeRobot {
 				cvSink.grabFrame(source);
 				
 				Imgproc.cvtColor(source, hsv, Imgproc.COLOR_BGR2HSV);
+				
 				Core.inRange(hsv, lowerHSV, upperHSV, mask);
+				
 				ArrayList<MatOfPoint> contours = new ArrayList<MatOfPoint>();
 				ArrayList<MatOfPoint> bigContours = new ArrayList<MatOfPoint>();
 				
@@ -90,18 +92,18 @@ public class Robot extends IterativeRobot {
 				}
 				
 				for (int i = 0; i < contours.size(); i++) {
-					Rect bbox = Imgproc.boundingRect(bigContours.get(i));
-					Imgproc.rectangle(source, bbox.tl(), bbox.br(), new Scalar(0,255,0),2);
+					//Rect bbox = Imgproc.boundingRect(bigContours.get(i));
+					//Imgproc.rectangle(source, bbox.tl(), bbox.br(), new Scalar(0,255,0),2);
 					Imgproc.drawContours(source, contours, i, new Scalar(255,0,0));
 					//Imgproc.contourArea(contours.get(i));
 				}
 				
 				
 				outputStream.putFrame(source);
-				SmartDashboard.putNumber("contours", bigContours.size());
+				//SmartDashboard.putNumber("contours", bigContours.size());
 			}
 			});
-		thread.start();*/
+		thread.start();
 		}
 
 	/**
