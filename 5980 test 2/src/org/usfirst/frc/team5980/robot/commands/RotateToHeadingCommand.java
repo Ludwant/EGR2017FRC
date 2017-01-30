@@ -39,7 +39,7 @@ public class RotateToHeadingCommand extends Command {
     		correction = -1;
     	}
     	Robot.driveTrain.setPower(-speed * correction, speed * correction);
-    	SmartDashboard.putNumber("Yaw : ", Robot.sensors.getYaw());
+    	//SmartDashboard.putNumber("Yaw : ", Robot.sensors.getYaw());
     }
 
     // Make this return true when this Command no longer needs to run execute()
