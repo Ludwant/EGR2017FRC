@@ -135,7 +135,7 @@ public class Robot extends IterativeRobot {
 		autonomousCommand = chooser.getSelected();
 		//DriveForwardAutoCommand driveTest = new DriveForwardAutoCommand(.5, 2000, 0);
 		sensors.resetSensors();
-		RotateToHeadingCommand rotateTest = new RotateToHeadingCommand(60, .3);
+		RotateToHeadingCommand rotateTest = new RotateToHeadingCommand(-60, .3);
 		
 		
 		rotateTest.start();

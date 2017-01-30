@@ -29,7 +29,7 @@ public class SensorInput {
 		while(yaw > 180) {
 			yaw-=360;
 		}
-		while (yaw < 180) {
+		while (yaw < -180) {
 			yaw+=360;
 		}
 		return yaw;
