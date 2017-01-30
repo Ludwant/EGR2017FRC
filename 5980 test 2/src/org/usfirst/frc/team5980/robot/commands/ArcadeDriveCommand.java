@@ -3,6 +3,7 @@ package org.usfirst.frc.team5980.robot.commands;
 import org.usfirst.frc.team5980.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -37,6 +38,8 @@ public class ArcadeDriveCommand extends Command {
     	double leftPower = clip (throttle + wheel);
     	double rightPower = clip (throttle - wheel);
     	Robot.driveTrain.setPower(leftPower, rightPower);
+    	SmartDashboard.putNumber("left encoder: ", Robot.sensors.getLeftEncoder());
+    	SmartDashboard.putNumber("left encoder: ", Robot.sensors.getRightEncoder());
     }
 
     // Make this return true when this Command no longer needs to run execute()
