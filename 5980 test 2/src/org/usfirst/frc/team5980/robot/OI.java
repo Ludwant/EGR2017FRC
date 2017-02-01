@@ -5,6 +5,7 @@ import org.usfirst.frc.team5980.robot.commands.ClimbCommand;
 import org.usfirst.frc.team5980.robot.commands.BallShootCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -14,7 +15,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 	public Joystick driver = new Joystick(0);
-	public Joystick operator = new Joystick(1);
+	public XboxController operator = new XboxController(1);
 	public OI() {
 		//Button arcadeButton = new XboxButton(driver, #);
 		//Button tankButton = new XboxButton(driver, #);
@@ -24,8 +25,8 @@ public class OI {
 		Button climbButton = new JoystickButton(operator, 2);
 		climbButton.whileHeld(new ClimbCommand());
 		
-		Button shootButton = new JoystickButton(operator, 1);
-		shootButton.whileHeld(new BallShootCommand());
+		//Button shootButton = new JoystickButton(operator, 1);
+		//shootButton.whileHeld(new BallShootCommand());
 		
 		//Button button3 = new JoystickButton(operator, 3);
 		//Button button4 = new JoystickButton(operator, 4);

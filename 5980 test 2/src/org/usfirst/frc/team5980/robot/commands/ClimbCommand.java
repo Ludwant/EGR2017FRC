@@ -19,7 +19,9 @@ public class ClimbCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.climb.setPower(1);
+    	//if (Robot.oi.operator.getAButton())
+    		Robot.climb.setPower(0.5);
+    	//else Robot.climb.setPower(0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

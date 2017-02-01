@@ -35,8 +35,8 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final SensorInput sensors = new SensorInput();
-	public static final GearMech gear = new GearMech();
-	public static final BallShooter shooter = new BallShooter();
+	public static GearMech gear; // = new GearMech();
+	public static BallShooter shooter;// = new BallShooter();
 	public static OI oi;
 	public static final Climb climb = new Climb();
 	//CameraServer server = CameraServer.getInstance();
