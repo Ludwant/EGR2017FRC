@@ -3,6 +3,7 @@ package org.usfirst.frc.team5980.robot.commands;
 import org.usfirst.frc.team5980.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -21,6 +22,7 @@ public class GearGrabCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.gear.setPower(-Robot.oi.operator.getRawAxis(5));
+    	SmartDashboard.putNumber("Potentiometer; ", Robot.sensors.getPot());
     }
 
     // Make this return true when this Command no longer needs to run execute()
