@@ -44,8 +44,8 @@ public class Cameras extends Subsystem {
 		backSink.grabFrame(source);
 		boolean localFrontCamera = true;
 		while(true) {
-			double poseX = Robot.sensors.getXCoordinate();
-			double poseY = Robot.sensors.getYCoordinate();
+			//double poseX = Robot.sensors.getXCoordinate();
+			//double poseY = Robot.sensors.getYCoordinate();
 			double poseYaw = Robot.sensors.getYaw();
 		}
 	}
