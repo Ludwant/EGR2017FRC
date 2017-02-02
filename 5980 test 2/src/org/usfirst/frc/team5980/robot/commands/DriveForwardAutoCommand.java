@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveForwardAutoCommand extends Command {
 
 	 EGRPID drivePID = new EGRPID(.04, 0, 0);
-	 EGRPID stopPID = new EGRPID(.002, 0, 0);
+	 EGRPID stopPID = new EGRPID(.008, 0, 0);
 	 double maxSpeed;
 	 int distance;
 	 double heading;
@@ -45,13 +45,14 @@ public class DriveForwardAutoCommand extends Command {
     	if (speed < maxSpeed) {
     		speed += 0.04;
     	}
-    	Robot.driveTrain.setPower((speed + correction) * stopCorrection, (speed - correction) * stopCorrection);
+    	Robot.driveTrain.setPower((speed - correction) * stopCorrection, (speed + correction) * stopCorrection);
+    	SmartDashboard.putNumber("Yaw: ", Robot.sensors.getYaw());
     	SmartDashboard.putNumber("Right Encoder: ", Robot.sensors.getRightEncoder());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.sensors.getRightEncoder() > encoderTarget;
+        return Robot.sensors.getRightEncoder() > encoderTarget-15;
     }
 
     // Called once after isFinished returns true

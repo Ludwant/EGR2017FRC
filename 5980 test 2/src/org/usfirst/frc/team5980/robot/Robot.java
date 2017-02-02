@@ -15,6 +15,7 @@ import java.util.*;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team5980.robot.commands.DriveForwardForTime;
+import org.usfirst.frc.team5980.robot.commands.Position3GearPlacement;
 import org.usfirst.frc.team5980.robot.commands.DriveForwardAutoCommand;
 import org.usfirst.frc.team5980.robot.commands.RotateToHeadingCommand;
 import org.usfirst.frc.team5980.robot.subsystems.BallShooter;
@@ -35,8 +36,8 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final SensorInput sensors = new SensorInput();
-	public static GearMech gear; // = new GearMech();
-	public static BallShooter shooter;// = new BallShooter();
+	public static GearMech gear = new GearMech();
+	public static BallShooter shooter = new BallShooter();
 	public static OI oi;
 	public static final Climb climb = new Climb();
 	//CameraServer server = CameraServer.getInstance();
@@ -74,7 +75,7 @@ public class Robot extends IterativeRobot {
 			
 			while(true) {
 				cvSink.grabFrame(source);
-				
+				/*
 				Imgproc.cvtColor(source, hsv, Imgproc.COLOR_BGR2HSV);
 				
 				Core.inRange(hsv, lowerHSV, upperHSV, mask);
@@ -98,7 +99,7 @@ public class Robot extends IterativeRobot {
 					//Imgproc.contourArea(contours.get(i));
 				}
 				
-				
+				*/
 				outputStream.putFrame(source);
 				//SmartDashboard.putNumber("contours", bigContours.size());
 			}
@@ -137,10 +138,10 @@ public class Robot extends IterativeRobot {
 		autonomousCommand = chooser.getSelected();
 		//DriveForwardAutoCommand driveTest = new DriveForwardAutoCommand(.5, 2000, 0);
 		sensors.resetSensors();
-		RotateToHeadingCommand rotateTest = new RotateToHeadingCommand(-60, .3);
+		//RotateToHeadingCommand rotateTest = new RotateToHeadingCommand(-60, .3);
+		Position3GearPlacement gearTest = new Position3GearPlacement();
 		
-		
-		rotateTest.start();
+		gearTest.start();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
