@@ -3,11 +3,11 @@ package org.usfirst.frc.team5980.robot.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * 
+ *
  */
-public class Position3GearPlacement extends CommandGroup {
+public class Position2GearPlacement extends CommandGroup {
 
-    public Position3GearPlacement() {
+    public Position2GearPlacement() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -15,13 +15,10 @@ public class Position3GearPlacement extends CommandGroup {
 
         // To run multiple commands at the same time,
         // use addParallel()
-    	// e.g. addParallel(new Command1());
+        // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
-    	addSequential(new DriveForwardAutoCommand(.35, 730, 0));
-    	addSequential(new RotateToHeadingCommand(60, 0.3));
-    	addSequential(new DriveForwardAutoCommand(.35, 240, 60));
-    	
+
         // A command group will require all of the subsystems that each member
         // would require.
         // e.g. if Command1 requires chassis, and Command2 requires arm,
