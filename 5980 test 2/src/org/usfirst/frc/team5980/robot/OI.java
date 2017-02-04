@@ -21,13 +21,17 @@ public class OI {
 		//Button tankButton = new XboxButton(driver, #);
 		//arcadeButton.whenPressed(new ArcadeDriveCommand());
 		//tankButton.whenPressed(new TankDriveCommand());
-
+		Trigger trackingOn = new TrackingOn();
+		Trigger trackingOff = new TrackingOff();
+		Trigger toggleCamera = new ToggleCamera();
 		Button climbButton = new JoystickButton(operator, 2);
 		climbButton.whileHeld(new ClimbCommand());
 		
 		Button shootButton = new JoystickButton(operator, 1);
 		shootButton.whileHeld(new BallShootCommand());
-		
+		public void buildTriggers() {
+			
+		}
 		//Button button3 = new JoystickButton(operator, 3);
 		//Button button4 = new JoystickButton(operator, 4);
 		//Button button5 = new JoystickButton(operator, 5);

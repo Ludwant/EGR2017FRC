@@ -19,6 +19,7 @@ import org.usfirst.frc.team5980.robot.commands.Position3GearPlacement;
 import org.usfirst.frc.team5980.robot.commands.DriveForwardAutoCommand;
 import org.usfirst.frc.team5980.robot.commands.RotateToHeadingCommand;
 import org.usfirst.frc.team5980.robot.subsystems.BallShooter;
+import org.usfirst.frc.team5980.robot.subsystems.Cameras;
 import org.usfirst.frc.team5980.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5980.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5980.robot.subsystems.GearMech;
@@ -40,6 +41,7 @@ public class Robot extends IterativeRobot {
 	public static BallShooter shooter = new BallShooter();
 	public static OI oi;
 	public static final Climb climb = new Climb();
+	public static final Cameras camera = new Cameras();
 	//CameraServer server = CameraServer.getInstance();
 	
 
@@ -67,12 +69,13 @@ public class Robot extends IterativeRobot {
 			CvSource outputStream = CameraServer.getInstance().putVideo("Vision", 640, 480);
 			
 			Mat source = new Mat();
+			/*
 			Mat hsv = new Mat();
 			Mat mask = new Mat();
 			Mat hierarchy = new Mat();
 			Scalar lowerHSV = new Scalar(70,0,195);
 			Scalar upperHSV = new Scalar(180,255,255);
-			
+			*/
 			while(true) {
 				cvSink.grabFrame(source);
 				/*
@@ -138,6 +141,7 @@ public class Robot extends IterativeRobot {
 		autonomousCommand = chooser.getSelected();
 		//DriveForwardAutoCommand driveTest = new DriveForwardAutoCommand(.5, 2000, 0);
 		sensors.resetSensors();
+		sensors.resetPosition();
 		//RotateToHeadingCommand rotateTest = new RotateToHeadingCommand(-60, .3);
 		Position3GearPlacement gearTest = new Position3GearPlacement();
 		
@@ -160,6 +164,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
+		sensors.updatePosition();
 		Scheduler.getInstance().run();
 	}
 

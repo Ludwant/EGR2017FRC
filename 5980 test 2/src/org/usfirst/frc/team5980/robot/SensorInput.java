@@ -101,6 +101,23 @@ public class SensorInput {
 		double encoderDistance = (changeInLeftEncoder + changeInRightEncoder)/2;
 		double heading = Math.toRadians(getYaw());
 		double changeInX = encoderDistance * Math.cos(heading); 
-		
+		double changeInY = encoderDistance * Math.sin(heading);
+		XCoordinate += changeInX;
+		YCoordinate += changeInY;
+		lastLeftEncoder = currentLeftEncoder;
+		lastRightEncoder = currentRightEncoder;
+	}
+	
+	public double getXCoordinate() {
+		return XCoordinate;
+	}
+	
+	public double getYCoordinate() {
+		return YCoordinate;
+	}
+	
+	public void resetPosition() {
+		XCoordinate = 0;
+		YCoordinate = 0;
 	}
 }
