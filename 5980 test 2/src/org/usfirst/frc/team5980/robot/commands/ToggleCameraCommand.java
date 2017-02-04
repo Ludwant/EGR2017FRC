@@ -21,7 +21,7 @@ public class ToggleCameraCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.oi.operator.getRawAxis(2) > .5) {
+    	if(Robot.oi.operator.getRawAxis(2) > .75) {
     		Robot.camera.toggleCamera();
     	}
     }

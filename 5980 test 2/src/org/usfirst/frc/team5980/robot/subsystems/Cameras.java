@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class Cameras extends Subsystem {
+public class Cameras extends Subsystem implements Runnable {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -42,7 +42,7 @@ public class Cameras extends Subsystem {
 		hierarchy = new Mat();
 		lowerHSV = new Scalar(70,0,195);
 		upperHSV = new Scalar(180,255,255);
-		tracking = new Thread();
+		tracking = new Thread(this);
 		frontCam = new UsbCamera("front", 0);
 		backCam = new UsbCamera("back", 1);
 	}
@@ -126,6 +126,7 @@ public class Cameras extends Subsystem {
 			}
 			outputStream.putFrame(source);
 		}
+		
 	}
 	
 	public void setTarget(double x, double y) {
