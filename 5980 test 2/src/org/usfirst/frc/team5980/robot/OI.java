@@ -2,12 +2,14 @@ package org.usfirst.frc.team5980.robot;
 
 
 import org.usfirst.frc.team5980.robot.commands.ClimbCommand;
+import org.usfirst.frc.team5980.robot.commands.ToggleCameraCommand;
 import org.usfirst.frc.team5980.robot.commands.BallShootCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Trigger;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -21,17 +23,12 @@ public class OI {
 		//Button tankButton = new XboxButton(driver, #);
 		//arcadeButton.whenPressed(new ArcadeDriveCommand());
 		//tankButton.whenPressed(new TankDriveCommand());
-		Trigger trackingOn = new TrackingOn();
-		Trigger trackingOff = new TrackingOff();
-		Trigger toggleCamera = new ToggleCamera();
+		
 		Button climbButton = new JoystickButton(operator, 2);
 		climbButton.whileHeld(new ClimbCommand());
-		
 		Button shootButton = new JoystickButton(operator, 1);
 		shootButton.whileHeld(new BallShootCommand());
-		public void buildTriggers() {
-			
-		}
+		
 		//Button button3 = new JoystickButton(operator, 3);
 		//Button button4 = new JoystickButton(operator, 4);
 		//Button button5 = new JoystickButton(operator, 5);

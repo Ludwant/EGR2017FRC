@@ -9,6 +9,7 @@ import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team5980.robot.Robot;
+import org.usfirst.frc.team5980.robot.commands.ToggleCameraCommand;
 
 import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
@@ -29,7 +30,7 @@ public class Cameras extends Subsystem {
 	Scalar lowerHSV, upperHSV;
 	UsbCamera frontCam, backCam;
 	Object visionLock = new Object();
-	boolean trackingOn = true;
+	boolean trackingOn = false;
 	boolean frontCamera = true;
 	double targetX = Double.NaN;
 	double targetY = Double.NaN;
@@ -194,7 +195,7 @@ public class Cameras extends Subsystem {
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new ToggleCameraCommand());
     }
 }
 
