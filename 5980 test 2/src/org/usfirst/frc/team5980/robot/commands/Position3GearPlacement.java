@@ -20,7 +20,9 @@ public class Position3GearPlacement extends CommandGroup {
         // Command1 and Command2 will run in parallel.
     	addSequential(new DriveBackwardsAutoCommand(.35, -1850, 0));
     	addSequential(new RotateToHeadingCommand(60, 0.3));
-    	addSequential(new DriveBackwardsAutoCommand(.35, -350, 60));
+    	addSequential(new DriveBackwardsAutoCommand(.35, -350, 60)); //power, number of encoder counts, direction
+    	addSequential(new DriveForwardAutoCommand(.35, 350, 60));
+    	addSequential(new RotateToHeadingCommand(0, 0.3));
     	
         // A command group will require all of the subsystems that each member
         // would require.
