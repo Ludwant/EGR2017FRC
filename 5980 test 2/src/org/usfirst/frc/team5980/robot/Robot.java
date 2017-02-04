@@ -60,57 +60,11 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		//chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
+		camera.startCamera();
 		SmartDashboard.putData("Auto mode", chooser);
 		//server.startAutomaticCapture();
 		 
-		Thread thread = new Thread(() -> {
-			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-			camera.setResolution(640, 480);
-			
-			CvSink cvSink = CameraServer.getInstance().getVideo();
-			CvSource outputStream = CameraServer.getInstance().putVideo("Vision", 640, 480);
-			
-			Mat source = new Mat();
-			/*
-			Mat hsv = new Mat();
-			Mat mask = new Mat();
-			Mat hierarchy = new Mat();
-			Scalar lowerHSV = new Scalar(70,0,195);
-			Scalar upperHSV = new Scalar(180,255,255);
-			*/
-			while(true) {
-				cvSink.grabFrame(source);
-				/*
-				Imgproc.cvtColor(source, hsv, Imgproc.COLOR_BGR2HSV);
-				
-				Core.inRange(hsv, lowerHSV, upperHSV, mask);
-				
-				ArrayList<MatOfPoint> contours = new ArrayList<MatOfPoint>();
-				ArrayList<MatOfPoint> bigContours = new ArrayList<MatOfPoint>();
-				
-				Imgproc.findContours(mask, contours, hierarchy, Imgproc.RETR_EXTERNAL,
-				Imgproc.CHAIN_APPROX_SIMPLE);
-				
-				for (int i = 0; i < contours.size(); i++) {
-					if (Imgproc.contourArea(contours.get(i)) >= 150) {
-						bigContours.add(contours.get(i));
-					}
-				}
-				
-				for (int i = 0; i < contours.size(); i++) {
-					//Rect bbox = Imgproc.boundingRect(bigContours.get(i));
-					//Imgproc.rectangle(source, bbox.tl(), bbox.br(), new Scalar(0,255,0),2);
-					Imgproc.drawContours(source, contours, i, new Scalar(255,0,0));
-					//Imgproc.contourArea(contours.get(i));
-				}
-				
-				*/
-				outputStream.putFrame(source);
-				//SmartDashboard.putNumber("contours", bigContours.size());
-			}
-			});
-		thread.start();
-		}
+	}
 
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
