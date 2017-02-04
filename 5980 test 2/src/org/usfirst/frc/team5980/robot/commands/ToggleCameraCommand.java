@@ -11,7 +11,7 @@ public class ToggleCameraCommand extends Command {
 
     public ToggleCameraCommand() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.camera);
+        //requires(Robot.camera);
     }
 
     // Called just before this Command runs the first time

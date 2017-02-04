@@ -30,7 +30,7 @@ public class Cameras extends Subsystem implements Runnable {
 	Scalar lowerHSV, upperHSV;
 	UsbCamera frontCam, backCam;
 	Object visionLock = new Object();
-	boolean trackingOn = true;
+	boolean trackingOn = false;
 	boolean frontCamera = true;
 	double targetX = Double.NaN;
 	double targetY = Double.NaN;
@@ -83,8 +83,8 @@ public class Cameras extends Subsystem implements Runnable {
 		CvSink frontSink = CameraServer.getInstance().getVideo(frontCam);
 		CvSink backSink = CameraServer.getInstance().getVideo(backCam);
 		CvSource outputStream = CameraServer.getInstance().putVideo("Vision",  320, 240);
-		frontSink.grabFrame(source);
-		backSink.grabFrame(source);
+		//frontSink.grabFrame(source);
+		//backSink.grabFrame(source);
 		boolean localFrontCamera = true;
 		while(true) {
 			synchronized(visionLock) {
