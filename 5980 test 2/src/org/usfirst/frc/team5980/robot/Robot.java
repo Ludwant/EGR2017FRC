@@ -43,7 +43,7 @@ public class Robot extends IterativeRobot {
 	public static BallShooter shooter = new BallShooter();
 	public static OI oi;
 	public static final Climb climb = new Climb();
-	public static final Cameras camera;
+	public static Cameras camera;
 	//CameraServer server = CameraServer.getInstance();
 	
 
