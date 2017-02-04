@@ -30,7 +30,7 @@ public class Cameras extends Subsystem implements Runnable {
 	Scalar lowerHSV, upperHSV;
 	UsbCamera frontCam, backCam;
 	Object visionLock = new Object();
-	boolean trackingOn = false;
+	boolean trackingOn = true;
 	boolean frontCamera = true;
 	double targetX = Double.NaN;
 	double targetY = Double.NaN;
@@ -100,6 +100,7 @@ public class Cameras extends Subsystem implements Runnable {
 			else {
 				backSink.grabFrame(source);
 			}
+			/*
 			if(isTrackingOn()) {
 				Imgproc.cvtColor(source, hsv, Imgproc.COLOR_BGR2HSV);
 				Core.inRange(hsv, lowerHSV, upperHSV, mask);
@@ -124,6 +125,7 @@ public class Cameras extends Subsystem implements Runnable {
 					analyzeBackContours(contours, poseX, poseY, poseYaw);
 				}
 			}
+			*/
 			outputStream.putFrame(source);
 		}
 		

@@ -43,7 +43,7 @@ public class Robot extends IterativeRobot {
 	public static BallShooter shooter = new BallShooter();
 	public static OI oi;
 	public static final Climb climb = new Climb();
-	public static final Cameras camera = new Cameras();
+	public static final Cameras camera;
 	//CameraServer server = CameraServer.getInstance();
 	
 
@@ -60,6 +60,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		//chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
+		camera = new Cameras();
 		camera.startCamera();
 		SmartDashboard.putData("Auto mode", chooser);
 		//server.startAutomaticCapture();
