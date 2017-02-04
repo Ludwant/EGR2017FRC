@@ -198,7 +198,7 @@ public class Cameras extends Subsystem implements Runnable {
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new ToggleCameraCommand());
+        //setDefaultCommand(new ToggleCameraCommand());
     }
 }
 
