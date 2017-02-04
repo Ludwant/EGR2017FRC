@@ -18,7 +18,7 @@ public class Position2GearPlacement extends CommandGroup {
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
-
+    	addSequential(new DriveBackwardsAutoCommand(.35, -1400, 0));
         // A command group will require all of the subsystems that each member
         // would require.
         // e.g. if Command1 requires chassis, and Command2 requires arm,
