@@ -15,6 +15,8 @@ import java.util.*;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team5980.robot.commands.DriveForwardForTime;
+import org.usfirst.frc.team5980.robot.commands.Position1GearPlacement;
+import org.usfirst.frc.team5980.robot.commands.Position2GearPlacement;
 import org.usfirst.frc.team5980.robot.commands.Position3GearPlacement;
 import org.usfirst.frc.team5980.robot.commands.DriveForwardAutoCommand;
 import org.usfirst.frc.team5980.robot.commands.RotateToHeadingCommand;
@@ -143,7 +145,7 @@ public class Robot extends IterativeRobot {
 		sensors.resetSensors();
 		sensors.resetPosition();
 		//RotateToHeadingCommand rotateTest = new RotateToHeadingCommand(-60, .3);
-		Position3GearPlacement gearTest = new Position3GearPlacement();
+		Position2GearPlacement gearTest = new Position2GearPlacement();
 		
 		gearTest.start();
 
