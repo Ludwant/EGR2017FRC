@@ -2,6 +2,7 @@ package org.usfirst.frc.team5980.robot;
 
 
 import org.usfirst.frc.team5980.robot.commands.ClimbCommand;
+import org.usfirst.frc.team5980.robot.commands.GearDropCommand;
 import org.usfirst.frc.team5980.robot.commands.ToggleCameraCommand;
 import org.usfirst.frc.team5980.robot.commands.BallShootCommand;
 
@@ -17,7 +18,7 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
  */
 public class OI {
 	public Joystick driver = new Joystick(0);
-	public XboxController operator = new XboxController(1);
+	public Joystick operator = new Joystick(1);
 	public OI() {
 		//Button arcadeButton = new XboxButton(driver, #);
 		//Button tankButton = new XboxButton(driver, #);
@@ -30,6 +31,9 @@ public class OI {
 		shootButton.whileHeld(new BallShootCommand());
 		Button cameraToggleButton = new JoystickButton(operator, 2);
 		cameraToggleButton.whenPressed(new ToggleCameraCommand());
+		Button gearDropButton = new JoystickButton(operator, 4);
+		gearDropButton.whenPressed(new GearDropCommand());
+		
 		//Button button3 = new JoystickButton(operator, 3);
 		//Button button4 = new JoystickButton(operator, 4);
 		//Button button5 = new JoystickButton(operator, 5);
