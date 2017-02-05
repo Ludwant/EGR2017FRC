@@ -61,15 +61,15 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		chooser.addDefault("Nothing Auto", new NothingAuto());
-		 chooser.addObject("Position 1 Gear", new Position1GearPlacement());
-		 chooser.addObject("Position 2 Gear", new Position2GearPlacement());
-		 chooser.addObject("Position 3 Gear", new Position3GearPlacement());
-		 chooser.addObject("Drive Fowards", new DriveForwardAutoCommand(.5, 500, 0));
-		 chooser.addObject("Drive Backwards", new DriveBackwardsAutoCommand(.5, -500, 0));
-		 chooser.addObject("Rotate to Heading 180", new RotateToHeadingCommand(180, .3));
+		chooser.addDefault("Nothing Auto", new NothingAuto()); //nothing
+		 chooser.addObject("Position 1 Gear", new Position1GearPlacement()); //drives up to the lift
+		 chooser.addObject("Position 2 Gear", new Position2GearPlacement()); //drives up to the lift
+		 chooser.addObject("Position 3 Gear", new Position3GearPlacement()); //drives up to the lift
+		 chooser.addObject("Drive Fowards", new DriveForwardAutoCommand(.5, 500, 0)); //drives forward
+		 chooser.addObject("Drive Backwards", new DriveBackwardsAutoCommand(.5, -500, 0)); //drives backwards
+		 chooser.addObject("Rotate to Heading 180", new RotateToHeadingCommand(180, .3)); //ok this one's really obvious
 		camera = new Cameras();
-		camera.startCamera();
+		camera.startCamera();//starts the camera thread
 		SmartDashboard.putData("Auto mode", chooser);
 		//server.startAutomaticCapture();
 		 
@@ -129,7 +129,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		sensors.updatePosition();
+		sensors.updatePosition(); //coordinate system
 		Scheduler.getInstance().run();
 	}
 

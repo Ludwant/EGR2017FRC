@@ -14,6 +14,7 @@ import org.usfirst.frc.team5980.robot.commands.ToggleCameraCommand;
 import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoMode.PixelFormat;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -63,20 +64,16 @@ public class Cameras extends Subsystem implements Runnable {
 			} else {
 				currentCam = backCam;
 			}
-			currentSink.setEnabled(true);
-			currentSink = CameraServer.getInstance().getVideo(currentCam);
 			CameraServer.getInstance().addCamera(currentCam);
+			currentSink = CameraServer.getInstance().getVideo(currentCam);
 		}
 	}
 	
 	public boolean toggleCamera2() {
 		synchronized(visionLock) {
 			frontCamera = !frontCamera;
-			//CameraServer.getInstance().removeCamera(currentCam.getName());
 			currentSink.setEnabled(false);
 			currentSink.setEnabled(true);
-			//CameraServer.getInstance().addCamera(currentCam);
-			//currentSink.setEnabled(true);
 			return frontCamera;
 		}
 	}
@@ -102,67 +99,53 @@ public class Cameras extends Subsystem implements Runnable {
 	}
 	
 	public void run() {
-		int localWidth = 160;
-		int localHeight = 120;
-		frontCam.setResolution(localWidth, localHeight);
+		int localWidth = 320;
+		int localHeight = 240;
+		frontCam.setResolution(localWidth, localHeight);//sets resolution (7mb/s bandwidth limit!)
 		backCam.setResolution(localWidth, localHeight);
-		frontCam.setFPS(20);
+		frontCam.setPixelFormat(PixelFormat.kYUYV);//sets the pixel format for fast camera switching (C920)
+		backCam.setPixelFormat(PixelFormat.kYUYV);
+		frontCam.setFPS(20);//sets fps
 		backCam.setFPS(20);
-		//CameraServer.getInstance().addCamera(frontCam);
-		//CameraServer.getInstance().addCamera(backCam);
-		
-		//CvSink frontSink = CameraServer.getInstance().getVideo(frontCam);
-		//CvSink backSink = CameraServer.getInstance().getVideo(backCam);
-		//currentSink = CameraServer.getInstance().getVideo(currentCam);
-		/*EW Test code*/
-		/*
-		if (frontCamera){
-			currentSink = CameraServer.getInstance().getVideo(frontCam);
-		}
-		else
-		{
-			currentSink = CameraServer.getInstance().getVideo(frontCam);
-		}*/
-		/*EW End Test code*/
-		
-		CvSource outputStream = CameraServer.getInstance().putVideo("Vision",  localWidth, localHeight);
-		boolean localFrontCamera = true;
+		CvSource outputStream = CameraServer.getInstance().putVideo("Vision",  localWidth, localHeight);//creates a stream to the SmartDashboard
+		boolean localFrontCamera = true;//local boolean for switching cameras
 		while(true) {
-			synchronized(visionLock) {
-				localFrontCamera = frontCamera; 
-			}
-			double poseX = Robot.sensors.getXCoordinate();
-			double poseY = Robot.sensors.getYCoordinate();
-			double poseYaw = Robot.sensors.getYaw();
 			
-			currentSink.grabFrame(source);
-			SmartDashboard.putBoolean("Front Camera: ", localFrontCamera);
+			localFrontCamera = frontCamera; //gets the boolean for which camera to use
+			double poseX = Robot.sensors.getXCoordinate(); //gets position of robot
+			double poseY = Robot.sensors.getYCoordinate(); //
+			double poseYaw = Robot.sensors.getYaw(); //
+			synchronized(visionLock) { //gets a frame from the currently chosen camera
+				currentSink.grabFrame(source);
+			}
+			
+			//SmartDashboard.putBoolean("Front Camera: ", localFrontCamera);
 			if(isTrackingOn()) {
-				Imgproc.cvtColor(source, hsv, Imgproc.COLOR_BGR2HSV);
-				Core.inRange(hsv, lowerHSV, upperHSV, mask);
-				ArrayList<MatOfPoint> contours = new ArrayList<MatOfPoint>();
-				Imgproc.findContours(mask, contours, hierarchy, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
-				ArrayList<MatOfPoint> bigContours = new ArrayList<MatOfPoint>();
+				Imgproc.cvtColor(source, hsv, Imgproc.COLOR_BGR2HSV); //converts the image to HSV
+				Core.inRange(hsv, lowerHSV, upperHSV, mask); //filters for the HSV values we want
+				ArrayList<MatOfPoint> contours = new ArrayList<MatOfPoint>(); //creates a list of contours 
+				Imgproc.findContours(mask, contours, hierarchy, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE); //finds the contours and saves them to the arraylist
+				ArrayList<MatOfPoint> bigContours = new ArrayList<MatOfPoint>(); //makes a list for contours above a certain size
 				for(int i = 0; i <contours.size(); i++) {
 					if(Imgproc.contourArea(contours.get(i)) > 50) {
-						bigContours.add(contours.get(i));
+						bigContours.add(contours.get(i)); //goes through all the contours and saves the big ones to the bigContours arraylist
 					}
 				}
-				contours = bigContours;
+				contours = bigContours;//saves the big contours to the original list
 				for(int i = 0; i < contours.size(); i++) {
-					Rect bbox = Imgproc.boundingRect(contours.get(i));
-					Imgproc.rectangle(source, bbox.tl(), bbox.br(), new Scalar(0,255,0),2);
-					Imgproc.contourArea(contours.get(i));
+					Rect bbox = Imgproc.boundingRect(contours.get(i)); //gets the smallest rectangle which can enclose the contours
+					Imgproc.rectangle(source, bbox.tl(), bbox.br(), new Scalar(0,255,0),2); //draws the bounding rectangles
+					//Imgproc.contourArea(contours.get(i)); //gets the contour area 
 				}
-				if(localFrontCamera) {
-					analyzeFrontContours(contours, poseX, poseY, poseYaw);
+				if(localFrontCamera) { //depending on which camera is chosen...
+					analyzeFrontContours(contours, poseX, poseY, poseYaw); //analyzes contours 
 				}
 				else {
-					analyzeBackContours(contours, poseX, poseY, poseYaw);
+					analyzeBackContours(contours, poseX, poseY, poseYaw);//analyzes contours
 				}
 			}
 			
-			outputStream.putFrame(source);
+			outputStream.putFrame(source); //sends the updated frame to the smart dashboard
 		}
 		
 	}
@@ -187,7 +170,7 @@ public class Cameras extends Subsystem implements Runnable {
 			setTarget(Double.NaN, Double.NaN);
 			return;
 		}
-		MatOfPoint bestOne = getBestContour(contours, .4);
+		MatOfPoint bestOne = getBestContour(contours, .4); 
 		contours.remove(bestOne);
 		MatOfPoint bestTwo = getBestContour(contours, .4);
 		Rect rectangleOne = Imgproc.boundingRect(bestOne);

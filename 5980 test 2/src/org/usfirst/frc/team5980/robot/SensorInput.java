@@ -2,17 +2,14 @@
 
 import com.kauailabs.navx.frc.AHRS;
 
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
-import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 
 public class SensorInput {
 	static Encoder leftEncoder = new Encoder(0, 1);
 	static Encoder rightEncoder = new Encoder(2, 3);
-	static Potentiometer pot = new AnalogPotentiometer(0, 360, 10); //Channel number for Analog input, scale factor 360 being the great, offset to add after scaling to prevent breakage (10 to 30 range) 
+	//static Potentiometer pot = new AnalogPotentiometer(0, 360, 10); //Channel number for Analog input, scale factor 360 being the great, offset to add after scaling to prevent breakage (10 to 30 range) 
 	static AHRS navX;
 	int rightEncoderOffset = 0;
 	int leftEncoderOffset = 0;
@@ -88,11 +85,11 @@ public class SensorInput {
 	public void resetRightEncoder() {
 		rightEncoder.reset();
 	}
-	
+	/*
 	public double getPot() {
 		return pot.get();
 	}
-	
+	*/
 	public void updatePosition() {
 		double currentLeftEncoder = getLeftEncoder();
 		double currentRightEncoder = getRightEncoder();
