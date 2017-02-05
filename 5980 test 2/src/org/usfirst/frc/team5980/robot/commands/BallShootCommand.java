@@ -21,7 +21,8 @@ public class BallShootCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.shooter.setPower(1);
+    	Robot.shooter.setBallPower(1);
+    	Robot.shooter.setAgitator(1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -36,6 +37,7 @@ public class BallShootCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.shooter.setPower(0);
+    	Robot.shooter.setBallPower(0);
+    	Robot.shooter.setAgitator(1);
     }
 }

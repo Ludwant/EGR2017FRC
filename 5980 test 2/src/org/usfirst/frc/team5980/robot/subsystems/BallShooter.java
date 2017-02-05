@@ -12,13 +12,17 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class BallShooter extends Subsystem {
 	CANTalon ballMotor = new CANTalon(6);
+	CANTalon agitatorMotor = new CANTalon(8);
 	
 	
-	public void setPower(double speed) {
+	public void setBallPower(double speed) {
 		//ballMotor.changeControlMode(TalonControlMode.Speed);
 		ballMotor.set(speed);
 	}
-
+	
+	public void setAgitator(double power) {
+		agitatorMotor.set(power);
+	}
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 

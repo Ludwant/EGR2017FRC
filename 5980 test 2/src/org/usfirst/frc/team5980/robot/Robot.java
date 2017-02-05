@@ -15,9 +15,12 @@ import java.util.*;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team5980.robot.commands.DriveForwardForTime;
+import org.usfirst.frc.team5980.robot.commands.NothingAuto;
 import org.usfirst.frc.team5980.robot.commands.Position1GearPlacement;
 import org.usfirst.frc.team5980.robot.commands.Position2GearPlacement;
+import org.usfirst.frc.team5980.robot.commands.Position2GearShoot;
 import org.usfirst.frc.team5980.robot.commands.Position3GearPlacement;
+import org.usfirst.frc.team5980.robot.commands.DriveBackwardsAutoCommand;
 import org.usfirst.frc.team5980.robot.commands.DriveForwardAutoCommand;
 import org.usfirst.frc.team5980.robot.commands.RotateToHeadingCommand;
 import org.usfirst.frc.team5980.robot.subsystems.BallShooter;
@@ -58,8 +61,13 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		//chooser.addDefault("Default Auto", new ExampleCommand());
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		chooser.addDefault("Nothing Auto", new NothingAuto());
+		 chooser.addObject("Position 1 Gear", new Position1GearPlacement());
+		 chooser.addObject("Position 2 Gear", new Position2GearPlacement());
+		 chooser.addObject("Position 3 Gear", new Position3GearPlacement());
+		 chooser.addObject("Drive Fowards", new DriveForwardAutoCommand(.5, 500, 0));
+		 chooser.addObject("Drive Backwards", new DriveBackwardsAutoCommand(.5, -500, 0));
+		 chooser.addObject("Rotate to Heading 180", new RotateToHeadingCommand(180, .3));
 		camera = new Cameras();
 		camera.startCamera();
 		SmartDashboard.putData("Auto mode", chooser);
