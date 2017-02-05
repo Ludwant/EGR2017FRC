@@ -35,6 +35,8 @@ public class Cameras extends Subsystem implements Runnable {
 	double targetX = Double.NaN;
 	double targetY = Double.NaN;
 	CvSink currentSink;
+	UsbCamera currentCam;
+	
 	
 	public Cameras() {
 		source = new Mat();
@@ -46,19 +48,36 @@ public class Cameras extends Subsystem implements Runnable {
 		tracking = new Thread(this);
 		frontCam = new UsbCamera("front", 0);
 		backCam = new UsbCamera("back", 1);
-		currentSink = CameraServer.getInstance().getVideo(frontCam);
-		
+		currentCam = frontCam;
+		CameraServer.getInstance().addCamera(currentCam);
+		currentSink = CameraServer.getInstance().getVideo(currentCam);
 	}
 	
 	public void toggleCamera() {
 		synchronized(visionLock) {
 			frontCamera = !frontCamera;
+			CameraServer.getInstance().removeCamera(currentCam.getName());
 			currentSink.setEnabled(false);
 			if(frontCamera) {
-				currentSink = CameraServer.getInstance().getVideo(frontCam);
+				currentCam = frontCam;
 			} else {
-				currentSink = CameraServer.getInstance().getVideo(backCam);
+				currentCam = backCam;
 			}
+			currentSink.setEnabled(true);
+			currentSink = CameraServer.getInstance().getVideo(currentCam);
+			CameraServer.getInstance().addCamera(currentCam);
+		}
+	}
+	
+	public boolean toggleCamera2() {
+		synchronized(visionLock) {
+			frontCamera = !frontCamera;
+			//CameraServer.getInstance().removeCamera(currentCam.getName());
+			currentSink.setEnabled(false);
+			currentSink.setEnabled(true);
+			//CameraServer.getInstance().addCamera(currentCam);
+			//currentSink.setEnabled(true);
+			return frontCamera;
 		}
 	}
 	
@@ -83,16 +102,30 @@ public class Cameras extends Subsystem implements Runnable {
 	}
 	
 	public void run() {
-		frontCam.setResolution(320, 240);
-		backCam.setResolution(320, 240);
+		int localWidth = 160;
+		int localHeight = 120;
+		frontCam.setResolution(localWidth, localHeight);
+		backCam.setResolution(localWidth, localHeight);
 		frontCam.setFPS(20);
 		backCam.setFPS(20);
-		CameraServer.getInstance().addCamera(frontCam);
-		CameraServer.getInstance().addCamera(backCam);
+		//CameraServer.getInstance().addCamera(frontCam);
+		//CameraServer.getInstance().addCamera(backCam);
 		
 		//CvSink frontSink = CameraServer.getInstance().getVideo(frontCam);
 		//CvSink backSink = CameraServer.getInstance().getVideo(backCam);
-		CvSource outputStream = CameraServer.getInstance().putVideo("Vision",  320, 240);
+		//currentSink = CameraServer.getInstance().getVideo(currentCam);
+		/*EW Test code*/
+		/*
+		if (frontCamera){
+			currentSink = CameraServer.getInstance().getVideo(frontCam);
+		}
+		else
+		{
+			currentSink = CameraServer.getInstance().getVideo(frontCam);
+		}*/
+		/*EW End Test code*/
+		
+		CvSource outputStream = CameraServer.getInstance().putVideo("Vision",  localWidth, localHeight);
 		boolean localFrontCamera = true;
 		while(true) {
 			synchronized(visionLock) {
