@@ -30,10 +30,11 @@ public class Cameras extends Subsystem implements Runnable {
 	Scalar lowerHSV, upperHSV;
 	UsbCamera frontCam, backCam;
 	Object visionLock = new Object();
-	boolean trackingOn = true;
+	boolean trackingOn = false;
 	boolean frontCamera = false;
 	double targetX = Double.NaN;
 	double targetY = Double.NaN;
+	CvSink currentSink;
 	
 	public Cameras() {
 		source = new Mat();
@@ -45,11 +46,19 @@ public class Cameras extends Subsystem implements Runnable {
 		tracking = new Thread(this);
 		frontCam = new UsbCamera("front", 0);
 		backCam = new UsbCamera("back", 1);
+		currentSink = CameraServer.getInstance().getVideo(frontCam);
+		
 	}
 	
 	public void toggleCamera() {
 		synchronized(visionLock) {
 			frontCamera = !frontCamera;
+			currentSink.setEnabled(false);
+			if(frontCamera) {
+				currentSink = CameraServer.getInstance().getVideo(frontCam);
+			} else {
+				currentSink = CameraServer.getInstance().getVideo(backCam);
+			}
 		}
 	}
 	
@@ -80,8 +89,9 @@ public class Cameras extends Subsystem implements Runnable {
 		backCam.setFPS(20);
 		CameraServer.getInstance().addCamera(frontCam);
 		CameraServer.getInstance().addCamera(backCam);
-		CvSink frontSink = CameraServer.getInstance().getVideo(frontCam);
-		CvSink backSink = CameraServer.getInstance().getVideo(backCam);
+		
+		//CvSink frontSink = CameraServer.getInstance().getVideo(frontCam);
+		//CvSink backSink = CameraServer.getInstance().getVideo(backCam);
 		CvSource outputStream = CameraServer.getInstance().putVideo("Vision",  320, 240);
 		boolean localFrontCamera = true;
 		while(true) {
@@ -92,12 +102,7 @@ public class Cameras extends Subsystem implements Runnable {
 			double poseY = Robot.sensors.getYCoordinate();
 			double poseYaw = Robot.sensors.getYaw();
 			
-			if(localFrontCamera) {
-				frontSink.grabFrame(source);
-			} 
-			else {
-				backSink.grabFrame(source);
-			}
+			currentSink.grabFrame(source);
 			SmartDashboard.putBoolean("Front Camera: ", localFrontCamera);
 			if(isTrackingOn()) {
 				Imgproc.cvtColor(source, hsv, Imgproc.COLOR_BGR2HSV);
