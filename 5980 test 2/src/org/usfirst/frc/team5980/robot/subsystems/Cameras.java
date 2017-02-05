@@ -30,8 +30,8 @@ public class Cameras extends Subsystem implements Runnable {
 	Scalar lowerHSV, upperHSV;
 	UsbCamera frontCam, backCam;
 	Object visionLock = new Object();
-	boolean trackingOn = false;
-	boolean frontCamera = true;
+	boolean trackingOn = true;
+	boolean frontCamera = false;
 	double targetX = Double.NaN;
 	double targetY = Double.NaN;
 	
@@ -40,7 +40,7 @@ public class Cameras extends Subsystem implements Runnable {
 		mask = new Mat();
 		hsv = new Mat();
 		hierarchy = new Mat();
-		lowerHSV = new Scalar(70,0,195);
+		lowerHSV = new Scalar(70,50,195);
 		upperHSV = new Scalar(180,255,255);
 		tracking = new Thread(this);
 		frontCam = new UsbCamera("front", 0);
@@ -83,12 +83,10 @@ public class Cameras extends Subsystem implements Runnable {
 		CvSink frontSink = CameraServer.getInstance().getVideo(frontCam);
 		CvSink backSink = CameraServer.getInstance().getVideo(backCam);
 		CvSource outputStream = CameraServer.getInstance().putVideo("Vision",  320, 240);
-		//frontSink.grabFrame(source);
-		//backSink.grabFrame(source);
 		boolean localFrontCamera = true;
 		while(true) {
 			synchronized(visionLock) {
-				localFrontCamera = frontCamera;
+				localFrontCamera = frontCamera; 
 			}
 			double poseX = Robot.sensors.getXCoordinate();
 			double poseY = Robot.sensors.getYCoordinate();
@@ -100,7 +98,7 @@ public class Cameras extends Subsystem implements Runnable {
 			else {
 				backSink.grabFrame(source);
 			}
-			/*
+			SmartDashboard.putBoolean("Front Camera: ", localFrontCamera);
 			if(isTrackingOn()) {
 				Imgproc.cvtColor(source, hsv, Imgproc.COLOR_BGR2HSV);
 				Core.inRange(hsv, lowerHSV, upperHSV, mask);
@@ -125,7 +123,7 @@ public class Cameras extends Subsystem implements Runnable {
 					analyzeBackContours(contours, poseX, poseY, poseYaw);
 				}
 			}
-			*/
+			
 			outputStream.putFrame(source);
 		}
 		

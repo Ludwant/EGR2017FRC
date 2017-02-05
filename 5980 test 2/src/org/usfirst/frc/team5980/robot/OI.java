@@ -24,12 +24,12 @@ public class OI {
 		//arcadeButton.whenPressed(new ArcadeDriveCommand());
 		//tankButton.whenPressed(new TankDriveCommand());
 		
-		Button climbButton = new JoystickButton(operator, 2);
+		Button climbButton = new JoystickButton(operator, 3);
 		climbButton.whileHeld(new ClimbCommand());
 		Button shootButton = new JoystickButton(operator, 1);
 		shootButton.whileHeld(new BallShootCommand());
-		Button cameraToggleButton = new JoystickButton(operator, 3);
-		cameraToggleButton.whileHeld(new ToggleCameraCommand());
+		Button cameraToggleButton = new JoystickButton(operator, 2);
+		cameraToggleButton.whenPressed(new ToggleCameraCommand());
 		//Button button3 = new JoystickButton(operator, 3);
 		//Button button4 = new JoystickButton(operator, 4);
 		//Button button5 = new JoystickButton(operator, 5);
