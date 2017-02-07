@@ -21,8 +21,10 @@ import org.usfirst.frc.team5980.robot.commands.Position1MoveToRefuel;
 import org.usfirst.frc.team5980.robot.commands.Position2GearPlacement;
 import org.usfirst.frc.team5980.robot.commands.Position2GearShoot;
 import org.usfirst.frc.team5980.robot.commands.Position2MoveToRefuel;
+import org.usfirst.frc.team5980.robot.commands.Position2Shooting;
 import org.usfirst.frc.team5980.robot.commands.Position3GearPlacement;
 import org.usfirst.frc.team5980.robot.commands.Position3MoveToRefuel;
+import org.usfirst.frc.team5980.robot.commands.Position3Shooting;
 import org.usfirst.frc.team5980.robot.commands.DriveBackwardsAutoCommand;
 import org.usfirst.frc.team5980.robot.commands.DriveForwardAutoCommand;
 import org.usfirst.frc.team5980.robot.commands.RotateToHeadingCommand;
@@ -68,12 +70,14 @@ public class Robot extends IterativeRobot {
 		 chooser.addObject("Position 1 Gear", new Position1GearPlacement()); //drives up to the lift
 		 chooser.addObject("Position 2 Gear", new Position2GearPlacement()); //drives up to the lift
 		 chooser.addObject("Position 3 Gear", new Position3GearPlacement()); //drives up to the lift
-		 chooser.addObject("Drive Fowards", new DriveForwardAutoCommand(.5, 500, 0)); //drives forward
+		 chooser.addObject("Drive Forwards", new DriveForwardAutoCommand(.5, 500, 0)); //drives forward
 		 chooser.addObject("Drive Backwards", new DriveBackwardsAutoCommand(.5, -500, 0)); //drives backwards
 		 chooser.addObject("Rotate to Heading 180", new RotateToHeadingCommand(180, .3)); //ok this one's really obvious
-		 chooser.addObject("Position 1 Move to Refuel", new Position1MoveToRefuel()); //drives forward
-		 chooser.addObject("Position 2 Move to Refuel", new Position2MoveToRefuel()); //drives backwards
-		 chooser.addObject("Position 3 Move to Refuel", new Position3MoveToRefuel()); //ok this one's really obvious
+		 chooser.addObject("Position 1 Move to Refuel", new Position1MoveToRefuel()); 
+		 chooser.addObject("Position 2 Move to Refuel", new Position2MoveToRefuel()); 
+		 chooser.addObject("Position 3 Move to Refuel", new Position3MoveToRefuel()); 
+		 chooser.addObject("Position 2 Shooting", new Position2Shooting()); 
+		 chooser.addObject("Position 3 Shooting", new Position3Shooting());
 		 
 		 camera = new Cameras();
 		camera.startCamera();//starts the camera thread
