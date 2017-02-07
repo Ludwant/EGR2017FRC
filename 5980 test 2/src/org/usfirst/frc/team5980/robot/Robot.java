@@ -17,9 +17,12 @@ import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team5980.robot.commands.DriveForwardForTime;
 import org.usfirst.frc.team5980.robot.commands.NothingAuto;
 import org.usfirst.frc.team5980.robot.commands.Position1GearPlacement;
+import org.usfirst.frc.team5980.robot.commands.Position1MoveToRefuel;
 import org.usfirst.frc.team5980.robot.commands.Position2GearPlacement;
 import org.usfirst.frc.team5980.robot.commands.Position2GearShoot;
+import org.usfirst.frc.team5980.robot.commands.Position2MoveToRefuel;
 import org.usfirst.frc.team5980.robot.commands.Position3GearPlacement;
+import org.usfirst.frc.team5980.robot.commands.Position3MoveToRefuel;
 import org.usfirst.frc.team5980.robot.commands.DriveBackwardsAutoCommand;
 import org.usfirst.frc.team5980.robot.commands.DriveForwardAutoCommand;
 import org.usfirst.frc.team5980.robot.commands.RotateToHeadingCommand;
@@ -68,7 +71,11 @@ public class Robot extends IterativeRobot {
 		 chooser.addObject("Drive Fowards", new DriveForwardAutoCommand(.5, 500, 0)); //drives forward
 		 chooser.addObject("Drive Backwards", new DriveBackwardsAutoCommand(.5, -500, 0)); //drives backwards
 		 chooser.addObject("Rotate to Heading 180", new RotateToHeadingCommand(180, .3)); //ok this one's really obvious
-		camera = new Cameras();
+		 chooser.addObject("Position 1 Move to Refuel", new Position1MoveToRefuel()); //drives forward
+		 chooser.addObject("Position 2 Move to Refuel", new Position2MoveToRefuel()); //drives backwards
+		 chooser.addObject("Position 3 Move to Refuel", new Position3MoveToRefuel()); //ok this one's really obvious
+		 
+		 camera = new Cameras();
 		camera.startCamera();//starts the camera thread
 		SmartDashboard.putData("Auto mode", chooser);
 		//server.startAutomaticCapture();
