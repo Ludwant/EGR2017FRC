@@ -119,9 +119,6 @@ public class Robot extends IterativeRobot {
 		sensors.resetSensors();
 		sensors.resetPosition();
 		//RotateToHeadingCommand rotateTest = new RotateToHeadingCommand(-60, .3);
-		Position2GearPlacement gearTest = new Position2GearPlacement();
-		
-		gearTest.start();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -131,8 +128,8 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		//if (autonomousCommand != null)
-			//autonomousCommand.start();
+		if (autonomousCommand != null)
+			autonomousCommand.start();
 	}
 
 	/**
