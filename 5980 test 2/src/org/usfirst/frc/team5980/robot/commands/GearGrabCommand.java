@@ -22,7 +22,7 @@ public class GearGrabCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	//sets the power of the gear motor to the right up and down joystick of the operator (port 1) controller
-    	Robot.gear.setPower(-Robot.oi.operator.getRawAxis(5));
+    	Robot.gear.setPower(-Robot.oi.operator.getRawAxis(1));
     	//SmartDashboard.putNumber("Potentiometer; ", Robot.sensors.getPot());
     }
 

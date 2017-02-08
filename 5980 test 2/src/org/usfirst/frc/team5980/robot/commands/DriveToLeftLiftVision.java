@@ -15,11 +15,11 @@ public class DriveToLeftLiftVision extends CommandGroup {
         //      addSequential(new Command2());
         // these will run in order.
     	addSequential(new DriveToPoint(70,0,new Acceleration(.2,.8,.04),true,20));
-    	addSequential(new RotateToHeadingCommand(-60,.5));
-    	addSequential(new DriveToTarget(new Acceleration(.3,.3,0),10));
-    	addSequential(new DriveBackwardsAutoCommand(.4,120, 0));
-    	addSequential(new DriveBackToPoint(40,8, new Acceleration(.2,.4,.01), true, 5));
-    	addSequential(new DriveBackToPoint(22,24, new Acceleration(.3,.3,0), false, 5));
+    	//addSequential(new RotateToHeadingCommand(-60,.5));
+    	//addSequential(new DriveToTarget(new Acceleration(.3,.3,0),10));
+    	//addSequential(new DriveBackwardsAutoCommand(.4,120, 0));
+    	//addSequential(new DriveBackToPoint(40,8, new Acceleration(.2,.4,.01), true, 5));
+    	//addSequential(new DriveBackToPoint(22,24, new Acceleration(.3,.3,0), false, 5));
     	
     	
     	

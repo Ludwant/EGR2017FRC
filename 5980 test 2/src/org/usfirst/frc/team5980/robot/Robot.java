@@ -15,6 +15,7 @@ import java.util.*;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team5980.robot.commands.DriveForwardForTime;
+import org.usfirst.frc.team5980.robot.commands.DriveToLeftLiftVision;
 import org.usfirst.frc.team5980.robot.commands.NothingAuto;
 import org.usfirst.frc.team5980.robot.commands.Position1GearPlacement;
 import org.usfirst.frc.team5980.robot.commands.Position1MoveToRefuel;
@@ -78,6 +79,7 @@ public class Robot extends IterativeRobot {
 		 chooser.addObject("Position 3 Move to Refuel", new Position3MoveToRefuel()); 
 		 chooser.addObject("Position 2 Shooting", new Position2Shooting()); 
 		 chooser.addObject("Position 3 Shooting", new Position3Shooting());
+		 chooser.addObject("Vision", new DriveToLeftLiftVision());
 		 
 		 camera = new Cameras();
 		camera.startCamera();//starts the camera thread
