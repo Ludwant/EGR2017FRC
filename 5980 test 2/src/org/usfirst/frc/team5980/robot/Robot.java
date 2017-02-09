@@ -71,8 +71,8 @@ public class Robot extends IterativeRobot {
 		 chooser.addObject("Position 1 Gear", new Position1GearPlacement()); //drives up to the lift
 		 chooser.addObject("Position 2 Gear", new Position2GearPlacement()); //drives up to the lift
 		 chooser.addObject("Position 3 Gear", new Position3GearPlacement()); //drives up to the lift
-		 chooser.addObject("Drive Forwards", new DriveForwardAutoCommand(.5, 500, 0)); //drives forward
-		 chooser.addObject("Drive Backwards", new DriveBackwardsAutoCommand(.5, -500, 0)); //drives backwards
+		 chooser.addObject("Drive Forwards", new DriveForwardAutoCommand(.4, 1500, 0)); //drives forward
+		 chooser.addObject("Drive Backwards", new DriveBackwardsAutoCommand(.4, -2000, 0)); //drives backwards
 		 chooser.addObject("Rotate to Heading 180", new RotateToHeadingCommand(180, .3)); //ok this one's really obvious
 		 chooser.addObject("Position 1 Move to Refuel", new Position1MoveToRefuel()); 
 		 chooser.addObject("Position 2 Move to Refuel", new Position2MoveToRefuel()); 
