@@ -18,9 +18,10 @@ public class Position3Shooting extends CommandGroup {
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
+    	addSequential(new DriveBackwardsAutoCommand(.35, 150, 0));
     	addSequential(new RotateToHeadingCommand(90, 0.3));
     	addSequential(new DriveBackwardsAutoCommand(.35, -650, 90));
-    	addSequential(new BallShootCommand());
+    	//addSequential(new BallShootCommand());
     	addSequential(new RotateToHeadingCommand(-90, 0.3));
     	addSequential(new DriveBackwardsAutoCommand(.35, 1000, 90));
         // A command group will require all of the subsystems that each member

@@ -23,8 +23,8 @@ public class Position3GearPlacement extends CommandGroup {
     	addSequential(new DriveBackwardsAutoCommand(.35, -300, 60)); //power, number of encoder counts, direction
     	//addSequential(new GearGrabCommand());
     	addSequential(new PauseCommand(2000));
-    	//addSequential(new DriveForwardAutoCommand(.35, 350, 60));
-    	//addSequential(new RotateToHeadingCommand(-120, 0.3));
+    	addSequential(new DriveForwardAutoCommand(.35, 350, 60));
+    	addSequential(new RotateToHeadingCommand(-120, 0.2));
     	//addSequential(new BallShootCommand());
     	
         // A command group will require all of the subsystems that each member

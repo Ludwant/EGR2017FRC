@@ -21,7 +21,6 @@ public class Position1MoveToRefuel extends CommandGroup {
     
     	//addSequential(new DriveForwardAutoCommand(.35, 350, 0));
     	addSequential(new DriveBackwardsAutoCommand(.35, -1000, 0));
-    	addSequential(new PauseCommand(2000));
         // A command group will require all of the subsystems that each member
         // would require.
         // e.g. if Command1 requires chassis, and Command2 requires arm,

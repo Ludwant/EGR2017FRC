@@ -18,11 +18,12 @@ public class Position2Shooting extends CommandGroup {
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
+    	addSequential(new DriveBackwardsAutoCommand(.35, 200, 0));
     	addSequential(new RotateToHeadingCommand(90, 0.3));
-    	addSequential(new DriveBackwardsAutoCommand(.35, -1000, 90));
-    	addSequential(new BallShootCommand());
+    	addSequential(new DriveBackwardsAutoCommand(.35, -200, 90));
+    	//addSequential(new BallShootCommand());
     	addSequential(new RotateToHeadingCommand(-90, 0.3));
-    	addSequential(new DriveBackwardsAutoCommand(.35, 1000, 90));
+    	addSequential(new DriveBackwardsAutoCommand(.35, 1000, 0));
         // A command group will require all of t
         // A command group will require all of the subsystems that each member
         // would require.
