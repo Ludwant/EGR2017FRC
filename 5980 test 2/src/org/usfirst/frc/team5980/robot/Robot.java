@@ -16,6 +16,7 @@ import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team5980.robot.commands.DriveForwardForTime;
 import org.usfirst.frc.team5980.robot.commands.DriveToLeftLiftVision;
+import org.usfirst.frc.team5980.robot.commands.DriveToPoint;
 import org.usfirst.frc.team5980.robot.commands.NothingAuto;
 import org.usfirst.frc.team5980.robot.commands.Position1GearPlacement;
 import org.usfirst.frc.team5980.robot.commands.Position1MoveToRefuel;
@@ -121,7 +122,7 @@ public class Robot extends IterativeRobot {
 		sensors.resetSensors();
 		sensors.resetPosition();
 		//RotateToHeadingCommand rotateTest = new RotateToHeadingCommand(-60, .3);
-
+		autonomousCommand = new DriveToPoint(70,0,new Acceleration(.2,.8,.04),true,20);
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
