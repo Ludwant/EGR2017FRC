@@ -48,8 +48,8 @@ public class DriveToPoint extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrain.switchDirection();
-    	Robot.sensors.switchDirection();
+    	//Robot.driveTrain.switchDirection();
+    	//Robot.sensors.switchDirection();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -60,7 +60,7 @@ public class DriveToPoint extends Command {
     	SmartDashboard.putNumber("y: ", currentY);
     	double changeInY = targetY-currentY;
     	double changeInX = targetX-currentX;
-    	distance = Math.sqrt(Math.pow(changeInY, 2) + Math.pow(changeInY, 2));
+    	distance = Math.sqrt(Math.pow(changeInY, 2) + Math.pow(changeInX, 2));
     	double alpha = Math.atan2(changeInY, changeInX);
     	double beta = Robot.sensors.getYaw() + addToYaw - Math.toDegrees(alpha);
     	beta = normalizeAngle(beta);
@@ -87,11 +87,11 @@ public class DriveToPoint extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	distance = targetX - Robot.sensors.getXCoordinate();
-    	boolean finished = distance>lastDistance;
+    	boolean finished = Robot.sensors.getXCoordinate() > targetX;
     	//finished = distance < 2;
     	lastDistance = distance;
     	//finished = Robot.sensors.getRightEncoder() > distance;
-        return false;//finished;
+        return finished;
     }
 
     // Called once after isFinished returns true
