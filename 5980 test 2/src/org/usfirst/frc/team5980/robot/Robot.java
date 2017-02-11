@@ -27,6 +27,7 @@ import org.usfirst.frc.team5980.robot.commands.Position2Shooting;
 import org.usfirst.frc.team5980.robot.commands.Position3GearPlacement;
 import org.usfirst.frc.team5980.robot.commands.Position3MoveToRefuel;
 import org.usfirst.frc.team5980.robot.commands.Position3Shooting;
+import org.usfirst.frc.team5980.robot.commands.DriveBackToPoint;
 import org.usfirst.frc.team5980.robot.commands.DriveBackwardsAutoCommand;
 import org.usfirst.frc.team5980.robot.commands.DriveForwardAutoCommand;
 import org.usfirst.frc.team5980.robot.commands.RotateToHeadingCommand;
@@ -122,7 +123,7 @@ public class Robot extends IterativeRobot {
 		sensors.resetSensors();
 		sensors.resetPosition();
 		//RotateToHeadingCommand rotateTest = new RotateToHeadingCommand(-60, .3);
-		autonomousCommand = new DriveToPoint(500,0,new Acceleration(.2,.8,.04),false,20);
+		autonomousCommand = new DriveBackToPoint(500,0,new Acceleration(.2,.8,.04),false,20);
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
