@@ -14,7 +14,7 @@ public class DriveToPoint extends Command {
 	Acceleration accelerate;
 	double targetX, targetY;
 	double distance;
-	double lastDistance = 1000;
+	double lastDistance = 5000;
 	boolean coast = false;
 	double addToYaw = 0;
 	EGRPID headingPID = new EGRPID(0.015, 0, 0.005);
@@ -85,7 +85,7 @@ public class DriveToPoint extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	boolean finished = distance>lastDistance;
-    	finished = distance < 2;
+    	//finished = distance < 2;
     	lastDistance = distance;
     	//finished = Robot.sensors.getRightEncoder() > distance;
         return finished;
