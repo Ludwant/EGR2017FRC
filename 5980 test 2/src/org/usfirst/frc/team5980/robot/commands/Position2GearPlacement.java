@@ -21,8 +21,7 @@ public class Position2GearPlacement extends CommandGroup {
     	addSequential(new DriveForwardAutoCommand(.35, 70, 0));
     	//addSequential(new GearGrabCommand());
     	addSequential(new PauseCommand(2000));
-    	addSequential(new DriveBackwardsAutoCommand(.35, -50, 0));
-    	addSequential(new RotateToHeadingCommand(91, .35));
+    	
     	//addSequential(new DriveForwardAutoCommand(.35, 350, 0));
         // A command group will require all of the subsystems that each member
         // would require.

@@ -19,14 +19,17 @@ import org.usfirst.frc.team5980.robot.commands.DriveToLeftLiftVision;
 import org.usfirst.frc.team5980.robot.commands.DriveToPoint;
 import org.usfirst.frc.team5980.robot.commands.NothingAuto;
 import org.usfirst.frc.team5980.robot.commands.Position1GearPlacement;
+import org.usfirst.frc.team5980.robot.commands.Position1Hopper;
 import org.usfirst.frc.team5980.robot.commands.Position1MoveToRefuel;
 import org.usfirst.frc.team5980.robot.commands.Position2GearPlacement;
 import org.usfirst.frc.team5980.robot.commands.Position2GearShoot;
 import org.usfirst.frc.team5980.robot.commands.Position2MoveToRefuel;
-import org.usfirst.frc.team5980.robot.commands.Position2Shooting;
+import org.usfirst.frc.team5980.robot.commands.Position2ShootingRed;
 import org.usfirst.frc.team5980.robot.commands.Position3GearPlacement;
+import org.usfirst.frc.team5980.robot.commands.Position3GearRed;
 import org.usfirst.frc.team5980.robot.commands.Position3MoveToRefuel;
 import org.usfirst.frc.team5980.robot.commands.Position3Shooting;
+import org.usfirst.frc.team5980.robot.commands.Position3ShootingRed;
 import org.usfirst.frc.team5980.robot.commands.DriveBackToPoint;
 import org.usfirst.frc.team5980.robot.commands.DriveBackwardsAutoCommand;
 import org.usfirst.frc.team5980.robot.commands.DriveForwardAutoCommand;
@@ -70,17 +73,21 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		chooser.addDefault("Nothing Auto", new NothingAuto()); //nothing
-		 chooser.addObject("Position 1 Gear", new Position1GearPlacement()); //drives up to the lift
-		 chooser.addObject("Position 2 Gear", new Position2GearPlacement()); //drives up to the lift
-		 chooser.addObject("Position 3 Gear", new Position3GearPlacement()); //drives up to the lift
-		 chooser.addObject("Drive Forwards", new DriveForwardAutoCommand(.4, 1500, 0)); //drives forward
-		 chooser.addObject("Drive Backwards", new DriveBackwardsAutoCommand(.4, -2000, 0)); //drives backwards
-		 chooser.addObject("Rotate to Heading 180", new RotateToHeadingCommand(180, .3)); //ok this one's really obvious
-		 chooser.addObject("Position 1 Move to Refuel", new Position1MoveToRefuel()); 
-		 chooser.addObject("Position 2 Move to Refuel", new Position2MoveToRefuel()); 
-		 chooser.addObject("Position 3 Move to Refuel", new Position3MoveToRefuel()); 
-		 chooser.addObject("Position 2 Shooting", new Position2Shooting()); 
-		 chooser.addObject("Position 3 Shooting", new Position3Shooting());
+		 chooser.addObject("Position 1 Gear Blue", new Position1GearPlacement()); //drives up to the lift
+		 chooser.addObject("Position 2 Gear Blue/Red", new Position2GearPlacement()); //drives up to the lift
+		 chooser.addObject("Position 3 Gear Blue", new Position3GearPlacement()); //drives up to the lift
+		 chooser.addObject("Position 3 Gear Red", new Position3GearRed());
+		// chooser.addObject("Drive Forwards", new DriveForwardAutoCommand(.4, 1500, 0)); //drives forward
+		 //chooser.addObject("Drive Backwards", new DriveBackwardsAutoCommand(.4, -2000, 0)); //drives backwards
+		 //chooser.addObject("Rotate to Heading 180", new RotateToHeadingCommand(180, .3)); //ok this one's really obvious
+		 //chooser.addObject("Position 1 Move to Refuel", new Position1MoveToRefuel()); 
+		 //chooser.addObject("Position 2 Move to Refuel", new Position2MoveToRefuel()); 
+		 //chooser.addObject("Position 3 Move to Refuel", new Position3MoveToRefuel()); 
+		 chooser.addObject("Position 2 Shooting Blue", new Position2GearShoot()); 
+		 chooser.addObject("Position 2 Shooting Red", new Position2ShootingRed());
+		 chooser.addObject("Position 3 Shooting Blue", new Position3Shooting());
+		 chooser.addObject("Position 3 Shooting Red", new Position3ShootingRed());
+		 chooser.addObject("Position 1 Hopper Blue", new Position1Hopper());
 		 chooser.addObject("Vision", new DriveToLeftLiftVision());
 		 
 		 camera = new Cameras();
