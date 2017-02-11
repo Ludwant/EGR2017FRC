@@ -5,6 +5,7 @@ import org.usfirst.frc.team5980.robot.EGRPID;
 import org.usfirst.frc.team5980.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -33,6 +34,7 @@ public class DriveToPoint extends Command {
     	this.coast = coast;
     	distancePID = new EGRPID(1/slowDistance, 0,0);
     	distancePID.setTarget(0);
+    	distance = x;
     	
     }
     protected double normalizeAngle(double angle) {
@@ -52,13 +54,16 @@ public class DriveToPoint extends Command {
     protected void execute() {
     	double currentX = Robot.sensors.getXCoordinate();
     	double currentY = Robot.sensors.getYCoordinate();
+    	SmartDashboard.putNumber("x: ", currentX);
+    	SmartDashboard.putNumber("y: ", currentY);
     	double changeInY = targetY-currentY;
     	double changeInX = targetX-currentX;
     	distance = Math.sqrt(Math.pow(changeInY, 2) + Math.pow(changeInY, 2));
     	double alpha = Math.atan2(changeInY, changeInX);
     	double beta = Robot.sensors.getYaw() + addToYaw - Math.toDegrees(alpha);
-    	
     	beta = normalizeAngle(beta);
+    	SmartDashboard.putNumber("Yaw: ", Robot.sensors.getYaw());
+    	SmartDashboard.putNumber("beta ", beta);
     	double correction = headingPID.getCorrection(beta);
     	if(correction>0.1) correction = 0.1;
     	if(correction<-0.1) correction = -0.1;
@@ -68,9 +73,13 @@ public class DriveToPoint extends Command {
     		speedFactor = distancePID.getCorrection(-distance);
     		if(Math.abs(speedFactor) >1) speedFactor = 1;
     	}
+    	speedFactor = 1;
+    	SmartDashboard.putNumber("correction: ", correction);
     	double leftPower = (speed + correction) * speedFactor;
     	double rightPower = (speed - correction) * speedFactor;
-    	Robot.driveTrain.setPower(leftPower,  rightPower);
+    	Robot.driveTrain.setPower(-leftPower,  -rightPower);
+    	SmartDashboard.putNumber("leftPower: ", leftPower);
+    	SmartDashboard.putNumber("rightPower: ", rightPower);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -78,6 +87,7 @@ public class DriveToPoint extends Command {
     	boolean finished = distance>lastDistance;
     	finished = distance < 2;
     	lastDistance = distance;
+    	//finished = Robot.sensors.getRightEncoder() > distance;
         return finished;
     }
 
