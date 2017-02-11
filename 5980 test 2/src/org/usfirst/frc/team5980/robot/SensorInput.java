@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
 
 public class SensorInput {
-	static Encoder leftEncoder = new Encoder(0, 1);
-	static Encoder rightEncoder = new Encoder(2, 3);
+	Encoder leftEncoder = new Encoder(0, 1);
+	Encoder rightEncoder = new Encoder(2, 3);
 	//static Potentiometer pot = new AnalogPotentiometer(0, 360, 10); //Channel number for Analog input, scale factor 360 being the great, offset to add after scaling to prevent breakage (10 to 30 range) 
 	static AHRS navX;
 	int rightEncoderOffset = 0;
@@ -18,6 +18,7 @@ public class SensorInput {
 	double YCoordinate = 0;
 	double lastLeftEncoder = 0;
 	double lastRightEncoder = 0;
+	boolean encoderInvert = false;
 	
 	
 	public SensorInput() {
@@ -55,15 +56,32 @@ public class SensorInput {
 	
 	public int getLeftEncoder() {
 		int encoderValue;
-		encoderValue = leftEncoder.get() - leftEncoderOffset;
+		if(encoderInvert) {
+			encoderValue = -(leftEncoder.get() - leftEncoderOffset);
+		}
+		else {
+			encoderValue = leftEncoder.get() - leftEncoderOffset;
+		}
 		return -encoderValue;
 		
 	}
 	
 	public int getRightEncoder() {
 		int encoderValue;
-		encoderValue = rightEncoder.get() - rightEncoderOffset;
-		return encoderValue;	
+		if(encoderInvert) {
+			encoderValue = -(rightEncoder.get() - rightEncoderOffset);
+		}
+		else {
+			encoderValue = rightEncoder.get() - rightEncoderOffset;
+		}
+		return encoderValue;
+	}
+	
+	public void switchDirection() {
+		Encoder temp = rightEncoder;
+		rightEncoder = leftEncoder;
+		leftEncoder = temp;
+		encoderInvert = !encoderInvert;
 	}
 	
 	public void resetSensors() {
@@ -97,7 +115,7 @@ public class SensorInput {
 		double changeInRightEncoder = currentRightEncoder - lastRightEncoder;
 		double encoderDistance = (changeInLeftEncoder + changeInRightEncoder)/2;
 		double heading = Math.toRadians(getYaw());
-		double changeInX = encoderDistance * Math.cos(heading); 
+		double changeInX = encoderDistance * Math.cos(heading);
 		double changeInY = encoderDistance * Math.sin(heading);
 		XCoordinate += changeInX;
 		YCoordinate += changeInY;

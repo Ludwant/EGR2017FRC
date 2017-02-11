@@ -20,12 +20,6 @@ public class DriveTrain extends Subsystem {
 		left2 = new CANTalon(3);
 		right1.setInverted(true);
 		right2.setInverted(true);
-		//right1 = new Victor(2);
-		//right2 = new Victor(3);
-		//left1 = new Victor(0);
-		//left2 = new Victor(1);
-		//right1.setInverted(true);
-		//right2.setInverted(true);
 	}
 	
 	public void setPower(double left, double right) {
@@ -34,7 +28,19 @@ public class DriveTrain extends Subsystem {
 		right1.set(right);
 		right2.set(right);
 	}
-
+	public void switchDirection() {
+		CANTalon temp = left1;
+		left1 = right1;
+		right1 = temp;
+		temp = left2;
+		left2 = right2;
+		right2 = temp;
+		left1.setInverted(!left1.getInverted());
+		left2.setInverted(!left2.getInverted());
+		right1.setInverted(!right1.getInverted());
+		right2.setInverted(!right2.getInverted());
+		
+	}
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 

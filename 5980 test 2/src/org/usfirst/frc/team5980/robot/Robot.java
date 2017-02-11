@@ -122,7 +122,7 @@ public class Robot extends IterativeRobot {
 		sensors.resetSensors();
 		sensors.resetPosition();
 		//RotateToHeadingCommand rotateTest = new RotateToHeadingCommand(-60, .3);
-		autonomousCommand = new DriveToPoint(5000,0,new Acceleration(.2,.8,.04),false,20);
+		autonomousCommand = new DriveToPoint(500,0,new Acceleration(.2,.8,.04),false,20);
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand

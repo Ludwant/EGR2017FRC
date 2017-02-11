@@ -14,7 +14,7 @@ public class DriveToPoint extends Command {
 	Acceleration accelerate;
 	double targetX, targetY;
 	double distance;
-	double lastDistance = 5000;
+	double lastDistance = 500000000;
 	boolean coast = false;
 	double addToYaw = 0;
 	EGRPID headingPID = new EGRPID(0.015, 0, 0.005);
@@ -48,6 +48,8 @@ public class DriveToPoint extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.driveTrain.switchDirection();
+    	Robot.sensors.switchDirection();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -77,18 +79,19 @@ public class DriveToPoint extends Command {
     	SmartDashboard.putNumber("correction: ", correction);
     	double leftPower = (speed + correction) * speedFactor;
     	double rightPower = (speed - correction) * speedFactor;
-    	Robot.driveTrain.setPower(-leftPower,  -rightPower);
+    	Robot.driveTrain.setPower(leftPower,  rightPower);
     	SmartDashboard.putNumber("leftPower: ", leftPower);
     	SmartDashboard.putNumber("rightPower: ", rightPower);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	distance = targetX - Robot.sensors.getXCoordinate();
     	boolean finished = distance>lastDistance;
     	//finished = distance < 2;
     	lastDistance = distance;
     	//finished = Robot.sensors.getRightEncoder() > distance;
-        return finished;
+        return false;//finished;
     }
 
     // Called once after isFinished returns true
