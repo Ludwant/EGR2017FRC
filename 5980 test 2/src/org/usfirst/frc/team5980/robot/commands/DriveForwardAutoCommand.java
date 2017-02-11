@@ -27,7 +27,7 @@ public class DriveForwardAutoCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	encoderTarget = Robot.sensors.getRightEncoder() + distance;
+    	encoderTarget = Robot.sensors.getRightEncoder() + distance * Robot.sensors.encoderCountsPerInch;
     	drivePID.setTarget(heading);
     	stopPID.setTarget(encoderTarget);
     	
@@ -47,7 +47,7 @@ public class DriveForwardAutoCommand extends Command {
     	}
     	Robot.driveTrain.setPower((speed - correction) * stopCorrection, (speed + correction) * stopCorrection);
     	SmartDashboard.putNumber("Yaw: ", Robot.sensors.getYaw());
-    	//SmartDashboard.putNumber("Right Encoder: ", Robot.sensors.getRightEncoder());
+    	SmartDashboard.putNumber("Right Encoder: ", Robot.sensors.getRightEncoder());
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -17,7 +17,7 @@ public class DriveToPoint extends Command {
 	double lastDistance = 500000000;
 	boolean coast = false;
 	double addToYaw = 0;
-	EGRPID headingPID = new EGRPID(0.015, 0, 0.005);
+	EGRPID headingPID = new EGRPID(0.02, 0, 0);
 	EGRPID distancePID = null;
     public DriveToPoint(double x, double y, Acceleration accelerate) {
         // Use requires() here to declare subsystem dependencies
@@ -48,8 +48,7 @@ public class DriveToPoint extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-    	//Robot.driveTrain.switchDirection();
-    	//Robot.sensors.switchDirection();
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -65,7 +64,10 @@ public class DriveToPoint extends Command {
     	double beta = Robot.sensors.getYaw() + addToYaw - Math.toDegrees(alpha);
     	beta = normalizeAngle(beta);
     	SmartDashboard.putNumber("Yaw: ", Robot.sensors.getYaw());
+    	SmartDashboard.putNumber("alpha ", alpha);
     	SmartDashboard.putNumber("beta ", beta);
+    	
+    	
     	double correction = headingPID.getCorrection(beta);
     	if(correction>0.1) correction = 0.1;
     	if(correction<-0.1) correction = -0.1;
@@ -75,10 +77,12 @@ public class DriveToPoint extends Command {
     		speedFactor = distancePID.getCorrection(-distance);
     		if(Math.abs(speedFactor) >1) speedFactor = 1;
     	}
-    	speedFactor = 1;
+    	//speedFactor = 1;
     	SmartDashboard.putNumber("correction: ", correction);
-    	double leftPower = (speed + correction) * speedFactor;
-    	double rightPower = (speed - correction) * speedFactor;
+    	
+    	
+    	double leftPower = (speed - correction) * speedFactor;
+    	double rightPower = (speed + correction) * speedFactor;
     	Robot.driveTrain.setPower(leftPower,  rightPower);
     	SmartDashboard.putNumber("leftPower: ", leftPower);
     	SmartDashboard.putNumber("rightPower: ", rightPower);
@@ -86,11 +90,8 @@ public class DriveToPoint extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	distance = targetX - Robot.sensors.getXCoordinate();
-    	boolean finished = Robot.sensors.getXCoordinate() > targetX;
-    	//finished = distance < 2;
+    	boolean finished = distance > lastDistance;
     	lastDistance = distance;
-    	//finished = Robot.sensors.getRightEncoder() > distance;
         return finished;
     }
 

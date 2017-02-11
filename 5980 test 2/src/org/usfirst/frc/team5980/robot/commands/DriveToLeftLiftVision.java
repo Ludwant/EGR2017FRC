@@ -14,7 +14,8 @@ public class DriveToLeftLiftVision extends CommandGroup {
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	addSequential(new DriveToPoint(70,0,new Acceleration(.2,.8,.04),true,20));
+    	addSequential(new SwitchDirection());
+    	addSequential(new DriveBackToPoint(-700,0,new Acceleration(.2,.8,.04),true,20));
     	//addSequential(new RotateToHeadingCommand(-60,.5));
     	//addSequential(new DriveToTarget(new Acceleration(.3,.3,0),10));
     	//addSequential(new DriveBackwardsAutoCommand(.4,120, 0));

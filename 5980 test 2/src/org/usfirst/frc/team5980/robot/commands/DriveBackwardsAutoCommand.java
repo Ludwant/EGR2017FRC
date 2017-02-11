@@ -30,7 +30,7 @@ public class DriveBackwardsAutoCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	encoderTarget = Robot.sensors.getRightEncoder() + distance;
+    	encoderTarget = Robot.sensors.getRightEncoder() + distance * Robot.sensors.encoderCountsPerInch;
     	drivePID.setTarget(heading);
     	stopPID.setTarget(encoderTarget);
     }

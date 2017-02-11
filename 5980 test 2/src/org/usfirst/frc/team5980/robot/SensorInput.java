@@ -19,7 +19,7 @@ public class SensorInput {
 	double lastLeftEncoder = 0;
 	double lastRightEncoder = 0;
 	boolean encoderInvert = false;
-	
+	public double encoderCountsPerInch = 19;
 	
 	public SensorInput() {
 		try {
@@ -56,25 +56,15 @@ public class SensorInput {
 	
 	public int getLeftEncoder() {
 		int encoderValue;
-		if(encoderInvert) {
-			encoderValue = -(leftEncoder.get() - leftEncoderOffset);
-		}
-		else {
-			encoderValue = leftEncoder.get() - leftEncoderOffset;
-		}
-		return -encoderValue;
+		encoderValue = leftEncoder.get() - leftEncoderOffset;
+		return encoderValue;
 		
 	}
 	
 	public int getRightEncoder() {
 		int encoderValue;
-		if(encoderInvert) {
-			encoderValue = -(rightEncoder.get() - rightEncoderOffset);
-		}
-		else {
-			encoderValue = rightEncoder.get() - rightEncoderOffset;
-		}
-		return encoderValue;
+		encoderValue = rightEncoder.get() - rightEncoderOffset;
+		return -encoderValue;
 	}
 	
 	public void switchDirection() {
@@ -124,11 +114,11 @@ public class SensorInput {
 	}
 	
 	public double getXCoordinate() {
-		return XCoordinate;
+		return XCoordinate / encoderCountsPerInch;
 	}
 	
 	public double getYCoordinate() {
-		return YCoordinate;
+		return YCoordinate / encoderCountsPerInch;
 	}
 	
 	public void resetPosition() {

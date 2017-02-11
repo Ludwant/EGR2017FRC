@@ -123,7 +123,7 @@ public class Robot extends IterativeRobot {
 		sensors.resetSensors();
 		sensors.resetPosition();
 		//RotateToHeadingCommand rotateTest = new RotateToHeadingCommand(-60, .3);
-		autonomousCommand = new DriveBackToPoint(500,0,new Acceleration(.2,.8,.04),false,20);
+		//autonomousCommand = new DriveToPoint(100,40,new Acceleration(.2,.8,.04),false,20);
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -151,6 +151,7 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+		driveTrain.switchDirection();
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 	}
