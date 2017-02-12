@@ -39,7 +39,7 @@ public class BallShooter extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new BallShootCommand());
+        //setDefaultCommand(new BallShootCommand());
     }
 }
 
