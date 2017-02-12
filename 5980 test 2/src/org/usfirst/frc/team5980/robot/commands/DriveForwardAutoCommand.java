@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveForwardAutoCommand extends Command {
 
-	 EGRPID drivePID = new EGRPID(.032, 0.001, 0.04);
+	 EGRPID drivePID = new EGRPID(.02, 0, 0);
 	 EGRPID stopPID = new EGRPID(.008, 0, 0);
 	 double maxSpeed;
 	 int distance;
