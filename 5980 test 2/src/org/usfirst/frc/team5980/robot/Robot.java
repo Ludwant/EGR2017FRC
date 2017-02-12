@@ -18,19 +18,23 @@ import org.usfirst.frc.team5980.robot.commands.DriveForwardForTime;
 import org.usfirst.frc.team5980.robot.commands.DriveToLeftLiftVision;
 import org.usfirst.frc.team5980.robot.commands.DriveToPoint;
 import org.usfirst.frc.team5980.robot.commands.NothingAuto;
+import org.usfirst.frc.team5980.robot.commands.Position1GearBlue;
 import org.usfirst.frc.team5980.robot.commands.Position1GearPlacement;
 import org.usfirst.frc.team5980.robot.commands.Position1GearRed;
 import org.usfirst.frc.team5980.robot.commands.Position1Hopper;
+import org.usfirst.frc.team5980.robot.commands.Position1HopperBlue;
 import org.usfirst.frc.team5980.robot.commands.Position1HopperRed;
 import org.usfirst.frc.team5980.robot.commands.Position1MoveToRefuel;
 import org.usfirst.frc.team5980.robot.commands.Position2GearPlacement;
 import org.usfirst.frc.team5980.robot.commands.Position2GearShoot;
 import org.usfirst.frc.team5980.robot.commands.Position2MoveToRefuel;
 import org.usfirst.frc.team5980.robot.commands.Position2ShootingRed;
+import org.usfirst.frc.team5980.robot.commands.Position3GearBlue;
 import org.usfirst.frc.team5980.robot.commands.Position3GearPlacement;
 import org.usfirst.frc.team5980.robot.commands.Position3GearRed;
 import org.usfirst.frc.team5980.robot.commands.Position3MoveToRefuel;
 import org.usfirst.frc.team5980.robot.commands.Position3Shooting;
+import org.usfirst.frc.team5980.robot.commands.Position3ShootingBlue;
 import org.usfirst.frc.team5980.robot.commands.Position3ShootingRed;
 import org.usfirst.frc.team5980.robot.commands.DriveBackToPoint;
 import org.usfirst.frc.team5980.robot.commands.DriveBackwardsAutoCommand;
@@ -75,9 +79,9 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		chooser.addDefault("Nothing Auto", new NothingAuto()); //nothing
-		 chooser.addObject("Position 1 Gear Blue", new Position1GearPlacement()); //drives up to the lift
+		 chooser.addObject("Position 1 Gear Blue", new Position1GearBlue()); //drives up to the lift
 		 chooser.addObject("Position 2 Gear Blue/Red", new Position2GearPlacement()); //drives up to the lift
-		 chooser.addObject("Position 3 Gear Blue", new Position3GearPlacement()); //drives up to the lift
+		 chooser.addObject("Position 3 Gear Blue", new Position3GearBlue()); //drives up to the lift
 		 chooser.addObject("Position 3 Gear Red", new Position3GearRed());
 		 chooser.addObject("Position 1 Gear Red", new Position1GearRed());
 		// chooser.addObject("Drive Forwards", new DriveForwardAutoCommand(.4, 1500, 0)); //drives forward
@@ -88,9 +92,9 @@ public class Robot extends IterativeRobot {
 		 //chooser.addObject("Position 3 Move to Refuel", new Position3MoveToRefuel()); 
 		 chooser.addObject("Position 2 Shooting Blue", new Position2GearShoot()); 
 		 chooser.addObject("Position 2 Shooting Red", new Position2ShootingRed());
-		 chooser.addObject("Position 3 Shooting Blue", new Position3Shooting());
+		 chooser.addObject("Position 3 Shooting Blue", new Position3ShootingBlue());
 		 chooser.addObject("Position 3 Shooting Red", new Position3ShootingRed());
-		 chooser.addObject("Position 1 Hopper Blue", new Position1Hopper());
+		 chooser.addObject("Position 1 Hopper Blue", new Position1HopperBlue());
 		 chooser.addObject("Position 1 Hopper Red", new Position1HopperRed());
 		 chooser.addObject("Vision", new DriveToLeftLiftVision());
 		 
