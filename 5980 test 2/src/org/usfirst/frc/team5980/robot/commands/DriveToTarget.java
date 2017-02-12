@@ -19,10 +19,6 @@ public class DriveToTarget extends DriveToPoint {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
     	target = Robot.camera.getTarget();
     	SmartDashboard.putNumber("targetX", target[0]);
     	SmartDashboard.putNumber("targetY", target[1]);
@@ -31,19 +27,25 @@ public class DriveToTarget extends DriveToPoint {
     	}
     	targetX = target[0];
     	targetY = target[1];
+    }
+
+    // Called repeatedly when this Command is scheduled to run
+    protected void execute() {
     	super.execute();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	double changeInX = targetX - Robot.sensors.getXCoordinate();
+    	/*double changeInX = targetX - Robot.sensors.getXCoordinate();
     	double changeInY = targetY - Robot.sensors.getYCoordinate();
     	double distance = Math.sqrt(Math.pow(changeInX, 2) + Math.pow(changeInY, 2));
-        return Double.isNaN(target[0]) || distance < 2;
+        return distance < 2;*/
+    	return super.isFinished();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	super.end();
     }
 
     // Called when another command which requires one or more of the same
