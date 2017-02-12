@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class Position2Hopper extends CommandGroup {
+public class Position3GearBlue extends CommandGroup {
 
-    public Position2Hopper() {
+    public Position3GearBlue() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -18,11 +18,6 @@ public class Position2Hopper extends CommandGroup {
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
-    	addSequential(new DriveBackwardsAutoCommand(.4, -250, 0));
-    	addSequential(new RotateToHeadingCommand(90, .25));
-    	addSequential(new DriveBackwardsAutoCommand(.4, -600, 90));
-    	addSequential(new RotateToHeadingCommand(-90, .25));
-    	addSequential(new DriveBackwardsAutoCommand(.4, -1000, 0));
 
         // A command group will require all of the subsystems that each member
         // would require.
