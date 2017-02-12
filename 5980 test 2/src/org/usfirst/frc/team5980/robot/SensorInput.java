@@ -98,6 +98,21 @@ public class SensorInput {
 		return pot.get();
 	}
 	*/
+	/* public ConfigFwdLimitSwitchNormallyOpen() {
+		if(btn4) {
+			customMotorDescrip.ConfigFwdLimitSwitchNormallyOpen(true);
+		}
+		else if(btn2) {
+			customMotorDescrip.ConfigFwdLimitSwitchNormallyOpen(false); 
+		}
+		if(btn1) {
+			customMotorDescrip.ConfigRevLimitSwitchNormallyOpen(true);
+		}
+		elseif(btn3) {
+			customMotorDescrip.ConfigRevLimitSwitchNormallyOpen(false);
+		}
+	}
+	*/
 	public void updatePosition() {
 		double currentLeftEncoder = getLeftEncoder();
 		double currentRightEncoder = getRightEncoder();
