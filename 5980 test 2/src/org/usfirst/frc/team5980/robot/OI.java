@@ -3,6 +3,7 @@ package org.usfirst.frc.team5980.robot;
 
 import org.usfirst.frc.team5980.robot.commands.ClimbCommand;
 import org.usfirst.frc.team5980.robot.commands.GearDropCommand;
+import org.usfirst.frc.team5980.robot.commands.GearUp;
 import org.usfirst.frc.team5980.robot.commands.ToggleCameraCommand;
 import org.usfirst.frc.team5980.robot.commands.BallShootCommand;
 
@@ -35,7 +36,8 @@ public class OI {
 		gearDropButton.whenPressed(new GearDropCommand());
 		
 		//Button button3 = new JoystickButton(operator, 3);
-		//Button button4 = new JoystickButton(operator, 4);
+		Button gearUpButton = new JoystickButton(operator, 5);
+		gearUpButton.whenPressed(new GearUp());
 		//Button button5 = new JoystickButton(operator, 5);
 	    //Button button6 = new JoystickButton(operator, 6);
 		//Button button7 = new JoystickButton(operator, 7);
