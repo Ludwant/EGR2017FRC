@@ -181,10 +181,10 @@ public class Cameras extends Subsystem implements Runnable {
 		double pegX = (x1 + x2)/2.0;
 		double distanceToCenter = pegX - 159.5;
 		double distanceToTargetPix = 160 / Math.tan(Math.toRadians(32.93)); // 32.93 for 920? 35.29
-		double alpha = -Math.toDegrees(Math.atan(distanceToCenter/distanceToTargetPix));
+		double alpha = 90 - Math.atan(distanceToCenter/distanceToTargetPix);
 		double inchesPerPixel = 2 / (double) rectangleTwo.width;
 		double distanceToTarget = inchesPerPixel * distanceToTargetPix;
-		double phi = Math.toRadians(alpha + poseYaw);
+		double phi = Math.toRadians(poseYaw + alpha);
 		double targetX = poseX + distanceToTarget * Math.cos(phi);
 		double targetY = poseY + distanceToTarget * Math.sin(phi);
 		setTarget(targetX, targetY);
