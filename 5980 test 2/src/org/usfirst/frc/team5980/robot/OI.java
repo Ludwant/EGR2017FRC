@@ -29,7 +29,7 @@ public class OI {
 		climbButton.whileHeld(new ClimbCommand());//runs full speed in one direction
 		Button shootButton = new JoystickButton(operator, 1);//runs #6 and #8 full speed in one direction (button A)
 		shootButton.whileHeld(new BallShootCommand());
-		Button cameraToggleButton = new JoystickButton(operator, 2);//toggles the camera (button b)
+		Button cameraToggleButton = new JoystickButton(driver, 2);//toggles the camera (button b)
 		cameraToggleButton.whenPressed(new ToggleCameraCommand());
 		Button gearDropButton = new JoystickButton(operator, 4); //does nothing for now (button ?)
 		gearDropButton.whenPressed(new GearDropCommand());

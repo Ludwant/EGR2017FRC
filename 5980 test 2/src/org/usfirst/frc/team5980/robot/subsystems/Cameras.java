@@ -31,7 +31,7 @@ public class Cameras extends Subsystem implements Runnable {
 	Scalar lowerHSV, upperHSV;
 	UsbCamera frontCam, backCam;
 	Object visionLock = new Object();
-	boolean trackingOn = false;
+	boolean trackingOn = true;
 	boolean frontCamera = false;
 	double targetX = Double.NaN;
 	double targetY = Double.NaN;
@@ -44,7 +44,7 @@ public class Cameras extends Subsystem implements Runnable {
 		mask = new Mat();
 		hsv = new Mat();
 		hierarchy = new Mat();
-		lowerHSV = new Scalar(70,50,195);
+		lowerHSV = new Scalar(55,0,230);
 		upperHSV = new Scalar(180,255,255);
 		tracking = new Thread(this);
 		frontCam = new UsbCamera("front", 0);
@@ -112,6 +112,7 @@ public class Cameras extends Subsystem implements Runnable {
 		while(true) {
 			
 			localFrontCamera = frontCamera; //gets the boolean for which camera to use
+			SmartDashboard.putBoolean("localFrontCam: ", localFrontCamera);
 			double poseX = Robot.sensors.getXCoordinate(); //gets position of robot
 			double poseY = Robot.sensors.getYCoordinate(); //
 			double poseYaw = Robot.sensors.getYaw(); //
@@ -127,7 +128,7 @@ public class Cameras extends Subsystem implements Runnable {
 				Imgproc.findContours(mask, contours, hierarchy, Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE); //finds the contours and saves them to the arraylist
 				ArrayList<MatOfPoint> bigContours = new ArrayList<MatOfPoint>(); //makes a list for contours above a certain size
 				for(int i = 0; i <contours.size(); i++) {
-					if(Imgproc.contourArea(contours.get(i)) > 50) {
+					if(Imgproc.contourArea(contours.get(i)) > 100) {
 						bigContours.add(contours.get(i)); //goes through all the contours and saves the big ones to the bigContours arraylist
 					}
 				}
@@ -177,25 +178,30 @@ public class Cameras extends Subsystem implements Runnable {
 		Rect rectangleTwo = Imgproc.boundingRect(bestTwo);
 		double x1 = rectangleOne.x + rectangleOne.width/2.0;
 		double x2 = rectangleTwo.x + rectangleTwo.width/2.0;
+		boolean bRrightToLeft = 1;
+		if ( rectangleOne.x < rectangleTwo.x ) { bRrightToLeft = 0;}
 		double pegX = (x1 + x2)/2.0;
 		double distanceToCenter = pegX - 159.5;
-		double distanceToTargetPix = 160 / Math.tan(Math.toRadians(35.29)); // 32.93 for 920?
-		double alpha = -Math.toDegrees(Math.atan(distanceToCenter/distanceToTargetPix));
+		double distanceToTargetPix = 160 / Math.tan(Math.toRadians(32.93)); // 32.93 for 920? 35.29
+		double alpha = 90 - Math.atan(distanceToCenter/distanceToTargetPix);
 		double inchesPerPixel = 2 / (double) rectangleTwo.width;
 		double distanceToTarget = inchesPerPixel * distanceToTargetPix;
-		double phi = Math.toRadians(alpha + poseYaw);
+		if ( bRrightToLeft ) { alpha = -alpha; }
+		double phi = Math.toRadians(poseYaw + alpha);
 		double targetX = poseX + distanceToTarget * Math.cos(phi);
 		double targetY = poseY + distanceToTarget * Math.sin(phi);
 		setTarget(targetX, targetY);
+
 		SmartDashboard.putNumber("angle", alpha);
 		SmartDashboard.putNumber("distance", distanceToTarget);
 		SmartDashboard.putNumber("poseX", poseX);
 		SmartDashboard.putNumber("poseY", poseY);
 		SmartDashboard.putNumber("poseYaw", poseYaw);
+		
 	}
 	
 	public void analyzeBackContours(ArrayList<MatOfPoint> contours, double poseX, double poseY, double poseYaw) {
-		
+		SmartDashboard.putString("Back Contours ", "being analyzed");
 	}
 	
 	public MatOfPoint getBestContour(ArrayList<MatOfPoint> contours, double aspectRatio) {

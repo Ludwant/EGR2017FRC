@@ -17,7 +17,7 @@ public class DriveToPoint extends Command {
 	double lastDistance = 500000000;
 	boolean coast = false;
 	double addToYaw = 0;
-	EGRPID headingPID = new EGRPID(0.02, 0, 0);
+	EGRPID headingPID = new EGRPID(0.015, 0, 0);
 	EGRPID distancePID = null;
     public DriveToPoint(double x, double y, Acceleration accelerate) {
         // Use requires() here to declare subsystem dependencies
