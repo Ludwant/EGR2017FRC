@@ -28,7 +28,7 @@ public boolean getUpperLimit() {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new GearDropCommand());
+       // setDefaultCommand(new GearDropCommand());
     }
 }
 
