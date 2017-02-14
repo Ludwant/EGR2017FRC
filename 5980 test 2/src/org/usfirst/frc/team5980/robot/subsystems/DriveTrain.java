@@ -1,8 +1,11 @@
 package org.usfirst.frc.team5980.robot.subsystems;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team5980.robot.Robot;
 import org.usfirst.frc.team5980.robot.commands.ArcadeDriveCommand;
 //import org.usfirst.frc.team5980.robot.commands.TankDriveCommand;
 
@@ -13,6 +16,8 @@ import com.ctre.CANTalon;
  */
 public class DriveTrain extends Subsystem {
 	CANTalon left1, left2, right1, right2;
+	public double speedType;
+	public boolean type;
 	public DriveTrain() {
 		right1 = new CANTalon(4);
 		right2 = new CANTalon(3);
@@ -20,8 +25,17 @@ public class DriveTrain extends Subsystem {
 		left2 = new CANTalon(2);
 		right1.setInverted(true);
 		right2.setInverted(true);
+		speedType = 1;
+		type = true;
 	}
-	
+	public void toggleSpeedType(boolean type) {
+		if (type == true) {
+			speedType = .5;
+		}
+		else {
+			speedType = 1;
+		}
+	}
 	public void setPower(double left, double right) {
 		left1.set(left);
 		left2.set(left);

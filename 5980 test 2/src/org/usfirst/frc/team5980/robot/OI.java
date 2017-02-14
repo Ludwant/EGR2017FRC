@@ -5,6 +5,7 @@ import org.usfirst.frc.team5980.robot.commands.ClimbCommand;
 import org.usfirst.frc.team5980.robot.commands.GearDropCommand;
 import org.usfirst.frc.team5980.robot.commands.GearUp;
 import org.usfirst.frc.team5980.robot.commands.ToggleCameraCommand;
+import org.usfirst.frc.team5980.robot.commands.ToggleSpeedCommand;
 import org.usfirst.frc.team5980.robot.commands.BallShootCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -34,6 +35,8 @@ public class OI {
 		cameraToggleButton.whenPressed(new ToggleCameraCommand());
 		Button gearDropButton = new JoystickButton(operator, 4); //does nothing for now (button ?)
 		gearDropButton.whenPressed(new GearDropCommand());
+		Button speedToggleButton = new JoystickButton(driver, 5); //Changes the speed from full power to half power
+		speedToggleButton.whenPressed(new ToggleSpeedCommand());
 		
 		//Button button3 = new JoystickButton(operator, 3);
 		Button gearUpButton = new JoystickButton(operator, 5);
