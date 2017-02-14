@@ -15,9 +15,14 @@ public class GearMech extends Subsystem {
 	CANTalon gearMotor = new CANTalon(5);
 	CANTalon actuatorMotor = new CANTalon(8);
 	DigitalInput upLimit = new DigitalInput(4);
+	DigitalInput downLimit = new DigitalInput(5);
 	
 public void setPower(double power) {
 	gearMotor.set(power);
+}
+
+public boolean getDownLimit() {
+	return downLimit.get();
 }
 
 public boolean getUpperLimit() {
