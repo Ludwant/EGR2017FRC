@@ -30,7 +30,7 @@ public class GearDropCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.gear.getUpperLimit();
+        return Robot.gear.getDownLimit();
     }
 
     // Called once after isFinished returns true

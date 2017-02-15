@@ -33,13 +33,13 @@ public class OI {
 		shootButton.whileHeld(new BallShootCommand());
 		Button cameraToggleButton = new JoystickButton(driver, 2);//toggles the camera (button b)
 		cameraToggleButton.whenPressed(new ToggleCameraCommand());
-		Button gearDropButton = new JoystickButton(operator, 4); //does nothing for now (button ?)
+		Button gearDropButton = new JoystickButton(operator, 5); //does nothing for now (button ?)
 		gearDropButton.whenPressed(new GearDropCommand());
 		Button speedToggleButton = new JoystickButton(driver, 5); //Changes the speed from full power to half power
 		speedToggleButton.whenPressed(new ToggleSpeedCommand());
 		
 		//Button button3 = new JoystickButton(operator, 3);
-		Button gearUpButton = new JoystickButton(operator, 5);
+		Button gearUpButton = new JoystickButton(operator, 6);
 		gearUpButton.whenPressed(new GearUp());
 		//Button button5 = new JoystickButton(operator, 5);
 	    //Button button6 = new JoystickButton(operator, 6);
