@@ -32,14 +32,12 @@ public class OI {
 		Button cameraToggleButton = new JoystickButton(driver, 2);//toggles the camera (button b)
 		cameraToggleButton.whenPressed(new ToggleCameraCommand());
 		Button gearDropButton = new JoystickButton(operator, 4); //does nothing for now (button ?)
-		
-		
 		gearDropButton.whenPressed(new GearDropCommand());
 		Button speedToggleButton = new JoystickButton(driver, 6); //Changes the speed from full power to half power
 		speedToggleButton.whenPressed(new ToggleSpeedCommand());
 		
 		//Button button3 = new JoystickButton(operator, 3);
-		Button gearUpButton = new JoystickButton(operator, 5);
+		Button gearUpButton = new JoystickButton(operator, 6);
 		gearUpButton.whenPressed(new GearUp());
 		//Button button7 = new JoystickButton(operator, 7);
 	    //Button button8 = new JoystickButton(operator, 8);

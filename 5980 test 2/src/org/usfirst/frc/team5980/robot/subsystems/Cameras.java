@@ -32,7 +32,7 @@ public class Cameras extends Subsystem implements Runnable {
 	UsbCamera frontCam, backCam;
 	Object visionLock = new Object();
 	boolean trackingOn = true;
-	boolean frontCamera = false;
+	boolean frontCamera = true;
 	double targetX = Double.NaN;
 	double targetY = Double.NaN;
 	CvSink currentSink;
@@ -138,6 +138,7 @@ public class Cameras extends Subsystem implements Runnable {
 					Imgproc.rectangle(source, bbox.tl(), bbox.br(), new Scalar(0,255,0),2); //draws the bounding rectangles
 					//Imgproc.contourArea(contours.get(i)); //gets the contour area 
 				}
+				SmartDashboard.putNumber("# of contours: ", contours.size());
 				if(localFrontCamera) { //depending on which camera is chosen...
 					analyzeFrontContours(contours, poseX, poseY, poseYaw); //analyzes contours 
 				}
@@ -178,19 +179,18 @@ public class Cameras extends Subsystem implements Runnable {
 		Rect rectangleTwo = Imgproc.boundingRect(bestTwo);
 		double x1 = rectangleOne.x + rectangleOne.width/2.0;
 		double x2 = rectangleTwo.x + rectangleTwo.width/2.0;
-		boolean bRrightToLeft = true;
 		double pegX = (x1 + x2)/2.0;
 		double distanceToCenter = pegX - 159.5;
-		double distanceToTargetPix = 160 / Math.tan(Math.toRadians(32.93)); // 32.93 for 920? 35.29
-		double alpha = 90 - Math.atan(distanceToCenter/distanceToTargetPix);
+		double distanceToTargetPix = 160 / Math.tan(Math.toRadians(35.29)); // 32.93 for 920? 35.29
+		double alpha = Math.atan(distanceToCenter/distanceToTargetPix);
 		double inchesPerPixel = 2 / (double) rectangleTwo.width;
 		double distanceToTarget = inchesPerPixel * distanceToTargetPix;
-		//if ( bRrightToLeft ) { alpha = -alpha; }
 		double phi = Math.toRadians(poseYaw + alpha);
 		double targetX = poseX + distanceToTarget * Math.cos(phi);
 		double targetY = poseY + distanceToTarget * Math.sin(phi);
 		setTarget(targetX, targetY);
-
+		SmartDashboard.putNumber("TargetX ", targetX);
+		SmartDashboard.putNumber("TargetY ", targetY);
 		SmartDashboard.putNumber("angle", alpha);
 		SmartDashboard.putNumber("distance", distanceToTarget);
 		SmartDashboard.putNumber("poseX", poseX);

@@ -20,11 +20,11 @@ public class DriveToTarget extends DriveToPoint {
     // Called just before this Command runs the first time
     protected void initialize() {
     	target = Robot.camera.getTarget(); 
-    	SmartDashboard.putNumber("targetX", target[0]);
-    	SmartDashboard.putNumber("targetY", target[1]);
-    	if(Double.isNaN(target[0])) {
-    		return;
-    	}
+    	//SmartDashboard.putNumber("targetX", target[0]);
+    	//SmartDashboard.putNumber("targetY", target[1]);
+    	//if(Double.isNaN(target[0])) {
+    		//return;
+    	//}
     	targetX = target[0];
     	targetY = target[1];
     }

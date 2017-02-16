@@ -28,13 +28,14 @@ public class DriveTrain extends Subsystem {
 		speedType = 1;
 		type = true;
 	}
-	public void toggleSpeedType(boolean type) {
-		if (type == true) {
+	public void toggleSpeedType() {
+		if (speedType == 1) {
 			speedType = .5;
 		}
-		else {
+		else if (speedType == .5) {
 			speedType = 1;
 		}
+		SmartDashboard.putNumber("speedType ", speedType);
 	}
 	public void setPower(double left, double right) {
 		left1.set(left);
