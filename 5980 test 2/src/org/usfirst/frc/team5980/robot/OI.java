@@ -33,7 +33,7 @@ public class OI {
 		cameraToggleButton.whenPressed(new ToggleCameraCommand());
 		Button gearDropButton = new JoystickButton(operator, 4); //does nothing for now (button ?)
 		gearDropButton.whenPressed(new GearDropCommand());
-		Button speedToggleButton = new JoystickButton(driver, 6); //Changes the speed from full power to half power
+		Button speedToggleButton = new JoystickButton(driver, 7); //Changes the speed from full power to half power
 		speedToggleButton.whenPressed(new ToggleSpeedCommand());
 		
 		//Button button3 = new JoystickButton(operator, 3);
