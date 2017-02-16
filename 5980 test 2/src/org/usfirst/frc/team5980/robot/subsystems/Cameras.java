@@ -31,7 +31,7 @@ public class Cameras extends Subsystem implements Runnable {
 	Scalar lowerHSV, upperHSV;
 	UsbCamera frontCam, backCam;
 	Object visionLock = new Object();
-	boolean trackingOn = true;
+	boolean trackingOn = false;
 	boolean frontCamera = true;
 	double targetX = Double.NaN;
 	double targetY = Double.NaN;
@@ -44,8 +44,8 @@ public class Cameras extends Subsystem implements Runnable {
 		mask = new Mat();
 		hsv = new Mat();
 		hierarchy = new Mat();
-		lowerHSV = new Scalar(55,0,230);
-		upperHSV = new Scalar(180,255,255);
+		lowerHSV = new Scalar(55,75,75);
+		upperHSV = new Scalar(100,160,160);
 		tracking = new Thread(this);
 		frontCam = new UsbCamera("front", 0);
 		backCam = new UsbCamera("back", 1);
@@ -107,6 +107,8 @@ public class Cameras extends Subsystem implements Runnable {
 		backCam.setPixelFormat(PixelFormat.kYUYV);
 		frontCam.setFPS(20);//sets fps
 		backCam.setFPS(20);
+		frontCam.setExposureManual(10);
+		//backCam.setExposureManual(5);
 		CvSource outputStream = CameraServer.getInstance().putVideo("Vision",  localWidth, localHeight);//creates a stream to the SmartDashboard
 		boolean localFrontCamera = true;//local boolean for switching cameras
 		while(true) {
@@ -117,7 +119,14 @@ public class Cameras extends Subsystem implements Runnable {
 			double poseY = Robot.sensors.getYCoordinate(); //
 			double poseYaw = Robot.sensors.getYaw(); //
 			synchronized(visionLock) { //gets a frame from the currently chosen camera
+				if(trackingOn) {
+					frontCam.setExposureManual(2);
+				}
+				else {
+					frontCam.setExposureManual(10); 
+				}
 				currentSink.grabFrame(source);
+				
 			}
 			
 			//SmartDashboard.putBoolean("Front Camera: ", localFrontCamera);
@@ -180,9 +189,10 @@ public class Cameras extends Subsystem implements Runnable {
 		double x1 = rectangleOne.x + rectangleOne.width/2.0;
 		double x2 = rectangleTwo.x + rectangleTwo.width/2.0;
 		double pegX = (x1 + x2)/2.0;
+		SmartDashboard.putNumber("pegX", pegX);
 		double distanceToCenter = pegX - 159.5;
 		double distanceToTargetPix = 160 / Math.tan(Math.toRadians(35.29)); // 32.93 for 920? 35.29
-		double alpha = Math.atan(distanceToCenter/distanceToTargetPix);
+		double alpha = -Math.toDegrees(Math.atan(distanceToCenter/distanceToTargetPix));
 		double inchesPerPixel = 2 / (double) rectangleTwo.width;
 		double distanceToTarget = inchesPerPixel * distanceToTargetPix;
 		double phi = Math.toRadians(poseYaw + alpha);

@@ -17,7 +17,7 @@ public class DriveToPoint extends Command {
 	double lastDistance = 500000000;
 	boolean coast = false;
 	double addToYaw = 0;
-	EGRPID headingPID = new EGRPID(0.015, 0, 0);
+	EGRPID headingPID = new EGRPID(0.005, 0, 0);
 	EGRPID distancePID = null;
     public DriveToPoint(double x, double y, Acceleration accelerate) {
         // Use requires() here to declare subsystem dependencies
@@ -91,6 +91,8 @@ public class DriveToPoint extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	boolean finished = distance > lastDistance;
+    	SmartDashboard.putNumber("distance", distance);
+    	SmartDashboard.putNumber("lastDistance", lastDistance);
     	lastDistance = distance;
         return finished;
     }

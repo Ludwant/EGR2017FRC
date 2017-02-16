@@ -98,6 +98,8 @@ public class Robot extends IterativeRobot {
 		camera.startCamera();//starts the camera thread
 		SmartDashboard.putData("Auto mode", chooser);
 		//server.startAutomaticCapture();
+		sensors.resetPosition();
+		sensors.resetSensors();
 		 
 	}
 
@@ -113,6 +115,9 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void disabledPeriodic() {
+		SmartDashboard.putNumber("x:", sensors.getXCoordinate());
+		SmartDashboard.putNumber("y:", sensors.getYCoordinate());
+		SmartDashboard.putNumber("Yaw:", sensors.getYaw());
 		Scheduler.getInstance().run();
 	}
 
