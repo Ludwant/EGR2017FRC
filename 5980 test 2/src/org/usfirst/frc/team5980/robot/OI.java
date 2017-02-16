@@ -9,10 +9,8 @@ import org.usfirst.frc.team5980.robot.commands.ToggleSpeedCommand;
 import org.usfirst.frc.team5980.robot.commands.BallShootCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.buttons.Trigger;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -34,15 +32,14 @@ public class OI {
 		Button cameraToggleButton = new JoystickButton(driver, 2);//toggles the camera (button b)
 		cameraToggleButton.whenPressed(new ToggleCameraCommand());
 		Button gearDropButton = new JoystickButton(operator, 4); //does nothing for now (button ?)
+		
 		gearDropButton.whenPressed(new GearDropCommand());
-		Button speedToggleButton = new JoystickButton(driver, 5); //Changes the speed from full power to half power
+		Button speedToggleButton = new JoystickButton(driver, 6); //Changes the speed from full power to half power
 		speedToggleButton.whenPressed(new ToggleSpeedCommand());
 		
 		//Button button3 = new JoystickButton(operator, 3);
 		Button gearUpButton = new JoystickButton(operator, 5);
 		gearUpButton.whenPressed(new GearUp());
-		//Button button5 = new JoystickButton(operator, 5);
-	    //Button button6 = new JoystickButton(operator, 6);
 		//Button button7 = new JoystickButton(operator, 7);
 	    //Button button8 = new JoystickButton(operator, 8);
 
