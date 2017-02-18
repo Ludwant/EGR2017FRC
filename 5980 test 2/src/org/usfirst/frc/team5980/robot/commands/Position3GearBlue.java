@@ -19,7 +19,7 @@ public class Position3GearBlue extends CommandGroup {
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
     	addSequential(new DriveForwardAutoCommand(.35, 84, 0));
-    	addSequential(new RotateToHeadingCommand(-60, 0.3));
+    	addSequential(new RotateToHeadingCommand(-61, 0.3));
     	addSequential(new DriveForwardAutoCommand(.35, 30, -60));
     	addSequential(new PauseCommand(2000));//power, number of encoder counts, direction
         // A command group will require all of the subsystems that each member

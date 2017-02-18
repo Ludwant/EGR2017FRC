@@ -44,8 +44,8 @@ public class Cameras extends Subsystem implements Runnable {
 		mask = new Mat();
 		hsv = new Mat();
 		hierarchy = new Mat();
-		lowerHSV = new Scalar(55,75,75);
-		upperHSV = new Scalar(100,160,160);
+		lowerHSV = new Scalar(55,75,100);//75
+		upperHSV = new Scalar(100,160,230);//160
 		tracking = new Thread(this);
 		frontCam = new UsbCamera("front", 0);
 		backCam = new UsbCamera("back", 1);
@@ -107,7 +107,8 @@ public class Cameras extends Subsystem implements Runnable {
 		backCam.setPixelFormat(PixelFormat.kYUYV);
 		frontCam.setFPS(20);//sets fps
 		backCam.setFPS(20);
-		frontCam.setExposureManual(10);
+		frontCam.setBrightness(15);
+		//frontCam.setExposureManual(5);
 		//backCam.setExposureManual(5);
 		CvSource outputStream = CameraServer.getInstance().putVideo("Vision",  localWidth, localHeight);//creates a stream to the SmartDashboard
 		boolean localFrontCamera = true;//local boolean for switching cameras
@@ -120,10 +121,10 @@ public class Cameras extends Subsystem implements Runnable {
 			double poseYaw = Robot.sensors.getYaw(); //
 			synchronized(visionLock) { //gets a frame from the currently chosen camera
 				if(trackingOn) {
-					frontCam.setExposureManual(2);
+					frontCam.setExposureManual(1);
 				}
 				else {
-					frontCam.setExposureManual(10); 
+					frontCam.setExposureManual(3); 
 				}
 				currentSink.grabFrame(source);
 				

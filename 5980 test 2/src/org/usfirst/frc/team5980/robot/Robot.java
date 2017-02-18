@@ -75,24 +75,24 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		chooser.addDefault("Nothing Auto", new NothingAuto()); //nothing
-		 chooser.addObject("Position 1 Gear Blue", new Position1GearBlue()); //drives up to the lift
-		 chooser.addObject("Position 2 Gear Blue/Red", new Position2GearPlacement()); //drives up to the lift
-		 chooser.addObject("Position 3 Gear Blue", new Position3GearBlue()); //drives up to the lift
-		 chooser.addObject("Position 3 Gear Red", new Position3GearRed());
-		 chooser.addObject("Position 1 Gear Red", new Position1GearRed());
+		 chooser.addObject("Near Refuel Gear Blue", new Position1GearBlue()); //drives up to the lift
+		 chooser.addObject("Middle Position Gear Blue/Red", new Position2GearPlacement()); //drives up to the lift
+		 chooser.addObject("Near Boiler Gear Blue", new Position3GearBlue()); //drives up to the lift
+		 chooser.addObject("Near Boiler Gear Red", new Position3GearRed());
+		 chooser.addObject("Near Refuel Gear Red", new Position1GearRed());
 		// chooser.addObject("Drive Forwards", new DriveForwardAutoCommand(.4, 1500, 0)); //drives forward
 		 //chooser.addObject("Drive Backwards", new DriveBackwardsAutoCommand(.4, -2000, 0)); //drives backwards
 		 //chooser.addObject("Rotate to Heading 180", new RotateToHeadingCommand(180, .3)); //ok this one's really obvious
 		 //chooser.addObject("Position 1 Move to Refuel", new Position1MoveToRefuel()); 
 		 //chooser.addObject("Position 2 Move to Refuel", new Position2MoveToRefuel()); 
 		 //chooser.addObject("Position 3 Move to Refuel", new Position3MoveToRefuel()); 
-		 chooser.addObject("Position 2 Shooting Blue", new Position2GearShoot()); 
-		 chooser.addObject("Position 2 Shooting Red", new Position2ShootingRed());
-		 chooser.addObject("Position 3 Shooting Blue", new Position3ShootingBlue());
-		 chooser.addObject("Position 3 Shooting Red", new Position3ShootingRed());
-		 chooser.addObject("Position 1 Hopper Blue", new Position1HopperBlue());
-		 chooser.addObject("Position 1 Hopper Red", new Position1HopperRed());
-		 chooser.addObject("Vision", new DriveToLeftLiftVision());
+		 chooser.addObject("Middle Position Shooting Blue", new Position2GearShoot()); 
+		 chooser.addObject("Middle Position Shooting Red", new Position2ShootingRed());
+		 chooser.addObject("Near Boiler Shooting Blue", new Position3ShootingBlue());
+		 chooser.addObject("Near Boiler Shooting Red", new Position3ShootingRed());
+		 chooser.addObject("Near Refuel Hopper Blue", new Position1HopperBlue());
+		 chooser.addObject("Near Refuel Hopper Red", new Position1HopperRed());
+		 //chooser.addObject("Vision", new DriveToLeftLiftVision());
 		 
 		 camera = new Cameras();
 		camera.startCamera();//starts the camera thread

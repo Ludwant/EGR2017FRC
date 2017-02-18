@@ -18,9 +18,9 @@ public class Position1GearBlue extends CommandGroup {
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
-    	addSequential(new DriveForwardAutoCommand(.35, 78, 0));
-    	addSequential(new RotateToHeadingCommand(60, .25));
-    	addSequential(new DriveForwardAutoCommand(.4, 36, 60));
+    	addSequential(new DriveForwardAutoCommand(.35, 76, 0));
+    	addSequential(new RotateToHeadingCommand(59, .25));
+    	addSequential(new DriveForwardAutoCommand(.4, 37, 60));
 
         // A command group will require all of the subsystems that each member
         // would require.

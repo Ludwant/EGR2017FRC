@@ -30,30 +30,19 @@ public class OI {
 		climbButton.whileHeld(new ClimbCommand());//runs full speed in one direction
 		Button shootButton = new JoystickButton(operator, 1);//runs #6 and #8 full speed in one direction (button A)
 		shootButton.whileHeld(new BallShootCommand());
-<<<<<<< HEAD
+
 		Button gearDropButton = new JoystickButton(operator, 5); //does nothing for now (button ?)
-=======
-		Button cameraToggleButton = new JoystickButton(driver, 2);//toggles the camera (button b)
-		cameraToggleButton.whenPressed(new ToggleCameraCommand());
-		Button gearDropButton = new JoystickButton(operator, 4); //does nothing for now (button ?)
->>>>>>> branch 'master' of https://github.com/Ludwant/EGR2017FRC.git
 		gearDropButton.whenPressed(new GearDropCommand());
-<<<<<<< HEAD
-=======
-		Button speedToggleButton = new JoystickButton(driver, 7); //Changes the speed from full power to half power
-		speedToggleButton.whenPressed(new ToggleSpeedCommand());
+
+		
 		
 		//Button button3 = new JoystickButton(operator, 3);
->>>>>>> branch 'master' of https://github.com/Ludwant/EGR2017FRC.git
 		Button gearUpButton = new JoystickButton(operator, 6);
 		gearUpButton.whenPressed(new GearUp());
-<<<<<<< HEAD
 		Button gearPlaceButton = new JoystickButton(operator, 2);
 		gearPlaceButton.whenPressed(new DriveToTargetTeleop());
 		//Button button5 = new JoystickButton(operator, 5);
 	    //Button button6 = new JoystickButton(operator, 6);
-=======
->>>>>>> branch 'master' of https://github.com/Ludwant/EGR2017FRC.git
 		//Button button7 = new JoystickButton(operator, 7);
 	    //Button button8 = new JoystickButton(operator, 8);
 		Button cameraToggleButton = new JoystickButton(driver, 2);//toggles the camera (button b)
