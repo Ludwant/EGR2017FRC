@@ -30,7 +30,7 @@ public class DriveToTargetTeleop extends CommandGroup {
     	addSequential(new ToggleTracking(true));
     	addSequential(new WaitForTarget());
     	addSequential(new SwitchDirection());
-    	addSequential(new DriveToTarget(new Acceleration(.3,.3,0), 10));
+    	addSequential(new DriveToTarget(new Acceleration(.5,.5,0), 10));
     	addSequential(new ToggleTracking(false));
     	addSequential(new SwitchDirection());
     }

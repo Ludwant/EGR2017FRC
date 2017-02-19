@@ -107,7 +107,7 @@ public class Cameras extends Subsystem implements Runnable {
 		backCam.setPixelFormat(PixelFormat.kYUYV);
 		frontCam.setFPS(20);//sets fps
 		backCam.setFPS(20);
-		frontCam.setBrightness(15);
+		frontCam.setBrightness(50);
 		//frontCam.setExposureManual(5);
 		//backCam.setExposureManual(5);
 		CvSource outputStream = CameraServer.getInstance().putVideo("Vision",  localWidth, localHeight);//creates a stream to the SmartDashboard
