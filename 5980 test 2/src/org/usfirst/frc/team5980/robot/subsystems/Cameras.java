@@ -69,14 +69,14 @@ public class Cameras extends Subsystem implements Runnable {
 		}
 	}
 	
-	public boolean toggleCamera2() {
+	/*public boolean toggleCamera2() {
 		synchronized(visionLock) {
 			frontCamera = !frontCamera;
 			currentSink.setEnabled(false);
 			currentSink.setEnabled(true);
 			return frontCamera;
 		}
-	}
+	}*/
 	
 	public void trackingOn(boolean on) {
 		synchronized(visionLock) {
