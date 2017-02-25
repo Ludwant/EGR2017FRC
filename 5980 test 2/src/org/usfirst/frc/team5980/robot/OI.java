@@ -3,7 +3,9 @@ package org.usfirst.frc.team5980.robot;
 
 import org.usfirst.frc.team5980.robot.commands.ClimbCommand;
 import org.usfirst.frc.team5980.robot.commands.DriveToTargetTeleop;
+import org.usfirst.frc.team5980.robot.commands.GearClose;
 import org.usfirst.frc.team5980.robot.commands.GearDropCommand;
+import org.usfirst.frc.team5980.robot.commands.GearOpen;
 import org.usfirst.frc.team5980.robot.commands.GearUp;
 import org.usfirst.frc.team5980.robot.commands.ToggleCameraCommand;
 import org.usfirst.frc.team5980.robot.commands.ToggleSpeedCommand;
@@ -26,25 +28,23 @@ public class OI {
 		//arcadeButton.whenPressed(new ArcadeDriveCommand());
 		//tankButton.whenPressed(new TankDriveCommand());
 		
-		Button climbButton = new JoystickButton(operator, 3); //speed controller #7 (button ?)
-		climbButton.whileHeld(new ClimbCommand());//runs full speed in one direction
-		Button shootButton = new JoystickButton(operator, 1);//runs #6 and #8 full speed in one direction (button A)
+		//  --OPERATOR BUTTONS:--
+		Button climbButton = new JoystickButton(operator, 7);//Back Button
+		climbButton.whileHeld(new ClimbCommand());
+		Button shootButton = new JoystickButton(operator, 2);//Button B
 		shootButton.whileHeld(new BallShootCommand());
-
-		Button gearDropButton = new JoystickButton(operator, 5); //does nothing for now (button ?)
+		Button gearDropButton = new JoystickButton(operator, 5);//Left Bumper
 		gearDropButton.whenPressed(new GearDropCommand());
-
-		
-		
-		//Button button3 = new JoystickButton(operator, 3);
-		Button gearUpButton = new JoystickButton(operator, 6);
+		Button gearUpButton = new JoystickButton(operator, 6);//Right Bumper
 		gearUpButton.whenPressed(new GearUp());
-		Button gearPlaceButton = new JoystickButton(operator, 2);
+		Button gearPlaceButton = new JoystickButton(operator, 1);//Button A
 		gearPlaceButton.whenPressed(new DriveToTargetTeleop());
-		//Button button5 = new JoystickButton(operator, 5);
-	    //Button button6 = new JoystickButton(operator, 6);
-		//Button button7 = new JoystickButton(operator, 7);
-	    //Button button8 = new JoystickButton(operator, 8);
+		Button gearOpenButton = new JoystickButton(operator, 3);//Button X
+		gearOpenButton.whenPressed(new GearOpen());
+		Button gearCloseButton = new JoystickButton(operator, 4);//Button Y
+		gearCloseButton.whenPressed(new GearClose());
+	
+		//  --DRIVER BUTTONS:--
 		Button cameraToggleButton = new JoystickButton(driver, 2);//toggles the camera (button b)
 		cameraToggleButton.whenPressed(new ToggleCameraCommand());
 		Button speedToggleButton = new JoystickButton(driver, 5); //Changes the speed from full power to half power
