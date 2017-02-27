@@ -12,23 +12,23 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class BallShooter extends Subsystem {
-	CANTalon master = new CANTalon(5);
-	CANTalon slave = new CANTalon(6);
+	CANTalon shooter = new CANTalon(5);
+	//CANTalon slave = new CANTalon(6);
 	public BallShooter() {
-		slave.changeControlMode(TalonControlMode.Follower);
-		slave.set(5);
-		master.setInverted(true);
-		slave.setInverted(true);
-		master.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-		master.configEncoderCodesPerRev(1440);
-		master.setF(0.7);
-		master.setP(0.2);
+		//slave.changeControlMode(TalonControlMode.Follower);
+		//slave.set(5);
+		//master.setInverted(true);
+		//slave.setInverted(true);
+		shooter.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+		shooter.configEncoderCodesPerRev(1440);
+		shooter.setF(0.7);
+		shooter.setP(0.2);
 	}
 	
 	public void setBallPower(double speed) {
 		//ballMotor.changeControlMode(TalonControlMode.Speed);
 		//ballMotor.set(speed);
-		master.set(speed);
+		shooter.set(speed);
 	}
 	
 	public void setAgitator(double power) {
@@ -36,7 +36,9 @@ public class BallShooter extends Subsystem {
 	}
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-
+	public double getSpeed() {
+		return shooter.getSpeed();
+	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new BallShootCommand());
