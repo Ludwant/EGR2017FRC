@@ -7,6 +7,7 @@ import org.usfirst.frc.team5980.robot.commands.GearClose;
 import org.usfirst.frc.team5980.robot.commands.GearDropCommand;
 import org.usfirst.frc.team5980.robot.commands.GearOpen;
 import org.usfirst.frc.team5980.robot.commands.GearUp;
+import org.usfirst.frc.team5980.robot.commands.RunElevator;
 import org.usfirst.frc.team5980.robot.commands.ToggleCameraCommand;
 import org.usfirst.frc.team5980.robot.commands.ToggleSpeedCommand;
 import org.usfirst.frc.team5980.robot.commands.BallShootCommand;
@@ -37,12 +38,14 @@ public class OI {
 		gearDropButton.whenPressed(new GearDropCommand());
 		Button gearUpButton = new JoystickButton(operator, 6);//Right Bumper
 		gearUpButton.whenPressed(new GearUp());
-		Button gearPlaceButton = new JoystickButton(operator, 1);//Button A
+		Button gearPlaceButton = new JoystickButton(operator, 8);//Start Button
 		gearPlaceButton.whenPressed(new DriveToTargetTeleop());
 		Button gearOpenButton = new JoystickButton(operator, 3);//Button X
 		gearOpenButton.whenPressed(new GearOpen());
 		Button gearCloseButton = new JoystickButton(operator, 4);//Button Y
 		gearCloseButton.whenPressed(new GearClose());
+		Button elevatorButton = new JoystickButton(operator, 1); //Button A
+		elevatorButton.whileHeld(new RunElevator());
 	
 		//  --DRIVER BUTTONS:--
 		Button cameraToggleButton = new JoystickButton(driver, 2);//toggles the camera (button b)

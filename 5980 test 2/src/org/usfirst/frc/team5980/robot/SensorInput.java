@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SPI;
 
 public class SensorInput {
-	Encoder leftEncoder = new Encoder(0, 1);
-	Encoder rightEncoder = new Encoder(2, 3);
+	Encoder leftEncoder = new Encoder(2, 3);
+	Encoder rightEncoder = new Encoder(0, 1);
 	//static Potentiometer pot = new AnalogPotentiometer(0, 360, 10); //Channel number for Analog input, scale factor 360 being the great, offset to add after scaling to prevent breakage (10 to 30 range) 
 	static AHRS navX;
 	int rightEncoderOffset = 0;

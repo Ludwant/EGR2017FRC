@@ -3,17 +3,15 @@ package org.usfirst.frc.team5980.robot.commands;
 import org.usfirst.frc.team5980.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class BallShootCommand extends Command {
+public class RunElevator extends Command {
 
-    public BallShootCommand() {
-    	//super("Ball Shoot Command");
+    public RunElevator() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.shooter);
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -22,10 +20,7 @@ public class BallShootCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.shooter.setBallPower(1);
-    	//Robot.shooter.setAgitator(1);
-    	Robot.shooter.setAgitatorPower(1);
-    	SmartDashboard.putNumber("Speed:", Robot.shooter.getSpeed());
+    	Robot.shooter.setElevatorPower(1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -40,8 +35,6 @@ public class BallShootCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.shooter.setBallPower(0);
-    	Robot.shooter.setAgitator(0);
-    	//Robot.shooter.setAgitator(1);
+    	Robot.shooter.setElevatorPower(0);
     }
 }

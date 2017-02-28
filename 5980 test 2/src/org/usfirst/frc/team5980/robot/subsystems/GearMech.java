@@ -12,12 +12,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class GearMech extends Subsystem {
-	CANTalon gearOpenCloseMotor = new CANTalon(5);
-	CANTalon gearUpDownMotor = new CANTalon(8);
-	DigitalInput upLimit = new DigitalInput(4);
-	DigitalInput downLimit = new DigitalInput(5);
-	DigitalInput openLimit = new DigitalInput(6);
-	DigitalInput closeLimit = new DigitalInput(7);	
+	CANTalon gearOpenCloseMotor = new CANTalon(9);
+	CANTalon gearUpDownMotor = new CANTalon(5);
+	DigitalInput upLimit = new DigitalInput(6);
+	DigitalInput downLimit = new DigitalInput(7);
+	DigitalInput openLimit = new DigitalInput(4);
+	DigitalInput closeLimit = new DigitalInput(5);	
 public void setUpDownPower(double power) {
 	gearUpDownMotor.set(power);
 }

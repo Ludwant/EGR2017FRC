@@ -26,8 +26,8 @@ public class ArcadeDriveCommand extends Command {
     	}
     }
     public double clip(double x){
-    	if (x>1) return 1;
-    	if (x<-1) return -1;
+    	if (x>.885) return .885;
+    	if (x<-.885) return -.885;
     	return x;
     }
     
