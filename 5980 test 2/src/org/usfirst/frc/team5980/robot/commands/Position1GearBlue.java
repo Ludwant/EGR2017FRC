@@ -21,6 +21,8 @@ public class Position1GearBlue extends CommandGroup {
     	addSequential(new DriveForwardAutoCommand(.35, 76, 0));
     	addSequential(new RotateToHeadingCommand(59, .25));
     	addSequential(new DriveForwardAutoCommand(.4, 37, 60));
+    	addSequential(new PauseCommand(1000));
+    	addSequential(new GearOpen());
 
         // A command group will require all of the subsystems that each member
         // would require.

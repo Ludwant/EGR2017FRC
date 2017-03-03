@@ -35,7 +35,7 @@ public class DriveTrain extends Subsystem {
 		else if (speedType == .5) {
 			speedType = 1;
 		}
-		SmartDashboard.putNumber("speedType ", speedType);
+		//SmartDashboard.putNumber("speedType ", speedType);
 	}
 	public void setPower(double left, double right) {
 		left1.set(left);

@@ -11,11 +11,13 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team5980.robot.commands.DriveForwardAutoCommand;
 //import java.util.*;
 //import org.opencv.core.*;
 //import org.opencv.imgproc.Imgproc;
 //import org.usfirst.frc.team5980.robot.commands.DriveForwardForTime;
 import org.usfirst.frc.team5980.robot.commands.DriveToLeftLiftVision;
+import org.usfirst.frc.team5980.robot.commands.GearOpen;
 //import org.usfirst.frc.team5980.robot.commands.DriveToPoint;
 import org.usfirst.frc.team5980.robot.commands.NothingAuto;
 import org.usfirst.frc.team5980.robot.commands.Position1GearBlue;
@@ -80,18 +82,19 @@ public class Robot extends IterativeRobot {
 		 chooser.addObject("Near Boiler Gear Blue", new Position3GearBlue()); //drives up to the lift
 		 chooser.addObject("Near Boiler Gear Red", new Position3GearRed());
 		 chooser.addObject("Near Refuel Gear Red", new Position1GearRed());
-		// chooser.addObject("Drive Forwards", new DriveForwardAutoCommand(.4, 1500, 0)); //drives forward
+		 chooser.addObject("Drive Forward 'N Stuff", new DriveForwardAutoCommand(.2, 100, 0));
+		 //chooser.addObject("Drive Forwards", new DriveForwardAutoCommand(.3, 1500, 0)); //drives forward
 		 //chooser.addObject("Drive Backwards", new DriveBackwardsAutoCommand(.4, -2000, 0)); //drives backwards
 		 //chooser.addObject("Rotate to Heading 180", new RotateToHeadingCommand(180, .3)); //ok this one's really obvious
 		 //chooser.addObject("Position 1 Move to Refuel", new Position1MoveToRefuel()); 
 		 //chooser.addObject("Position 2 Move to Refuel", new Position2MoveToRefuel()); 
 		 //chooser.addObject("Position 3 Move to Refuel", new Position3MoveToRefuel()); 
-		 chooser.addObject("Middle Position Shooting Blue", new Position2GearShoot()); 
-		 chooser.addObject("Middle Position Shooting Red", new Position2ShootingRed());
-		 chooser.addObject("Near Boiler Shooting Blue", new Position3ShootingBlue());
-		 chooser.addObject("Near Boiler Shooting Red", new Position3ShootingRed());
-		 chooser.addObject("Near Refuel Hopper Blue", new Position1HopperBlue());
-		 chooser.addObject("Near Refuel Hopper Red", new Position1HopperRed());
+		 //chooser.addObject("Middle Position Shooting Blue", new Position2GearShoot()); 
+		 //chooser.addObject("Middle Position Shooting Red", new Position2ShootingRed());
+		 //chooser.addObject("Near Boiler Shooting Blue", new Position3ShootingBlue());
+		 //chooser.addObject("Near Boiler Shooting Red", new Position3ShootingRed());
+		 //chooser.addObject("Near Refuel Hopper Blue", new Position1HopperBlue());
+		 //chooser.addObject("Near Refuel Hopper Red", new Position1HopperRed());
 		 //chooser.addObject("Vision", new DriveToLeftLiftVision());
 		 
 		 camera = new Cameras();
@@ -115,9 +118,9 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void disabledPeriodic() {
-		SmartDashboard.putNumber("x:", sensors.getXCoordinate());
-		SmartDashboard.putNumber("y:", sensors.getYCoordinate());
-		SmartDashboard.putNumber("Yaw:", sensors.getYaw());
+		//SmartDashboard.putNumber("x:", sensors.getXCoordinate());
+		//SmartDashboard.putNumber("y:", sensors.getYCoordinate());
+		//SmartDashboard.putNumber("Yaw:", sensors.getYaw());
 		Scheduler.getInstance().run();
 	}
 
@@ -136,8 +139,8 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
 		//DriveForwardAutoCommand driveTest = new DriveForwardAutoCommand(.5, 2000, 0);
-		sensors.resetSensors();
-		sensors.resetPosition();
+		//sensors.resetSensors();
+		//sensors.resetPosition();
 		//RotateToHeadingCommand rotateTest = new RotateToHeadingCommand(-60, .3);
 		//autonomousCommand = new DriveToPoint(100,40,new Acceleration(.2,.8,.04),false,20);
 		/*
@@ -146,7 +149,8 @@ public class Robot extends IterativeRobot {
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
-
+		driveTrain.switchDirection();
+		
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
@@ -177,6 +181,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		//System.out.println(sensors.getRightEncoder()+" " + sensors.getYaw());
+		
 		Scheduler.getInstance().run();
 	}
 

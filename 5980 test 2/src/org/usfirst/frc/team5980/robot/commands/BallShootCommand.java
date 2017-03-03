@@ -22,7 +22,7 @@ public class BallShootCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.shooter.setBallPower(1);
+    	Robot.shooter.setBallPower(.96);
     	//Robot.shooter.setAgitator(1);
     	Robot.shooter.setAgitatorPower(1);
     	SmartDashboard.putNumber("Speed:", Robot.shooter.getSpeed());
@@ -41,7 +41,7 @@ public class BallShootCommand extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     	Robot.shooter.setBallPower(0);
-    	Robot.shooter.setAgitator(0);
+    	Robot.shooter.setAgitatorPower(0);
     	//Robot.shooter.setAgitator(1);
     }
 }

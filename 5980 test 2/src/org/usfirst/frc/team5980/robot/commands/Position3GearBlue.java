@@ -21,7 +21,8 @@ public class Position3GearBlue extends CommandGroup {
     	addSequential(new DriveForwardAutoCommand(.35, 84, 0));
     	addSequential(new RotateToHeadingCommand(-61, 0.3));
     	addSequential(new DriveForwardAutoCommand(.35, 30, -60));
-    	addSequential(new PauseCommand(2000));//power, number of encoder counts, direction
+    	addSequential(new PauseCommand(1000));//power, number of encoder counts, direction
+    	addSequential(new GearOpen());
         // A command group will require all of the subsystems that each member
         // would require.
         // e.g. if Command1 requires chassis, and Command2 requires arm,

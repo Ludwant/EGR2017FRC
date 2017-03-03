@@ -19,7 +19,7 @@ public class SensorInput {
 	double lastLeftEncoder = 0;
 	double lastRightEncoder = 0;
 	boolean encoderInvert = false;
-	public double encoderCountsPerInch = 19;
+	public double encoderCountsPerInch = 19.5;
 	
 	public SensorInput() {
 		try {

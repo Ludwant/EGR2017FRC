@@ -44,11 +44,11 @@ public class Cameras extends Subsystem implements Runnable {
 		mask = new Mat();
 		hsv = new Mat();
 		hierarchy = new Mat();
-		lowerHSV = new Scalar(55,75,100);//75
-		upperHSV = new Scalar(100,160,230);//160
+		lowerHSV = new Scalar(55,100,100);//75
+		upperHSV = new Scalar(100,255,255);//160
 		tracking = new Thread(this);
-		frontCam = new UsbCamera("front", 0);
-		backCam = new UsbCamera("back", 1);
+		frontCam = new UsbCamera("front", 1);
+		backCam = new UsbCamera("back", 0);
 		currentCam = frontCam;
 		CameraServer.getInstance().addCamera(currentCam);
 		currentSink = CameraServer.getInstance().getVideo(currentCam);
@@ -107,7 +107,7 @@ public class Cameras extends Subsystem implements Runnable {
 		backCam.setPixelFormat(PixelFormat.kYUYV);
 		frontCam.setFPS(20);//sets fps
 		backCam.setFPS(20);
-		frontCam.setBrightness(50);
+		frontCam.setBrightness(20);
 		//frontCam.setExposureManual(5);
 		//backCam.setExposureManual(5);
 		CvSource outputStream = CameraServer.getInstance().putVideo("Vision",  localWidth, localHeight);//creates a stream to the SmartDashboard
@@ -115,7 +115,7 @@ public class Cameras extends Subsystem implements Runnable {
 		while(true) {
 			
 			localFrontCamera = frontCamera; //gets the boolean for which camera to use
-			SmartDashboard.putBoolean("localFrontCam: ", localFrontCamera);
+			//SmartDashboard.putBoolean("localFrontCam: ", localFrontCamera);
 			double poseX = Robot.sensors.getXCoordinate(); //gets position of robot
 			double poseY = Robot.sensors.getYCoordinate(); //
 			double poseYaw = Robot.sensors.getYaw(); //
@@ -148,7 +148,7 @@ public class Cameras extends Subsystem implements Runnable {
 					Imgproc.rectangle(source, bbox.tl(), bbox.br(), new Scalar(0,255,0),2); //draws the bounding rectangles
 					//Imgproc.contourArea(contours.get(i)); //gets the contour area 
 				}
-				SmartDashboard.putNumber("# of contours: ", contours.size());
+				//SmartDashboard.putNumber("# of contours: ", contours.size());
 				if(localFrontCamera) { //depending on which camera is chosen...
 					analyzeFrontContours(contours, poseX, poseY, poseYaw); //analyzes contours 
 				}
@@ -177,8 +177,8 @@ public class Cameras extends Subsystem implements Runnable {
 	
 	public void analyzeFrontContours(ArrayList<MatOfPoint> contours, double poseX, double poseY, double poseYaw) {
 		if(contours.size() < 2) {
-			SmartDashboard.putNumber("angle", Double.NaN);
-			SmartDashboard.putNumber("distance", Double.NaN);
+			//SmartDashboard.putNumber("angle", Double.NaN);
+			//SmartDashboard.putNumber("distance", Double.NaN);
 			setTarget(Double.NaN, Double.NaN);
 			return;
 		}
@@ -190,7 +190,7 @@ public class Cameras extends Subsystem implements Runnable {
 		double x1 = rectangleOne.x + rectangleOne.width/2.0;
 		double x2 = rectangleTwo.x + rectangleTwo.width/2.0;
 		double pegX = (x1 + x2)/2.0;
-		SmartDashboard.putNumber("pegX", pegX);
+		//SmartDashboard.putNumber("pegX", pegX);
 		double distanceToCenter = pegX - 159.5;
 		double distanceToTargetPix = 160 / Math.tan(Math.toRadians(35.29)); // 32.93 for 920? 35.29
 		double alpha = -Math.toDegrees(Math.atan(distanceToCenter/distanceToTargetPix));
@@ -200,6 +200,7 @@ public class Cameras extends Subsystem implements Runnable {
 		double targetX = poseX + distanceToTarget * Math.cos(phi);
 		double targetY = poseY + distanceToTarget * Math.sin(phi);
 		setTarget(targetX, targetY);
+		/*
 		SmartDashboard.putNumber("TargetX ", targetX);
 		SmartDashboard.putNumber("TargetY ", targetY);
 		SmartDashboard.putNumber("angle", alpha);
@@ -207,11 +208,11 @@ public class Cameras extends Subsystem implements Runnable {
 		SmartDashboard.putNumber("poseX", poseX);
 		SmartDashboard.putNumber("poseY", poseY);
 		SmartDashboard.putNumber("poseYaw", poseYaw);
-		
+		*/
 	}
 	
 	public void analyzeBackContours(ArrayList<MatOfPoint> contours, double poseX, double poseY, double poseYaw) {
-		SmartDashboard.putString("Back Contours ", "being analyzed");
+		//SmartDashboard.putString("Back Contours ", "being analyzed");
 	}
 	
 	public MatOfPoint getBestContour(ArrayList<MatOfPoint> contours, double aspectRatio) {

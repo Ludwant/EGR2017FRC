@@ -32,19 +32,17 @@ public class OI {
 		//  --OPERATOR BUTTONS:--
 		Button climbButton = new JoystickButton(operator, 7);//Back Button
 		climbButton.whileHeld(new ClimbCommand());
-		Button shootButton = new JoystickButton(operator, 2);//Button B
+		Button shootButton = new JoystickButton(operator, 1);//Button A
 		shootButton.whileHeld(new BallShootCommand());
 		Button gearDropButton = new JoystickButton(operator, 5);//Left Bumper
-		gearDropButton.whenPressed(new GearDropCommand());
+		//gearDropButton.whenPressed(new GearDropCommand());
 		Button gearUpButton = new JoystickButton(operator, 6);//Right Bumper
-		gearUpButton.whenPressed(new GearUp());
-		Button gearPlaceButton = new JoystickButton(operator, 8);//Start Button
-		gearPlaceButton.whenPressed(new DriveToTargetTeleop());
-		Button gearOpenButton = new JoystickButton(operator, 3);//Button X
+		//gearUpButton.whenPressed(new GearUp());
+		Button gearOpenButton = new JoystickButton(operator, 4);//Button Y
 		gearOpenButton.whenPressed(new GearOpen());
-		Button gearCloseButton = new JoystickButton(operator, 4);//Button Y
+		Button gearCloseButton = new JoystickButton(operator, 3);//Button X
 		gearCloseButton.whenPressed(new GearClose());
-		Button elevatorButton = new JoystickButton(operator, 1); //Button A
+		Button elevatorButton = new JoystickButton(operator, 2); //Button B  
 		elevatorButton.whileHeld(new RunElevator());
 	
 		//  --DRIVER BUTTONS:--
@@ -52,6 +50,8 @@ public class OI {
 		cameraToggleButton.whenPressed(new ToggleCameraCommand());
 		Button speedToggleButton = new JoystickButton(driver, 5); //Changes the speed from full power to half power
 		speedToggleButton.whenPressed(new ToggleSpeedCommand());
+		Button gearPlaceButton = new JoystickButton(driver, 1);//Start Button
+		gearPlaceButton.whenPressed(new DriveToTargetTeleop());
 
 	}
 	

@@ -23,6 +23,7 @@ public void setUpDownPower(double power) {
 }
 
 public void setOpenClosePower(double power) {
+	//System.out.println(power);
 	gearOpenCloseMotor.set(power);
 }
 
