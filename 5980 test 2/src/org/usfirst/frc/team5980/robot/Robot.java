@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5980.robot.commands.DriveForwardAutoCommand;
+import org.usfirst.frc.team5980.robot.commands.DriveForwardForTime;
 //import java.util.*;
 //import org.opencv.core.*;
 //import org.opencv.imgproc.Imgproc;
@@ -22,6 +23,7 @@ import org.usfirst.frc.team5980.robot.commands.GearOpen;
 import org.usfirst.frc.team5980.robot.commands.NothingAuto;
 import org.usfirst.frc.team5980.robot.commands.Position1GearBlue;
 import org.usfirst.frc.team5980.robot.commands.Position1GearRed;
+import org.usfirst.frc.team5980.robot.commands.Position1GearVision;
 import org.usfirst.frc.team5980.robot.commands.Position1HopperBlue;
 import org.usfirst.frc.team5980.robot.commands.Position1HopperRed;
 //import org.usfirst.frc.team5980.robot.commands.Position1MoveToRefuel;
@@ -31,6 +33,7 @@ import org.usfirst.frc.team5980.robot.commands.Position2GearShoot;
 import org.usfirst.frc.team5980.robot.commands.Position2ShootingRed;
 import org.usfirst.frc.team5980.robot.commands.Position3GearBlue;
 import org.usfirst.frc.team5980.robot.commands.Position3GearRed;
+import org.usfirst.frc.team5980.robot.commands.Position3GearRedVision;
 //import org.usfirst.frc.team5980.robot.commands.Position3MoveToRefuel;
 import org.usfirst.frc.team5980.robot.commands.Position3ShootingBlue;
 import org.usfirst.frc.team5980.robot.commands.Position3ShootingRed;
@@ -83,6 +86,9 @@ public class Robot extends IterativeRobot {
 		 chooser.addObject("Near Boiler Gear Red", new Position3GearRed());
 		 chooser.addObject("Near Refuel Gear Red", new Position1GearRed());
 		 chooser.addObject("Drive Forward 'N Stuff", new DriveForwardAutoCommand(.2, 100, 0));
+		 chooser.addObject("Position 1 Gear Vision", new Position1GearVision());
+		 chooser.addObject("Position 3 Gear Vision", new Position3GearRedVision());
+		 chooser.addObject("Drive Forward 5Seconds", new DriveForwardForTime(5000, .2));
 		 //chooser.addObject("Drive Forwards", new DriveForwardAutoCommand(.3, 1500, 0)); //drives forward
 		 //chooser.addObject("Drive Backwards", new DriveBackwardsAutoCommand(.4, -2000, 0)); //drives backwards
 		 //chooser.addObject("Rotate to Heading 180", new RotateToHeadingCommand(180, .3)); //ok this one's really obvious
@@ -182,7 +188,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		//System.out.println(sensors.getRightEncoder()+" " + sensors.getYaw());
-		
+		//SmartDashboard.putNumber("Shooter Position: ", shooter.shooter.getPosition());
+		SmartDashboard.putNumber("Yaw: ", sensors.getYaw());
 		Scheduler.getInstance().run();
 	}
 

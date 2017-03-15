@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5980.robot.subsystems;
 
 import org.usfirst.frc.team5980.robot.commands.BallShootCommand;
+import org.usfirst.frc.team5980.robot.commands.BallShootJoystick;
 
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
@@ -12,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class BallShooter extends Subsystem {
-	CANTalon shooter = new CANTalon(6);
+	public CANTalon shooter = new CANTalon(6);
 	CANTalon elevator = new CANTalon(7);
 	CANTalon agitator1 = new CANTalon(10);
 	CANTalon agitator2 = new CANTalon(11);
@@ -23,13 +24,13 @@ public class BallShooter extends Subsystem {
 		//master.setInverted(true);
 		//slave.setInverted(true);
 		shooter.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-		shooter.configEncoderCodesPerRev(1440);
-		shooter.setF(0.7);
-		shooter.setP(0.2);
+		shooter.configEncoderCodesPerRev(20);
+		shooter.setF(1.582); 
+		shooter.setP(.5); //.25575
+		shooter.changeControlMode(TalonControlMode.Speed);		//shooter.setP(0.2);
 	}
 	
 	public void setBallPower(double speed) {
-		//ballMotor.changeControlMode(TalonControlMode.Speed);
 		//ballMotor.set(speed);
 		shooter.set(speed);
 	}
@@ -48,9 +49,12 @@ public class BallShooter extends Subsystem {
 	public double getSpeed() {
 		return shooter.getSpeed();
 	}
+	public double getShooterEncoder() {
+		return shooter.getEncPosition();
+	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new BallShootCommand());
+       setDefaultCommand(new BallShootJoystick());
     }
 }
 

@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class GearDropCommand extends Command {
-
+	long stopTime;
     public GearDropCommand() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.gear);
@@ -20,7 +20,7 @@ public class GearDropCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	stopTime = System.currentTimeMillis() +500;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -30,7 +30,7 @@ public class GearDropCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.gear.getDownLimit();
+        return System.currentTimeMillis() > stopTime;
     }
 
     // Called once after isFinished returns true
@@ -41,5 +41,6 @@ public class GearDropCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.gear.setUpDownPower(0);
     }
 }

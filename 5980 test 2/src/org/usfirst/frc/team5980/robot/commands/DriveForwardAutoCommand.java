@@ -48,6 +48,7 @@ public class DriveForwardAutoCommand extends Command {
     	Robot.driveTrain.setPower((speed - correction) * stopCorrection, (speed + correction) * stopCorrection);
     	SmartDashboard.putNumber("Yaw: ", Robot.sensors.getYaw());
     	SmartDashboard.putNumber("Right Encoder: ", Robot.sensors.getRightEncoder());
+    	SmartDashboard.putNumber("LE :", Robot.sensors.getLeftEncoder());
     }
 
     // Make this return true when this Command no longer needs to run execute()

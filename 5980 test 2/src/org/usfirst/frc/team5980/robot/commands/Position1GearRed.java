@@ -28,5 +28,8 @@ public class Position1GearRed extends CommandGroup {
     	addSequential(new RotateToHeadingCommand(-60, .25));
     	addSequential(new DriveForwardAutoCommand(.4, 36, -60));
     	addSequential(new GearOpen());
+    	addSequential(new PauseCommand(1000));
+    	addSequential(new DriveBackwardsAutoCommand(.35, -10, 0));
+    	addSequential(new GearClose());
     }
 }

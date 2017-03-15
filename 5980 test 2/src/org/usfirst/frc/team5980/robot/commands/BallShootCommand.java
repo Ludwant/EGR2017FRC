@@ -22,10 +22,10 @@ public class BallShootCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.shooter.setBallPower(.96);
+    	Robot.shooter.setBallPower(1);
     	//Robot.shooter.setAgitator(1);
     	Robot.shooter.setAgitatorPower(1);
-    	SmartDashboard.putNumber("Speed:", Robot.shooter.getSpeed());
+    	//SmartDashboard.putNumber("Speed:", Robot.shooter.getSpeed());
     }
 
     // Make this return true when this Command no longer needs to run execute()

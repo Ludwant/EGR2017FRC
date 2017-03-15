@@ -18,6 +18,7 @@ public class ArcadeDriveCommand extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     }
+  
     public double deadBand(double x){
     	if (Math.abs(x)<.2){
     		return 0;
