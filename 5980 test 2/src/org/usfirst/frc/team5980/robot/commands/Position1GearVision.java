@@ -21,7 +21,7 @@ public class Position1GearVision extends CommandGroup {
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
     	addSequential(new DriveForwardAutoCommand(.35, 75, 0));
-    	addSequential(new RotateToHeadingCommand(-60, 0.3));
+    	addSequential(new RotateToHeadingCommand(-50, 0.3));
     	addSequential(new ToggleTracking(true));
     	addSequential(new WaitForTarget());
     	addSequential(new DriveToTarget(new Acceleration(.5,.5,0), 10));
@@ -29,7 +29,7 @@ public class Position1GearVision extends CommandGroup {
     	addSequential(new PauseCommand(1000));
     	addSequential(new GearOpen());
     	addSequential(new PauseCommand(1000));
-    	addSequential(new DriveBackwardsAutoCommand(.35, -10, -60));
+    	addSequential(new DriveBackwardsAutoCommand(.35, -10, -50));
     	addSequential(new GearClose());
         // A command group will require all of the subsystems that each member
         // would require.

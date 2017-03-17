@@ -89,6 +89,7 @@ public class Robot extends IterativeRobot {
 		 chooser.addObject("Position 1 Gear Vision", new Position1GearVision());
 		 chooser.addObject("Position 3 Gear Vision", new Position3GearRedVision());
 		 chooser.addObject("Drive Forward 5Seconds", new DriveForwardForTime(5000, .2));
+		 chooser.addObject("Position 2 Gear Shoot", new Position2ShootingRed());
 		 //chooser.addObject("Drive Forwards", new DriveForwardAutoCommand(.3, 1500, 0)); //drives forward
 		 //chooser.addObject("Drive Backwards", new DriveBackwardsAutoCommand(.4, -2000, 0)); //drives backwards
 		 //chooser.addObject("Rotate to Heading 180", new RotateToHeadingCommand(180, .3)); //ok this one's really obvious

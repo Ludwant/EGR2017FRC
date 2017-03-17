@@ -49,7 +49,7 @@ public class DriveToTarget extends DriveToPoint {
     	double changeInY = targetY - Robot.sensors.getYCoordinate();
     	double distance = Math.sqrt(Math.pow(changeInX, 2) + Math.pow(changeInY, 2));
         return distance < 2;*/
-    	boolean finished = distance > lastDistance && distance < 8 || stopTime < System.currentTimeMillis();
+    	boolean finished = distance > lastDistance && distance < 6 || stopTime < System.currentTimeMillis();
     	SmartDashboard.putNumber("distance", distance);
     	SmartDashboard.putNumber("lastDistance", lastDistance);
     	lastDistance = distance;

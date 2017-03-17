@@ -24,11 +24,7 @@ public class Position2ShootingRed extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new DriveForwardAutoCommand(.35, 70, 0));
-    	//addSequential(new GearGrabCommand());
-    	addSequential(new PauseCommand(2000));
-    	addSequential(new DriveBackwardsAutoCommand(.35, -15, 0));
-    	addSequential(new RotateToHeadingCommand(-105, .35));
-    	addSequential(new DriveForwardAutoCommand(.7, 135, -116));
+    	addSequential(new Position2GearPlacement());
+    	addSequential(new RotateToHeadingCommand(53, .3));
     }
 }
