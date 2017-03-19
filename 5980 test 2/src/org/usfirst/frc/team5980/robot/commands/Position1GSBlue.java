@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class Position2GearShoot extends CommandGroup {
+public class Position1GSBlue extends CommandGroup {
 
-    public Position2GearShoot() {
+    public Position1GSBlue() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -18,14 +18,12 @@ public class Position2GearShoot extends CommandGroup {
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
-    	addSequential(new DriveForwardAutoCommand(.35, 70, 0));
-    	//addSequential(new GearGrabCommand());
-    	addSequential(new PauseCommand(2000));
-    	addSequential(new DriveBackwardsAutoCommand(.35, -15, 0));
-    	addSequential(new RotateToHeadingCommand(105, .35));
-    	addSequential(new DriveForwardAutoCommand(.7, 135, 116));
-    	//addSequential(new BallShootCommand());
-
+    	
+    	addSequential(new Position1GearVision());
+    	addSequential(new RotateToHeadingCommand(-7, .3));
+    	addSequential(new PauseCommand(500));
+    	addSequential(new BallShootCommand());
+    	
         // A command group will require all of the subsystems that each member
         // would require.
         // e.g. if Command1 requires chassis, and Command2 requires arm,
