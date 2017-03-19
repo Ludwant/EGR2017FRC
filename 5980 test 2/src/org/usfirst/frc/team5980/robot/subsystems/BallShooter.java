@@ -7,6 +7,7 @@ import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
 import com.ctre.CANTalon.TalonControlMode;
 
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -15,8 +16,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class BallShooter extends Subsystem {
 	public CANTalon shooter = new CANTalon(6);
 	CANTalon elevator = new CANTalon(7);
-	CANTalon agitator1 = new CANTalon(10);
-	CANTalon agitator2 = new CANTalon(11);
+	Victor agitator1 = new Victor(0); //CANTalon(10);
+	CANTalon agitator2 = new CANTalon(2); //CANTalon(11);
 	//CANTalon slave = new CANTalon(6);
 	public BallShooter() {
 		//slave.changeControlMode(TalonControlMode.Follower);
@@ -54,7 +55,7 @@ public class BallShooter extends Subsystem {
 	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-       setDefaultCommand(new BallShootJoystick());
+       //setDefaultCommand(new BallShootJoystick());
     }
 }
 

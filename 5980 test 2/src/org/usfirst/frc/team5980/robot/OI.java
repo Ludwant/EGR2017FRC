@@ -33,7 +33,7 @@ public class OI {
 		Button climbButton = new JoystickButton(operator, 7);//Back Button
 		climbButton.whileHeld(new ClimbCommand());
 		Button shootButton = new JoystickButton(operator, 1);//Button A
-		shootButton.whileHeld(new BallShootCommand());
+		shootButton.whileHeld(new BallShootCommand(4850));
 		Button gearDropButton = new JoystickButton(operator, 5);//Left Bumper
 		//gearDropButton.whenPressed(new GearDropCommand());
 		Button gearUpButton = new JoystickButton(operator, 6);//Right Bumper

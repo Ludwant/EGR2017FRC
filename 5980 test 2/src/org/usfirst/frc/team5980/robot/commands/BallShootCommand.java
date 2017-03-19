@@ -9,11 +9,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class BallShootCommand extends Command {
-
-    public BallShootCommand() {
+	double rpm;
+    public BallShootCommand(double rpm) {
     	//super("Ball Shoot Command");
         // Use requires() here to declare subsystem dependencies
         requires(Robot.shooter);
+        this.rpm = rpm;
     }
 
     // Called just before this Command runs the first time
@@ -22,9 +23,9 @@ public class BallShootCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.shooter.setBallPower(1);
+    	Robot.shooter.setBallPower(rpm);  
     	//Robot.shooter.setAgitator(1);
-    	Robot.shooter.setAgitatorPower(1, 0.5);
+    	Robot.shooter.setAgitatorPower(1, -.5);
     	//SmartDashboard.putNumber("Speed:", Robot.shooter.getSpeed());
     }
 

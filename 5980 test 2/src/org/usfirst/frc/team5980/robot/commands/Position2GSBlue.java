@@ -22,7 +22,7 @@ public class Position2GSBlue extends CommandGroup {
     	addSequential(new Position2GearPlacement());
     	addSequential(new RotateToHeadingCommand(-53, .3));
     	addSequential(new PauseCommand(500));
-    	addSequential(new BallShootCommand());
+    	addSequential(new BallShootCommand(4850));
     	
         // A command group will require all of the subsystems that each member
         // would require.
