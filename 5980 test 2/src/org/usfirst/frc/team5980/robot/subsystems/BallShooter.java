@@ -34,9 +34,9 @@ public class BallShooter extends Subsystem {
 		//ballMotor.set(speed);
 		shooter.set(speed);
 	}
-	public void setAgitatorPower(double speed) {
+	public void setAgitatorPower(double speed, double speed2) {
 		agitator1.set(speed);
-		agitator2.set(speed);
+		agitator2.set(speed2);
 	}
 	public void setElevatorPower(double speed) {
 		elevator.set(speed);

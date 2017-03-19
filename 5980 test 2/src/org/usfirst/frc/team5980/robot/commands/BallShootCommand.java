@@ -24,7 +24,7 @@ public class BallShootCommand extends Command {
     protected void execute() {
     	Robot.shooter.setBallPower(1);
     	//Robot.shooter.setAgitator(1);
-    	Robot.shooter.setAgitatorPower(1);
+    	Robot.shooter.setAgitatorPower(1, 0.5);
     	//SmartDashboard.putNumber("Speed:", Robot.shooter.getSpeed());
     }
 
@@ -41,7 +41,7 @@ public class BallShootCommand extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     	Robot.shooter.setBallPower(0);
-    	Robot.shooter.setAgitatorPower(0);
+    	Robot.shooter.setAgitatorPower(0, 0);
     	//Robot.shooter.setAgitator(1);
     }
 }
