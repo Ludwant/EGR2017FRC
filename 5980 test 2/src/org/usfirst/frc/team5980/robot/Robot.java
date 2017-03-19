@@ -89,31 +89,20 @@ public class Robot extends IterativeRobot {
 		 //chooser.addObject("Near Refuel Gear Blue", new Position1GearBlue());
 		 
 		//Gear Placement and Shooting
-		 chooser.addObject("Position 1 Gear Shoot Red", new Position1GSRed());
-		 chooser.addObject("Position 1 Gear Shoot Blue", new Position1GSBlue());
+		 chooser.addObject("Near Refuel Gear Shoot Red", new Position1GSRed());
+		 chooser.addObject("Near Boiler Gear Shoot Blue", new Position1GSBlue());
 		 chooser.addObject("Middle Gear Shoot Red", new Position2GSRed());
 		 chooser.addObject("Middle Gear Shoot Blue", new Position2GSBlue());
-		 chooser.addObject("Position 3 Gear Shoot Red", new Position3GSRed());
-		 chooser.addObject("Position 3 Gear Shoot Blue", new Position3GSBlue());
+		 chooser.addObject("Near Boiler Gear Shoot Red", new Position3GSRed());
+		 chooser.addObject("Near Refuel Gear Shoot Blue", new Position3GSBlue());
 		 
 		//Gear Placement ONLY with VISION
-		 chooser.addObject("Position 1 Gear Vision", new Position1GearVision());
-		 chooser.addObject("Position 3 Gear Vision", new Position3GearVision());
+		 chooser.addObject("Position 1 (Turns Right) Gear Vision", new Position1GearVision());
+		 chooser.addObject("Position 3 (Turns Left) Gear Vision", new Position3GearVision());
 		 
 		//Drive Forward ONLY
-		 chooser.addObject("Drive Forward 5Seconds", new DriveForwardForTime(5000, .2));
-		 chooser.addObject("Drive Forward N Stuff", new DriveForwardAutoCommand(.2, 100, 0));
-		 
-		 //chooser.addObject("Drive Forwards", new DriveForwardAutoCommand(.3, 1500, 0)); //drives forward
-		 //chooser.addObject("Drive Backwards", new DriveBackwardsAutoCommand(.4, -2000, 0)); //drives backwards
-		 //chooser.addObject("Rotate to Heading 180", new RotateToHeadingCommand(180, .3)); //ok this one's really obvious 
-		 //chooser.addObject("Middle Position Shooting Blue", new Position2GearShoot()); 
-		 //chooser.addObject("Middle Position Shooting Red", new Position2ShootingRed());
-		 //chooser.addObject("Near Boiler Shooting Blue", new Position3ShootingBlue());
-		 //chooser.addObject("Near Boiler Shooting Red", new Position3ShootingRed());
-		 //chooser.addObject("Near Refuel Hopper Blue", new Position1HopperBlue());
-		 //chooser.addObject("Near Refuel Hopper Red", new Position1HopperRed());
-		 //chooser.addObject("Vision", new DriveToLeftLiftVision());
+		 chooser.addObject("Drive Forward 5 Seconds", new DriveForwardForTime(5000, .2));
+		 chooser.addObject("Drive Forward 100 Inches", new DriveForwardAutoCommand(.2, 100, 0));
 		 
 		 camera = new Cameras();
 		camera.startCamera();//starts the camera thread

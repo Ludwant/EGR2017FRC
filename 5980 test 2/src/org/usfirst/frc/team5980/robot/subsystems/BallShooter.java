@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class BallShooter extends Subsystem {
+public class BallShooter extends Subsystem { 
 	public CANTalon shooter = new CANTalon(6);
 	CANTalon elevator = new CANTalon(7);
 	Victor agitator1 = new Victor(0); //CANTalon(10);

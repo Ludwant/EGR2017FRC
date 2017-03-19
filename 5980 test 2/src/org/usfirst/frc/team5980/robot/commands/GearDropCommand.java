@@ -20,7 +20,7 @@ public class GearDropCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	stopTime = System.currentTimeMillis() +500;
+    	stopTime = System.currentTimeMillis() + 500;
     }
 
     // Called repeatedly when this Command is scheduled to run
