@@ -39,7 +39,7 @@ public class OI {
 		Button gearDropButton = new JoystickButton(operator, 6);//Left Bumper
 		gearDropButton.whenPressed(new GearDropCommand());
 		Button gearUpButton = new JoystickButton(operator, 5);//Right Bumper
-		gearUpButton.whileHeld(new GearUp());
+		gearUpButton.whenPressed(new GearUp());
 		
 		
 		Button gearOpenButton = new JoystickButton(operator, 4);//Button Y
