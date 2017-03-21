@@ -21,12 +21,12 @@ public class GearUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.gear.setUpDownPower(1);
+    	Robot.gear.setUpDownPower(-1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return System.currentTimeMillis() > stopTime;
+    	return false; //System.currentTimeMillis() > stopTime;
     }
 
     // Called once after isFinished returns true
