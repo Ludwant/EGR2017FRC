@@ -14,10 +14,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class GearMech extends Subsystem {
 	CANTalon gearOpenCloseMotor = new CANTalon(9);
 	CANTalon gearUpDownMotor = new CANTalon(5);
-	DigitalInput upLimit = new DigitalInput(6);
-	DigitalInput downLimit = new DigitalInput(7);
-	DigitalInput openLimit = new DigitalInput(8);
-	DigitalInput closeLimit = new DigitalInput(9);	
+	DigitalInput gearLimit = new DigitalInput(4);
+	
 public void setUpDownPower(double power) {
 	gearUpDownMotor.set(power);
 }
@@ -27,21 +25,10 @@ public void setOpenClosePower(double power) {
 	gearOpenCloseMotor.set(power);
 }
 
-public boolean getDownLimit() {
-	return downLimit.get();
+public boolean getGearLimit() {
+	return gearLimit.get();
 }
 
-public boolean getUpperLimit() {
-	return upLimit.get();
-}
-
-public boolean getOpenLimit() {
-	return openLimit.get();
-}
-
-public boolean getCloseLimit() {
-	return closeLimit.get();
-}
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 

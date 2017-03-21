@@ -28,7 +28,7 @@ public class GearOpen extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	boolean limit =!Robot.gear.getOpenLimit();
+    	//boolean limit =!Robot.gear.getOpenLimit();
     	//System.out.println(limit);
         return (System.currentTimeMillis() > stopTime);
     }
