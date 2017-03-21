@@ -16,8 +16,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class BallShooter extends Subsystem { 
 	public CANTalon shooter = new CANTalon(6);
 	CANTalon elevator = new CANTalon(7);
-	Victor agitator1 = new Victor(0); //CANTalon(10);
-	CANTalon agitator2 = new CANTalon(2); //CANTalon(11);
+	CANTalon agitator1 = new CANTalon(10);
+	CANTalon agitator2 = new CANTalon(11);
 	//CANTalon slave = new CANTalon(6);
 	public BallShooter() {
 		//slave.changeControlMode(TalonControlMode.Follower);
