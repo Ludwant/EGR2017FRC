@@ -129,9 +129,12 @@ public class Cameras extends Subsystem implements Runnable {
 				currentSink.grabFrame(source);
 				
 			}
-			
+			if(source == null) {
+				SmartDashboard.putString("Source: ", "NULL");
+			}
 			//SmartDashboard.putBoolean("Front Camera: ", localFrontCamera);
-			if(isTrackingOn()) {
+			if(isTrackingOn() && source != null) {
+				
 				Imgproc.cvtColor(source, hsv, Imgproc.COLOR_BGR2HSV); //converts the image to HSV
 				Core.inRange(hsv, lowerHSV, upperHSV, mask); //filters for the HSV values we want
 				ArrayList<MatOfPoint> contours = new ArrayList<MatOfPoint>(); //creates a list of contours 

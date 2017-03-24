@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveToTarget extends DriveToPoint {
 	double[] target;
 	long stopTime;
+	boolean targetFound = false;
     public DriveToTarget(Acceleration accelerate, double slowDistance) {
     	super(0,0,accelerate, false, slowDistance);
         // Use requires() here to declare subsystem dependencies
@@ -23,9 +24,7 @@ public class DriveToTarget extends DriveToPoint {
     	target = Robot.camera.getTarget(); 
     	//SmartDashboard.putNumber("targetX", target[0]);
     	//SmartDashboard.putNumber("targetY", target[1]);
-    	//if(Double.isNaN(target[0])) {
-    		//return;
-    	//}
+    	if(!Double.isNaN(target[0])) targetFound = true;
     	targetX = target[0];
     	targetY = target[1];
     	stopTime = System.currentTimeMillis() + 3000;
@@ -38,9 +37,10 @@ public class DriveToTarget extends DriveToPoint {
     	if (Double.isNaN(target[0]) == false) {
     		targetX = target[0];
     		targetY = target[1];
+    		targetFound = true;
     	}
     	
-    	super.execute();
+    	if (targetFound) super.execute();
     }
 
     // Make this return true when this Command no longer needs to run execute()
