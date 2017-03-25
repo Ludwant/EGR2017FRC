@@ -28,6 +28,8 @@ import org.usfirst.frc.team5980.robot.commands.Position1GearRed;
 import org.usfirst.frc.team5980.robot.commands.Position1GearVision;
 import org.usfirst.frc.team5980.robot.commands.Position2GSBlue;
 import org.usfirst.frc.team5980.robot.commands.Position2GSRed;
+import org.usfirst.frc.team5980.robot.commands.Position2GSVB;
+import org.usfirst.frc.team5980.robot.commands.Position2GSVR;
 //import org.usfirst.frc.team5980.robot.commands.Position1MoveToRefuel;
 import org.usfirst.frc.team5980.robot.commands.Position2GearPlacement;
 import org.usfirst.frc.team5980.robot.commands.Position3GSBlue;
@@ -59,7 +61,7 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final DriveTrain driveTrain = new DriveTrain();
-	public static final SensorInput sensors = new SensorInput();
+	public static final SensorInput sensors = new SensorInput(); 
 	public static GearMech gear = new GearMech();
 	public static BallShooter shooter = new BallShooter();
 	public static OI oi;
@@ -89,6 +91,8 @@ public class Robot extends IterativeRobot {
 		 //chooser.addObject("Near Refuel Gear Blue", new Position1GearBlue());
 		 
 		//Gear Placement and Shooting
+		 chooser.addObject("Middle Position Gear Shoot Red VISION", new Position2GSVR());
+		 chooser.addObject("Middle Position Gear Shoot Blue VISION", new Position2GSVB());
 		 chooser.addObject("Near Refuel Gear Shoot Red", new Position1GSRed());
 		 chooser.addObject("Near Boiler Gear Shoot Blue", new Position1GSBlue());
 		 chooser.addObject("Middle Gear Shoot Red", new Position2GSRed());

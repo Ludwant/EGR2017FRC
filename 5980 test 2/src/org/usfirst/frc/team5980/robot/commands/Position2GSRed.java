@@ -20,10 +20,10 @@ public class Position2GSRed extends CommandGroup {
         // Command1 and Command2 will run in parallel.
     	
     	addSequential(new Position2GearPlacement());
-    	addSequential(new PauseCommand(500));
-    	addSequential(new RotateToHeadingCommand(50, .3)); 
-    	addSequential(new PauseCommand(500));
-    	addSequential(new BallShootCommand(4120));
+    	addSequential(new PauseCommand(300));
+    	addSequential(new RotateToHeadingCommand(55, .3)); 
+    	addSequential(new PauseCommand(300));
+    	addSequential(new BallShootCommand(4055));
     	
         // A command group will require all of the subsystems that each member
         // would require.
