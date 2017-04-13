@@ -23,7 +23,7 @@ public class Position3GSRed extends CommandGroup {
     	addSequential(new PauseCommand(300));
     	addSequential(new RotateToHeadingCommand(42, .3));
     	addSequential(new PauseCommand(300));
-    	addSequential(new BallShootCommand(3830));
+    	addSequential(new BallShootCommand(3810));
 
         // A command group will require all of the subsystems that each member
         // would require.

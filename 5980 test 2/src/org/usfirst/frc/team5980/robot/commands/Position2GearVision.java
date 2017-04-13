@@ -1,13 +1,15 @@
 package org.usfirst.frc.team5980.robot.commands;
 
+import org.usfirst.frc.team5980.robot.Acceleration;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class Position1GSBlue extends CommandGroup {
+public class Position2GearVision extends CommandGroup {
 
-    public Position1GSBlue() {
+    public Position2GearVision() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -18,12 +20,17 @@ public class Position1GSBlue extends CommandGroup {
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
-    	
-    	addSequential(new Position1GearVision());
+
+    	addSequential(new DriveForwardAutoCommand(.35, 35, 0));
+    	addSequential(new ToggleTracking(true));
+    	addSequential(new WaitForTarget());
+    	addSequential(new DriveToTarget(new Acceleration(.5,.5,0), 10));
+    	addSequential(new ToggleTracking(false));
+    	addSequential(new PauseCommand(500));
+    	addSequential(new GearOpen());
     	addSequential(new PauseCommand(300));
-    	addSequential(new RotateToHeadingCommand(-42, .3));
-    	addSequential(new PauseCommand(300));
-    	addSequential(new BallShootCommand(3800)); //3850
+    	addSequential(new DriveBackwardsAutoCommand(.35, -15, 0));
+    	addSequential(new GearClose());
     	
         // A command group will require all of the subsystems that each member
         // would require.

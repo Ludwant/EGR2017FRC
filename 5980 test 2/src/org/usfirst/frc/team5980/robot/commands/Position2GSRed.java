@@ -21,7 +21,7 @@ public class Position2GSRed extends CommandGroup {
     	
     	addSequential(new Position2GearPlacement());
     	addSequential(new PauseCommand(300));
-    	addSequential(new RotateToHeadingCommand(55, .3)); 
+    	addSequential(new RotateToHeadingCommand(57, .3)); //55
     	addSequential(new PauseCommand(300));
     	addSequential(new BallShootCommand(4055));
     	
